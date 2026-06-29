@@ -18,6 +18,10 @@
       --paper-2: rgba(255, 246, 237, 0.92);
       --line: rgba(136, 97, 73, 0.12);
       --glow: rgba(228, 193, 153, 0.2);
+      --card-shadow-elegant:
+        0 30px 70px rgba(67, 42, 24, 0.16),
+        0 16px 28px rgba(98, 66, 40, 0.1),
+        0 2px 8px rgba(148, 105, 78, 0.06);
       --shadow:
         0 28px 68px rgba(67, 42, 24, 0.16),
         0 12px 28px rgba(98, 66, 40, 0.08),
@@ -85,9 +89,48 @@
       letter-spacing: 0.06em;
       background: linear-gradient(180deg, rgba(255, 250, 245, 0.96), rgba(249, 242, 234, 0.92));
       box-shadow:
-        0 14px 28px rgba(103, 66, 39, 0.12),
-        0 0 18px rgba(229, 199, 159, 0.1);
+        0 18px 30px rgba(103, 66, 39, 0.14),
+        0 8px 16px rgba(208, 174, 135, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(8px);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+    }
+
+    .home-btn::before,
+    .home-btn::after {
+      content: "";
+      position: absolute;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .home-btn::before {
+      inset: 1px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 247, 232, 0.12) 46%, rgba(255, 247, 232, 0) 68%),
+        radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.72), transparent 32%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.48),
+        inset 0 -8px 14px rgba(123, 84, 58, 0.08);
+    }
+
+    .home-btn::after {
+      inset: auto 12px 6px 12px;
+      height: 12px;
+      background: rgba(111, 58, 39, 0.12);
+      filter: blur(10px);
+      opacity: .42;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 22px 36px rgba(103, 66, 39, 0.16),
+        0 10px 18px rgba(233, 201, 156, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.54);
+      filter: brightness(1.015);
     }
 
     .page {
@@ -107,7 +150,7 @@
       background:
         linear-gradient(180deg, var(--paper), var(--paper-2)),
         radial-gradient(circle at 18% 16%, rgba(226, 197, 157, 0.16), transparent 22%);
-      box-shadow: var(--shadow);
+      box-shadow: var(--card-shadow-elegant);
     }
 
     .sheet::before {
@@ -195,7 +238,8 @@
         linear-gradient(180deg, rgba(255, 252, 248, 0.84), rgba(255, 247, 239, 0.76)),
         radial-gradient(circle at 14% 20%, var(--glow), transparent 26%);
       box-shadow:
-        0 18px 34px rgba(88, 57, 33, 0.08),
+        0 24px 42px rgba(88, 57, 33, 0.11),
+        0 10px 18px rgba(218, 188, 151, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.6);
       animation: fadeUp .85s ease both;
     }
@@ -224,21 +268,24 @@
       aspect-ratio: 1;
       margin: 0 auto;
       border-radius: 50%;
-      padding: 10px;
+      padding: 6px;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 238, 230, 0.92)),
-        radial-gradient(circle at center, rgba(236, 205, 162, 0.3), transparent 62%);
+        radial-gradient(circle at center, rgba(255, 248, 240, 0.96) 0%, rgba(249, 240, 231, 0.88) 58%, rgba(233, 210, 184, 0.52) 74%, rgba(255, 243, 231, 0.22) 100%);
       box-shadow:
-        0 18px 30px rgba(96, 63, 39, 0.12),
-        0 0 28px rgba(236, 204, 161, 0.14);
+        0 18px 30px rgba(96, 63, 39, 0.1),
+        0 0 26px rgba(249, 239, 228, 0.68),
+        inset 0 0 0 1px rgba(255, 250, 245, 0.72);
     }
 
     .portrait-wrap::after {
       content: "";
       position: absolute;
-      inset: 6px;
+      inset: 3px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(255, 249, 243, 0.82);
+      box-shadow:
+        0 0 0 1px rgba(245, 231, 214, 0.46),
+        0 0 18px rgba(255, 246, 235, 0.52);
       pointer-events: none;
     }
 
@@ -263,8 +310,8 @@
 
     .leader-name {
       font-family: "Noto Serif TC", serif;
-      font-size: clamp(2rem, 3vw, 2.9rem);
-      line-height: 1.1;
+      font-size: clamp(1.68rem, 2.3vw, 2.2rem);
+      line-height: 1.12;
       color: var(--wine);
     }
 
@@ -447,13 +494,12 @@
       }
 
       .leader-name {
-        font-size: clamp(1.75rem, 8vw, 2.3rem);
+        font-size: clamp(1.44rem, 6.8vw, 1.86rem);
       }
 
       .leader-role {
         width: 100%;
         font-size: 0.96rem;
-        line-height: 1.7;
       }
 
       .leader-desc {
@@ -495,7 +541,6 @@
       <header class="hero">
         <div class="eyebrow">關於帶領者</div>
         <h1 class="hero-title">會由誰帶你<br />一起探索？</h1>
-        <p class="hero-copy">這場交流聚會不是單向講解，而是由命理解析與現場陪伴一起組成，讓你更安心也更容易進入狀態。</p>
       </header>
 
       <section class="leaders">
@@ -513,8 +558,6 @@
               <span class="leader-badge">能量分析</span>
               <span class="leader-badge">白話帶領</span>
             </div>
-            <p class="leader-desc">服務八字命理個案數百位，用白話方式帶你看懂八字，解析你的戀愛能量與行動方向。</p>
-            <p class="leader-note">你會在這一段得到更清楚的脈絡，不只是知道分類，而是知道自己為什麼會這樣靠近愛。</p>
           </div>
         </article>
 
@@ -532,8 +575,6 @@
               <span class="leader-badge">安全陪伴</span>
               <span class="leader-badge">交流主持</span>
             </div>
-            <p class="leader-desc">現場帶領交流、陪伴與引導，讓大家在輕鬆安全的氛圍自在分享。</p>
-            <p class="leader-note">如果你平常不太敢在陌生場合打開自己，這一段會讓你感覺到被接住，而不是被推著表現。</p>
           </div>
         </article>
       </section>

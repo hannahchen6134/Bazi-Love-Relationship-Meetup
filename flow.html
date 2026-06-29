@@ -7,7 +7,7 @@
   <meta name="description" content="八字戀愛能量交流小聚活動流程頁。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet" />
   <style>
     :root {
       --wine: #744038;
@@ -18,6 +18,10 @@
       --paper-2: rgba(255, 246, 237, 0.92);
       --line: rgba(130, 92, 70, 0.12);
       --gold: rgba(214, 179, 128, 0.24);
+      --card-shadow-elegant:
+        0 32px 72px rgba(72, 43, 23, 0.16),
+        0 16px 28px rgba(89, 57, 33, 0.1),
+        0 2px 8px rgba(146, 106, 77, 0.06);
       --shadow-lg: 0 32px 82px rgba(72, 43, 23, 0.16);
       --shadow-md: 0 18px 38px rgba(89, 57, 33, 0.1);
     }
@@ -83,7 +87,7 @@
     }
 
     .section-head {
-      padding: 24px 38px 22px;
+      padding: 68px 38px 22px;
       text-align: center;
       border-radius: 30px;
       border: 1px solid rgba(255, 255, 255, 0.22);
@@ -121,14 +125,24 @@
     }
 
     .section-topline {
-      position: relative;
+      position: absolute;
+      top: 24px;
+      left: 50%;
       z-index: 1;
-      font-family: "Cormorant Garamond", serif;
-      letter-spacing: 0.32em;
-      text-transform: lowercase;
-      font-size: 0.96rem;
-      color: rgba(93, 71, 53, 0.46);
-      animation: toplinePulse 7.2s ease-in-out infinite;
+      width: min(72%, 340px);
+      margin-bottom: 0;
+      font-family: "Parisienne", cursive;
+      font-size: clamp(0.74rem, 1vw, 0.88rem);
+      line-height: 1;
+      letter-spacing: 0.34em;
+      word-spacing: 0.42em;
+      color: rgba(247, 238, 229, 0.32);
+      text-align: center;
+      white-space: nowrap;
+      transform: translateX(-50%) scaleX(1.22);
+      transform-origin: center;
+      animation: fadeUp .95s .18s ease both;
+      pointer-events: none;
     }
 
     .section-badge {
@@ -153,10 +167,10 @@
     .section-title {
       position: relative;
       z-index: 1;
-      margin-top: 28px;
+      margin-top: 24px;
       font-family: "Noto Serif TC", serif;
-      font-size: clamp(1.58rem, 3vw, 2.36rem);
-      line-height: 1.34;
+      font-size: clamp(1.34rem, 2.3vw, 1.86rem);
+      line-height: 1.28;
       color: var(--wine);
       text-shadow: 0 10px 28px rgba(137, 92, 72, 0.08);
       animation: titleBreath 7.8s ease-in-out infinite;
@@ -206,8 +220,9 @@
       background:
         linear-gradient(180deg, rgba(255, 250, 245, 0.96), rgba(249, 242, 234, 0.92));
       box-shadow:
-        0 14px 28px rgba(103, 66, 39, 0.12),
-        0 0 18px rgba(229, 199, 159, 0.1);
+        0 18px 30px rgba(103, 66, 39, 0.14),
+        0 8px 16px rgba(208, 174, 135, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
       overflow: hidden;
       isolation: isolate;
       backdrop-filter: blur(8px);
@@ -238,20 +253,25 @@
 
     .home-btn::before,
     .top-btn::before {
-      inset: -30%;
-      background: radial-gradient(circle, rgba(255, 247, 232, 0.62) 0%, rgba(255, 247, 232, 0.24) 24%, rgba(255, 247, 232, 0) 62%);
-      opacity: 0;
-      transform: scale(0.72);
+      inset: 1px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 247, 232, 0.12) 46%, rgba(255, 247, 232, 0) 68%),
+        radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.72), transparent 32%);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.48),
+        inset 0 -8px 14px rgba(123, 84, 58, 0.08);
+      opacity: 1;
+      transform: none;
     }
 
     .home-btn:hover,
     .top-btn:hover,
     .flow-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow:
-        0 18px 32px rgba(103, 66, 39, 0.14),
-        0 0 18px rgba(233, 201, 156, 0.12);
-      filter: brightness(1.01);
+        0 22px 36px rgba(103, 66, 39, 0.16),
+        0 10px 18px rgba(233, 201, 156, 0.12);
+      filter: brightness(1.015);
     }
 
     .home-btn:active,
@@ -268,8 +288,70 @@
     .flow-grid {
       display: grid;
       gap: 20px;
-      margin-top: 28px;
+      margin-top: 20px;
       animation: fadeUp .95s .15s ease both;
+    }
+
+    .flow-stages {
+      display: grid;
+      gap: 26px;
+      margin-top: 28px;
+    }
+
+    .flow-stage {
+      position: relative;
+      padding: 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background:
+        linear-gradient(180deg, rgba(255, 248, 241, 0.64), rgba(255, 247, 239, 0.48)),
+        radial-gradient(circle at 12% 10%, rgba(224, 195, 153, 0.12), transparent 28%);
+      box-shadow:
+        0 22px 44px rgba(86, 55, 31, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    }
+
+    .flow-stage::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      pointer-events: none;
+    }
+
+    .stage-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 6px 0;
+    }
+
+    .stage-title {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.02rem;
+      letter-spacing: 0.08em;
+      color: var(--wine);
+    }
+
+    .stage-range {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(182, 145, 101, 0.22);
+      background: rgba(255, 251, 246, 0.82);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      color: var(--wine-soft);
+      white-space: nowrap;
+    }
+
+    .stage-range,
+    .flow-time {
+      display: none;
     }
 
     .flow-card {
@@ -281,22 +363,17 @@
         linear-gradient(180deg, var(--paper), var(--paper-2)),
         radial-gradient(circle at 18% 16%, rgba(220, 193, 152, 0.1), transparent 24%);
       box-shadow:
-        0 18px 38px rgba(89, 57, 33, 0.1),
-        0 0 18px rgba(229, 197, 153, 0.08),
+        var(--card-shadow-elegant),
         inset 0 1px 0 rgba(255, 255, 255, 0.72);
       transition: transform .32s ease, box-shadow .32s ease, filter .32s ease;
-      animation: fadeUp .8s ease both;
+      opacity: 0;
+      transform: translateY(14px) scaleY(0.88);
+      transform-origin: top center;
     }
 
-    .flow-card:nth-child(2) { animation-delay: .06s; }
-    .flow-card:nth-child(3) { animation-delay: .12s; }
-    .flow-card:nth-child(4) { animation-delay: .18s; }
-    .flow-card:nth-child(5) { animation-delay: .24s; }
-    .flow-card:nth-child(6) { animation-delay: .3s; }
-    .flow-card:nth-child(7) { animation-delay: .36s; }
-    .flow-card:nth-child(8) { animation-delay: .42s; }
-    .flow-card:nth-child(9) { animation-delay: .48s; }
-    .flow-card:nth-child(10) { animation-delay: .54s; }
+    .flow-card.is-revealed {
+      animation: accordionReveal .72s cubic-bezier(.2,.82,.2,1) both;
+    }
 
     .flow-card::before {
       content: "";
@@ -309,31 +386,31 @@
       pointer-events: none;
     }
 
+    .flow-card.is-glowing::before {
+      animation: cardGlowBloom 1.02s ease both;
+    }
+
     .flow-card::after {
       inset: 9px;
       border: 1px solid rgba(255, 255, 255, 0.26);
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        inset 0 0 22px rgba(255, 255, 255, 0.05);
+        inset 0 0 22px rgba(255, 255, 255, 0.05),
+        inset 0 -18px 32px rgba(223, 201, 176, 0.08);
     }
 
     .flow-card.glow-open::before {
       animation: cardGlowBloom 1.1s ease forwards;
     }
 
-    summary {
+    .flow-card-head {
       list-style: none;
       display: grid;
-      grid-template-columns: 44px minmax(0, 1fr) 24px;
-      gap: 18px;
+      grid-template-columns: 44px minmax(0, 1fr);
+      gap: 16px;
       align-items: center;
-      padding: 20px 22px 18px;
-      cursor: pointer;
+      padding: 20px 22px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04));
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
     }
 
     .flow-no {
@@ -397,78 +474,6 @@
       font-size: 0.76rem;
       letter-spacing: 0.05em;
       color: #8b5f4f;
-    }
-
-    .flow-preview {
-      margin-top: 8px;
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: var(--text-soft);
-    }
-
-    .flow-toggle {
-      font-size: 1.15rem;
-      color: rgba(128, 91, 69, 0.5);
-      transition: transform .5s ease, color .4s ease;
-    }
-
-    .flow-card[open] .flow-toggle {
-      transform: rotate(90deg);
-      color: rgba(116, 64, 56, 0.74);
-    }
-
-    .flow-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      padding: 0 22px;
-      border-top: 1px solid rgba(122, 82, 60, 0.08);
-      background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.02));
-      transition:
-        grid-template-rows .72s cubic-bezier(.22,.78,.2,1),
-        padding-bottom .72s cubic-bezier(.22,.78,.2,1),
-        border-color .52s ease;
-    }
-
-    .flow-inner {
-      display: grid;
-      gap: 14px;
-      min-height: 0;
-      overflow: hidden;
-      padding-top: 0;
-      opacity: 0;
-      transform: translateY(8px);
-      transition:
-        opacity .5s ease,
-        transform .6s cubic-bezier(.22,.78,.2,1),
-        padding-top .6s cubic-bezier(.22,.78,.2,1);
-    }
-
-    .flow-card[open] .flow-inner,
-    .flow-card.glow-open .flow-inner {
-      opacity: 1;
-      transform: translateY(0);
-      padding-top: 18px;
-    }
-
-    .flow-card[open] .flow-body {
-      grid-template-rows: 1fr;
-      padding-bottom: 20px;
-      border-color: rgba(122, 82, 60, 0.12);
-    }
-
-    .flow-card[open] .flow-no {
-      transform: translateY(-1px) scale(1.03);
-      box-shadow:
-        0 12px 24px rgba(203, 168, 114, 0.16),
-        0 0 14px rgba(231, 200, 155, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.76);
-    }
-
-    .flow-inner p,
-    .flow-inner li {
-      font-size: 0.94rem;
-      line-height: 1.95;
-      color: var(--text-soft);
     }
 
     .top-btn {
@@ -577,6 +582,21 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    @keyframes accordionReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(14px) scaleY(0.88);
+      }
+      58% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+      }
+    }
+
     @media (max-width: 900px) {
       .page {
         width: min(100%, calc(100% - 34px));
@@ -584,7 +604,7 @@
       }
 
       .section-head {
-        padding: 20px 20px 18px;
+        padding: 56px 20px 18px;
         border-radius: 22px;
       }
 
@@ -594,8 +614,16 @@
       }
 
       .section-title {
-        font-size: clamp(1.34rem, 5.8vw, 1.82rem);
-        line-height: 1.34;
+        font-size: clamp(1.16rem, 4.8vw, 1.46rem);
+        line-height: 1.26;
+      }
+
+      .section-topline {
+        top: 20px;
+        width: min(74%, 250px);
+        font-size: 0.62rem;
+        letter-spacing: 0.28em;
+        word-spacing: 0.34em;
       }
 
       .section-copy {
@@ -610,15 +638,47 @@
         gap: 8px;
       }
 
+      .flow-stages {
+        gap: 18px;
+        margin-top: 22px;
+      }
+
+      .flow-stage {
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .flow-stage::before {
+        inset: 7px;
+        border-radius: 16px;
+      }
+
+      .stage-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 2px 4px 0;
+      }
+
+      .stage-title {
+        font-size: 0.94rem;
+      }
+
+      .stage-range {
+        min-height: 28px;
+        padding: 4px 10px;
+        font-size: 0.72rem;
+      }
+
       .kicker-pill {
         padding: 7px 11px;
         font-size: 0.74rem;
       }
 
-      summary {
-        grid-template-columns: 40px minmax(0, 1fr) 22px;
+      .flow-card-head {
+        grid-template-columns: 40px minmax(0, 1fr);
         gap: 12px;
-        padding: 16px 18px 15px;
+        padding: 16px 18px;
       }
 
       .flow-no {
@@ -646,35 +706,6 @@
         min-height: 24px;
         padding: 4px 9px;
         font-size: 0.7rem;
-      }
-
-      .flow-preview {
-        margin-top: 6px;
-        font-size: 0.82rem;
-        line-height: 1.65;
-      }
-
-      .flow-body {
-        padding: 0 18px;
-      }
-
-      .flow-card[open] .flow-body {
-        padding-bottom: 16px;
-      }
-
-      .flow-inner {
-        gap: 12px;
-      }
-
-      .flow-card[open] .flow-inner,
-      .flow-card.glow-open .flow-inner {
-        padding-top: 15px;
-      }
-
-      .flow-inner p,
-      .flow-inner li {
-        font-size: 0.9rem;
-        line-height: 1.84;
       }
 
       .home-btn {
@@ -715,146 +746,181 @@
   <main class="page">
     <section class="section-head">
       <div class="section-topline">starry dawn circle</div>
-      <div class="section-badge">活動流程</div>
-      <h1 class="section-title">今天的活動流程</h1>
-      <p class="section-copy">先用一句話抓到每段節奏，再決定要不要點開看細節，讀起來會更輕鬆。</p>
-      <div class="section-kicker">
-        <span class="kicker-pill">依序展開</span>
-        <span class="kicker-pill">一次只看一段</span>
-        <span class="kicker-pill">交流感受優先</span>
-      </div>
+      <h1 class="section-title">今天的探索旅程</h1>
     </section>
 
-    <section class="flow-grid">
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">1</div>
-          <div>
-            <h3 class="flow-title">報到入場</h3>
-            <div class="flow-meta"><div class="flow-time">13:45–14:00</div><div class="flow-tag">暖身</div></div>
-            <p class="flow-preview">先把心情放慢，讓自己順順走進今天。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>一開始，我會先陪大家慢慢進到今天的狀態。今天不是聯誼，也不是要你馬上懂八字；你只要帶著一點點好奇，來感受自己在關係裡是怎麼靠近愛的，就已經很好了。</p></div></div>
-      </details>
+    <section class="flow-stages">
+      <section class="flow-stage">
+        <div class="stage-head">
+          <h2 class="stage-title">暖場</h2>
+          <div class="stage-range">13:45–14:50</div>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">1</div>
+              <div>
+                <h3 class="flow-title">報到入場</h3>
+                <div class="flow-meta"><div class="flow-time">13:45–14:00</div><div class="flow-tag">暖身</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">2</div>
-          <div>
-            <h3 class="flow-title">戀愛小習慣找找看</h3>
-            <div class="flow-meta"><div class="flow-time">14:10–14:25</div><div class="flow-tag">破冰</div></div>
-            <p class="flow-preview">從戀愛小習慣開始，輕鬆認識彼此。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>大家會拿到一張表格，上面每一句都是某位參加者報名時寫下的戀愛小習慣。你的任務是去問別人：「這句是你寫的嗎？」找到後請對方簽名。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">2</div>
+              <div>
+                <h3 class="flow-title">開場定調</h3>
+                <div class="flow-meta"><div class="flow-time">14:00–14:10</div><div class="flow-tag">開場</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">3</div>
-          <div>
-            <h3 class="flow-title">簡短自我介紹</h3>
-            <div class="flow-meta"><div class="flow-time">14:25–14:35</div><div class="flow-tag">認識</div></div>
-            <p class="flow-preview">用一句話說出你此刻最有感的自己。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>每個人用一句話介紹自己，格式是：「我是＿＿，我剛剛那句戀愛小習慣最接近的關鍵字是＿＿。」不用很準，只要挑一個最有感的就可以。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">3</div>
+              <div>
+                <h3 class="flow-title">戀愛小習慣找找看</h3>
+                <div class="flow-meta"><div class="flow-time">14:10–14:25</div><div class="flow-tag">破冰</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">4</div>
-          <div>
-            <h3 class="flow-title">五種戀愛能量簡介</h3>
-            <div class="flow-meta"><div class="flow-time">14:35–14:50</div><div class="flow-tag">理解</div></div>
-            <p class="flow-preview">先建立共同語言，後面交流會更有感。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>主持人會把剛剛出現的關鍵字收斂成五種戀愛能量：行動、表達、經營、秩序、精神。這一段不是要貼標籤，而是讓大家先有一個比較輕鬆、好理解的共同語言。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">4</div>
+              <div>
+                <h3 class="flow-title">簡短自我介紹</h3>
+                <div class="flow-meta"><div class="flow-time">14:25–14:35</div><div class="flow-tag">認識</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">5</div>
-          <div>
-            <h3 class="flow-title">第一輪交流：公布前猜測</h3>
-            <div class="flow-meta"><div class="flow-time">14:50–15:05</div><div class="flow-tag">自我感受</div></div>
-            <p class="flow-preview">不求準確，先說說你對自己的直覺。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>這一輪不用急著猜得很準，只要從自己的習慣出發，輕輕地說說看，你覺得自己比較像哪一種戀愛能量。每一組大約會聊 3 分鐘，時間到了再自然換下一位。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">5</div>
+              <div>
+                <h3 class="flow-title">五種戀愛能量簡介</h3>
+                <div class="flow-meta"><div class="flow-time">14:35–14:50</div><div class="flow-tag">理解</div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">6</div>
-          <div>
-            <h3 class="flow-title">休息</h3>
-            <div class="flow-meta"><div class="flow-time">15:05–15:15</div><div class="flow-tag">轉場</div></div>
-            <p class="flow-preview">讓剛剛的感受沉一下，也喘口氣。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>休息 10 分鐘。可以喝水、上廁所、自然聊天，讓剛剛的感覺沉一下，也準備進入下一段的貼紙揭曉。</p></div></div>
-      </details>
+      <section class="flow-stage">
+        <div class="stage-head">
+          <h2 class="stage-title">揭曉</h2>
+          <div class="stage-range">14:50–15:25</div>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">6</div>
+              <div>
+                <h3 class="flow-title">第一輪交流：公布前猜測</h3>
+                <div class="flow-meta"><div class="flow-time">14:50–15:05</div><div class="flow-tag">自我感受</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">7</div>
-          <div>
-            <h3 class="flow-title">貼紙揭曉</h3>
-            <div class="flow-meta"><div class="flow-time">15:15–15:25</div><div class="flow-tag">揭曉</div></div>
-            <p class="flow-preview">看見你的能量入口，準備進入下一輪交流。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>名牌上的顏色貼紙會在這一段揭曉，它代表你根據報名出生資料整理出的最高五星戀愛能量。這不是完整命盤解析，而是一個入口。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">7</div>
+              <div>
+                <h3 class="flow-title">休息</h3>
+                <div class="flow-meta"><div class="flow-time">15:05–15:15</div><div class="flow-tag">轉場</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">8</div>
-          <div>
-            <h3 class="flow-title">第二輪交流：同能量者</h3>
-            <div class="flow-meta"><div class="flow-time">15:25–15:45</div><div class="flow-tag">共鳴</div></div>
-            <p class="flow-preview">跟相似的人聊，聽見被理解的感覺。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>接下來，和自己同能量的人坐在一起聊聊看，也許你會在別人的分享裡，聽見和自己很像的心情。這一輪每組大約會有 4 分鐘，可以慢慢說，不用趕。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">8</div>
+              <div>
+                <h3 class="flow-title">貼紙揭曉</h3>
+                <div class="flow-meta"><div class="flow-time">15:15–15:25</div><div class="flow-tag">揭曉</div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">9</div>
-          <div>
-            <h3 class="flow-title">第三輪交流：不同能量者</h3>
-            <div class="flow-meta"><div class="flow-time">15:45–16:05</div><div class="flow-tag">對照</div></div>
-            <p class="flow-preview">慢慢理解，原來不同不是不適合。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>這一輪，我們會把步伐放得更慢一點，去聽見和自己不一樣的靠近方式。很多誤會不一定是不夠愛，只是彼此表達愛的方法不同。每一組大約聊 4 分鐘，時間很夠，可以安心分享。</p></div></div>
-      </details>
+      <section class="flow-stage">
+        <div class="stage-head">
+          <h2 class="stage-title">交流</h2>
+          <div class="stage-range">15:25–16:05</div>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">9</div>
+              <div>
+                <h3 class="flow-title">第二輪交流：同能量者</h3>
+                <div class="flow-meta"><div class="flow-time">15:25–15:45</div><div class="flow-tag">共鳴</div></div>
+              </div>
+            </div>
+          </article>
 
-      <details class="flow-card">
-        <summary>
-          <div class="flow-no">10</div>
-          <div>
-            <h3 class="flow-title">收斂、回饋與延伸</h3>
-            <div class="flow-meta"><div class="flow-time">16:05–17:00</div><div class="flow-tag">收束</div></div>
-            <p class="flow-preview">把今天聽見的內容，整理成可以帶走的收穫。</p>
-          </div>
-          <div class="flow-toggle">›</div>
-        </summary>
-        <div class="flow-body"><div class="flow-inner"><p>主持人會收斂今天大家的分享，說明五種能量只是入口，後面還能延伸到更完整的十五型戀愛角色。最後會做個人整理、回饋填寫和一對一諮詢延伸。</p></div></div>
-      </details>
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">10</div>
+              <div>
+                <h3 class="flow-title">第三輪交流：不同能量者</h3>
+                <div class="flow-meta"><div class="flow-time">15:45–16:05</div><div class="flow-tag">對照</div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="flow-stage">
+        <div class="stage-head">
+          <h2 class="stage-title">圓滿結束</h2>
+          <div class="stage-range">16:05–17:00</div>
+        </div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">11</div>
+              <div>
+                <h3 class="flow-title">智堯收斂</h3>
+                <div class="flow-meta"><div class="flow-time">16:05–16:25</div><div class="flow-tag">收斂</div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">12</div>
+              <div>
+                <h3 class="flow-title">個人整理</h3>
+                <div class="flow-meta"><div class="flow-time">16:25–16:45</div><div class="flow-tag">整理</div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">13</div>
+              <div>
+                <h3 class="flow-title">分享與回饋</h3>
+                <div class="flow-meta"><div class="flow-time">16:45–16:55</div><div class="flow-tag">分享</div></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="flow-card">
+            <div class="flow-card-head">
+              <div class="flow-no">14</div>
+              <div>
+                <h3 class="flow-title">收尾轉換</h3>
+                <div class="flow-meta"><div class="flow-time">16:55–17:00</div><div class="flow-tag">結束</div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -888,24 +954,18 @@
       });
     });
 
-    document.querySelectorAll(".flow-card").forEach((card) => {
-      card.addEventListener("toggle", () => {
-        if (card.open) {
-          document.querySelectorAll(".flow-card[open]").forEach((otherCard) => {
-            if (otherCard !== card) {
-              otherCard.open = false;
-              otherCard.classList.remove("glow-open");
-            }
-          });
-          card.classList.remove("glow-open");
-          void card.offsetWidth;
-          card.classList.add("glow-open");
-          window.setTimeout(() => {
-            card.classList.remove("glow-open");
-          }, 1100);
-        }
-      });
+    const revealCards = Array.from(document.querySelectorAll(".flow-card"));
+    revealCards.forEach((card, index) => {
+      const delay = 140 + (index * 120);
+      window.setTimeout(() => {
+        card.classList.add("is-revealed");
+        card.classList.add("is-glowing");
+        window.setTimeout(() => {
+          card.classList.remove("is-glowing");
+        }, 1020);
+      }, delay);
     });
+
   </script>
 </body>
 </html>
