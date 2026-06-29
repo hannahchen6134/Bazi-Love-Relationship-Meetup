@@ -113,7 +113,7 @@
       position: relative;
       width: min(620px, 100%);
       margin-top: 26px;
-      padding: clamp(30px, 4vw, 42px) clamp(28px, 4.5vw, 46px) clamp(32px, 4vw, 44px);
+      padding: clamp(58px, 6vw, 74px) clamp(28px, 4.5vw, 46px) clamp(32px, 4vw, 44px);
       border-radius: 34px;
       border: 1px solid var(--line);
       text-align: center;
@@ -184,15 +184,17 @@
 
     .hero-script {
       position: absolute;
-      top: -44px;
-      left: 50%;
+      top: 12px;
+      left: 0;
+      right: 0;
       z-index: 2;
-      width: min(78%, 340px);
-      transform: translateX(-50%) scaleX(1.18);
+      width: 100%;
+      display: block;
+      transform: none;
       font-family: "Parisienne", cursive;
       font-size: clamp(0.74rem, 1vw, 0.9rem);
       line-height: 1;
-      color: rgba(247, 238, 229, 0.58);
+      color: rgba(146, 118, 99, 0.76);
       letter-spacing: 0.34em;
       word-spacing: 0.42em;
       text-align: center;
@@ -410,7 +412,7 @@
       .hero-card {
         width: min(100%, calc(100% - 10px));
         margin-top: 22px;
-        padding: 24px 20px 26px;
+        padding: 52px 20px 26px;
         border-radius: 24px;
         animation: cardIn 0.9s cubic-bezier(.16,.84,.18,1) both;
       }
@@ -437,8 +439,8 @@
       }
 
       .hero-script {
-        top: -34px;
-        width: min(78%, 236px);
+        top: 12px;
+        width: 100%;
         font-size: 0.62rem;
         letter-spacing: 0.28em;
         word-spacing: 0.34em;
