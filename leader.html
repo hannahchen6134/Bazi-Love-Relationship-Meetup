@@ -283,6 +283,33 @@
       color: var(--text);
     }
 
+    .leader-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .leader-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(182, 145, 101, 0.18);
+      background: rgba(242, 225, 201, 0.48);
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      color: var(--wine-soft);
+    }
+
+    .leader-note {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-soft);
+    }
+
     .leader-desc strong {
       color: var(--wine);
       font-weight: 600;
@@ -435,6 +462,17 @@
         line-height: 1.84;
       }
 
+      .leader-badges {
+        justify-content: center;
+        margin-top: 12px;
+      }
+
+      .leader-note {
+        margin-top: 8px;
+        font-size: 0.82rem;
+        line-height: 1.72;
+      }
+
       .actions {
         padding: 0 16px 22px;
       }
@@ -457,7 +495,7 @@
       <header class="hero">
         <div class="eyebrow">關於帶領者</div>
         <h1 class="hero-title">會由誰帶你<br />一起探索？</h1>
-        <p class="hero-copy">這場交流聚會用溫柔而清晰的方式，陪你理解自己在愛裡的能量、靠近方式與互動節奏。</p>
+        <p class="hero-copy">這場交流聚會不是單向講解，而是由命理解析與現場陪伴一起組成，讓你更安心也更容易進入狀態。</p>
       </header>
 
       <section class="leaders">
@@ -470,7 +508,13 @@
               <h2 class="leader-name">智堯</h2>
               <p class="leader-role">八字命理師 / 美國 NGH 催眠師</p>
             </div>
+            <div class="leader-badges">
+              <span class="leader-badge">命理解讀</span>
+              <span class="leader-badge">能量分析</span>
+              <span class="leader-badge">白話帶領</span>
+            </div>
             <p class="leader-desc">服務八字命理個案數百位，用白話方式帶你看懂八字，解析你的戀愛能量與行動方向。</p>
+            <p class="leader-note">你會在這一段得到更清楚的脈絡，不只是知道分類，而是知道自己為什麼會這樣靠近愛。</p>
           </div>
         </article>
 
@@ -483,7 +527,13 @@
               <h2 class="leader-name">青青</h2>
               <p class="leader-role">初星群 社群主持人</p>
             </div>
+            <div class="leader-badges">
+              <span class="leader-badge">現場引導</span>
+              <span class="leader-badge">安全陪伴</span>
+              <span class="leader-badge">交流主持</span>
+            </div>
             <p class="leader-desc">現場帶領交流、陪伴與引導，讓大家在輕鬆安全的氛圍自在分享。</p>
+            <p class="leader-note">如果你平常不太敢在陌生場合打開自己，這一段會讓你感覺到被接住，而不是被推著表現。</p>
           </div>
         </article>
       </section>
