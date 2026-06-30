@@ -173,7 +173,17 @@
       line-height: 1.28;
       color: var(--wine);
       text-shadow: 0 10px 28px rgba(137, 92, 72, 0.08);
-      animation: titleBreath 7.8s ease-in-out infinite;
+      overflow: hidden;
+    }
+
+    .section-title .title-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(26px) scale(0.96);
+      filter: blur(8px);
+      animation:
+        sectionTitleReveal 1.08s .14s cubic-bezier(.16,.84,.18,1) forwards,
+        titleBreath 7.8s ease-in-out 1.2s infinite;
     }
 
     .section-copy {
@@ -552,6 +562,27 @@
       }
     }
 
+    @keyframes sectionTitleReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(26px) scale(0.96);
+        filter: blur(8px);
+        letter-spacing: 0.08em;
+      }
+      62% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.01);
+        filter: blur(0);
+        letter-spacing: 0.02em;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        letter-spacing: 0;
+      }
+    }
+
     @keyframes cardGlowBloom {
       0% {
         opacity: 0;
@@ -756,7 +787,7 @@
   <main class="page">
     <section class="section-head">
       <div class="section-topline">starry dawn circle</div>
-      <h1 class="section-title">今天的探索旅程</h1>
+      <h1 class="section-title"><span class="title-line">今天的探索旅程</span></h1>
     </section>
 
     <section class="flow-grid flow-grid-flat">
