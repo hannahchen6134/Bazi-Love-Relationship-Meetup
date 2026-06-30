@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-Hant">
   <head>
     <meta charset="UTF-8" />
@@ -370,12 +370,141 @@
         box-shadow: 0 8px 16px rgba(103, 66, 39, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.46);
       }
 
+      .flow-table-card {
+        display: grid;
+        gap: 14px;
+      }
+
+      .flow-zoom-trigger {
+        position: relative;
+        display: block;
+        border-radius: 22px;
+        overflow: hidden;
+        text-decoration: none;
+      }
+
       .flow-visual {
         display: block;
         width: 100%;
         border-radius: 22px;
-        border: 1px solid rgba(173, 140, 114, 0.14);
+        border: 1px solid rgba(173, 140, 114, 0.16);
         box-shadow: 0 14px 30px rgba(90, 60, 39, 0.08);
+      }
+
+      .flow-zoom-hint {
+        position: absolute;
+        right: 14px;
+        bottom: 14px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(92, 62, 42, 0.72);
+        color: rgba(255, 248, 241, 0.96);
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        box-shadow: 0 10px 24px rgba(44, 27, 15, 0.18);
+      }
+
+      .flow-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(36, 24, 16, 0.72);
+        backdrop-filter: blur(8px);
+      }
+
+      .flow-lightbox.is-open {
+        display: flex;
+      }
+
+      .flow-lightbox-inner {
+        position: relative;
+        width: min(100%, 980px);
+        max-height: calc(100vh - 40px);
+        padding: 18px;
+        border-radius: 28px;
+        background: rgba(252, 248, 242, 0.96);
+        box-shadow: 0 22px 60px rgba(31, 19, 11, 0.22);
+      }
+
+      .flow-lightbox img {
+        display: block;
+        width: 100%;
+        max-height: calc(100vh - 110px);
+        object-fit: contain;
+        border-radius: 18px;
+      }
+
+      .flow-lightbox-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(108, 76, 54, 0.12);
+        color: var(--wine);
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+
+      .table-panel {
+        padding: 14px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.88), rgba(244, 235, 225, 0.76));
+        border: 1px solid rgba(173, 140, 114, 0.14);
+        box-shadow: 0 10px 22px rgba(100, 68, 44, 0.06);
+      }
+
+      .table-panel h4 {
+        margin: 0 0 10px;
+        color: var(--wine);
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+      }
+
+      .table-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .table-head,
+      .table-row {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.58fr);
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+      }
+
+      .table-head {
+        background: rgba(247, 236, 224, 0.92);
+        border: 1px solid rgba(187, 152, 124, 0.16);
+        color: rgba(132, 96, 77, 0.88);
+        font-size: 0.8rem;
+        line-height: 1.6;
+      }
+
+      .table-row {
+        background: rgba(255, 253, 250, 0.84);
+        border: 1px solid rgba(235, 224, 213, 0.92);
+      }
+
+      .table-row strong {
+        color: var(--wine);
+        font-size: 0.86rem;
+        line-height: 1.65;
+        font-weight: 600;
+      }
+
+      .table-row span {
+        color: var(--ink);
+        font-size: 0.84rem;
+        line-height: 1.72;
       }
 
       .future-actions {
@@ -518,8 +647,60 @@
           gap: 8px;
         }
 
-        .flow-visual {
+        .flow-table-card {
+          gap: 12px;
+        }
+
+        .flow-visual,
+        .flow-zoom-trigger {
           border-radius: 18px;
+        }
+
+        .flow-zoom-hint {
+          right: 10px;
+          bottom: 10px;
+          padding: 7px 10px;
+          font-size: 0.7rem;
+        }
+
+        .flow-lightbox {
+          padding: 14px;
+        }
+
+        .flow-lightbox-inner {
+          padding: 14px;
+          border-radius: 22px;
+        }
+
+        .flow-lightbox img {
+          max-height: calc(100vh - 90px);
+          border-radius: 14px;
+        }
+
+        .table-panel {
+          padding: 12px;
+          border-radius: 16px;
+        }
+
+        .table-panel h4 {
+          font-size: 0.88rem;
+          margin-bottom: 8px;
+        }
+
+        .table-head,
+        .table-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
+          padding: 10px;
+        }
+
+        .table-head {
+          font-size: 0.76rem;
+        }
+
+        .table-row strong,
+        .table-row span {
+          font-size: 0.82rem;
         }
       }
     </style>
@@ -749,7 +930,10 @@
                 </div>
                 <div class="content-block">
                   <h3 class="content-label">五星能量對照表</h3>
-                  <img class="flow-visual" src="flow8-table.png" alt="五星戀愛能量對照表" />
+                                      <a class="flow-zoom-trigger" href="#flow-table-modal" aria-label="點開放大查看五星能量對照表">
+                      <img class="flow-visual" src="flow8-table.png" alt="五星戀愛能量對照表" loading="lazy" />
+                      <span class="flow-zoom-hint">點一下放大閱讀</span>
+                    </a>
                 </div>
               </div>
             </div>
@@ -927,19 +1111,60 @@
           </details>
         </section>
       </section>
-    </main>
+      </main>
 
-    <script>
-      const panels = Array.from(document.querySelectorAll(".flow-panel"));
+      <div class="flow-lightbox" id="flow-table-modal" aria-hidden="true">
+        <div class="flow-lightbox-inner">
+          <button class="flow-lightbox-close" type="button" aria-label="關閉放大圖片">✕</button>
+          <img src="flow8-table.png" alt="五星戀愛能量對照表放大版" loading="lazy" />
+        </div>
+      </div>
+  
+      <script>
+        const panels = Array.from(document.querySelectorAll(".flow-panel"));
+        const flowTableTrigger = document.querySelector(".flow-zoom-trigger");
+        const flowLightbox = document.getElementById("flow-table-modal");
+        const flowLightboxClose = document.querySelector(".flow-lightbox-close");
 
-      panels.forEach((panel) => {
-        panel.addEventListener("toggle", () => {
-          if (!panel.open) return;
-          panels.forEach((other) => {
-            if (other !== panel) other.open = false;
+        panels.forEach((panel) => {
+          panel.addEventListener("toggle", () => {
+            if (!panel.open) return;
+            panels.forEach((other) => {
+              if (other !== panel) other.open = false;
+            });
           });
         });
-      });
-    </script>
-  </body>
-</html>
+
+        const closeFlowLightbox = () => {
+          if (!flowLightbox) return;
+          flowLightbox.classList.remove("is-open");
+          flowLightbox.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        };
+
+        if (flowTableTrigger && flowLightbox) {
+          flowTableTrigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            flowLightbox.classList.add("is-open");
+            flowLightbox.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+          });
+        }
+
+        if (flowLightboxClose) {
+          flowLightboxClose.addEventListener("click", closeFlowLightbox);
+        }
+
+        if (flowLightbox) {
+          flowLightbox.addEventListener("click", (event) => {
+            if (event.target === flowLightbox) closeFlowLightbox();
+          });
+        }
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeFlowLightbox();
+        });
+      </script>
+    </body>
+  </html>
+
