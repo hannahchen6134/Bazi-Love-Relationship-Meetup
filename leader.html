@@ -65,26 +65,26 @@
       .topbar {
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 18px;
+        margin-bottom: 14px;
       }
 
       .back-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 48px;
-        padding: 0 20px;
+        min-height: 40px;
+        padding: 0 16px;
         border-radius: 999px;
         text-decoration: none;
         color: var(--wine);
-        border: 1px solid rgba(151, 116, 89, 0.14);
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(246, 239, 231, 0.9));
+        border: 1px solid rgba(151, 116, 89, 0.13);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 240, 233, 0.9));
         box-shadow:
-          0 12px 22px rgba(86, 58, 35, 0.08),
-          0 3px 8px rgba(126, 92, 69, 0.04),
+          0 8px 16px rgba(86, 58, 35, 0.06),
+          0 2px 6px rgba(126, 92, 69, 0.035),
           inset 0 1px 0 rgba(255, 255, 255, 0.72);
-        font-size: 0.92rem;
-        letter-spacing: 0.06em;
+        font-size: 0.82rem;
+        letter-spacing: 0.05em;
       }
 
       .leaders {
@@ -96,10 +96,10 @@
         position: relative;
         overflow: hidden;
         display: grid;
-        grid-template-columns: 292px minmax(0, 1fr);
-        gap: 30px;
+        grid-template-columns: 270px minmax(0, 1fr);
+        gap: 26px;
         align-items: center;
-        padding: 42px 38px;
+        padding: 38px 34px;
         border-radius: 36px;
         border: 1px solid rgba(151, 116, 89, 0.14);
         background:
@@ -128,10 +128,10 @@
       }
 
       .leader-portrait {
-        width: 258px;
+        width: 232px;
         aspect-ratio: 1;
         border-radius: 50%;
-        padding: 8px;
+        padding: 7px;
         background:
           radial-gradient(circle at 32% 28%, rgba(255, 250, 244, 0.92), rgba(245, 233, 220, 0.76) 68%, rgba(232, 217, 201, 0.52));
         box-shadow:
@@ -164,7 +164,7 @@
       .leader-name {
         margin: 0;
         color: var(--wine);
-        font-size: clamp(1.92rem, 3.34vw, 2.58rem);
+        font-size: clamp(1.7rem, 3vw, 2.24rem);
         line-height: 1.04;
         letter-spacing: 0.04em;
       }
@@ -254,13 +254,13 @@
         }
 
         .topbar {
-          margin-bottom: 14px;
+          margin-bottom: 12px;
         }
 
         .back-btn {
-          min-height: 44px;
-          padding: 0 18px;
-          font-size: 0.88rem;
+          min-height: 36px;
+          padding: 0 14px;
+          font-size: 0.78rem;
         }
 
         .leaders {
@@ -269,9 +269,9 @@
 
         .leader-card {
           grid-template-columns: 1fr;
-          gap: 18px;
-          padding: 26px 22px 24px;
-          border-radius: 30px;
+          gap: 16px;
+          padding: 24px 20px 22px;
+          border-radius: 28px;
         }
 
         .leader-card::before {
@@ -280,8 +280,8 @@
         }
 
         .leader-portrait {
-          width: min(100%, 224px);
-          padding: 7px;
+          width: min(100%, 196px);
+          padding: 6px;
           box-shadow:
             0 0 0 1px rgba(239, 225, 212, 0.88),
             0 0 0 6px rgba(255, 248, 241, 0.38),
@@ -289,11 +289,11 @@
         }
 
         .leader-name-row {
-          gap: 10px;
+          gap: 8px;
         }
 
         .leader-name {
-          font-size: clamp(1.68rem, 6.8vw, 2.02rem);
+          font-size: clamp(1.5rem, 6.1vw, 1.82rem);
         }
 
         .leader-role {
