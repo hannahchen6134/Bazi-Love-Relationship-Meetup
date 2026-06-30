@@ -361,7 +361,7 @@
     .flow-card {
       position: relative;
       overflow: hidden;
-      border-radius: 28px;
+      border-radius: 24px;
       border: 1px solid rgba(138, 101, 76, 0.12);
       background:
         linear-gradient(180deg, var(--paper), var(--paper-2)),
@@ -410,22 +410,22 @@
     .flow-card-head {
       list-style: none;
       display: grid;
-      grid-template-columns: 44px minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 14px;
       align-items: center;
-      padding: 20px 22px;
+      padding: 16px 18px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04));
     }
 
     .flow-no {
       position: relative;
-      width: 44px;
-      height: 44px;
-      border-radius: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 0.03em;
       color: #7a4a41;
@@ -448,8 +448,8 @@
 
     .flow-title {
       font-family: "Noto Serif TC", serif;
-      font-size: 1.02rem;
-      line-height: 1.55;
+      font-size: 0.96rem;
+      line-height: 1.4;
       color: var(--wine);
     }
 
@@ -457,8 +457,8 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px 10px;
-      margin-top: 6px;
+      gap: 6px 8px;
+      margin-top: 4px;
     }
 
     .flow-time {
@@ -470,12 +470,12 @@
     .flow-tag {
       display: inline-flex;
       align-items: center;
-      min-height: 26px;
-      padding: 4px 10px;
+      min-height: 24px;
+      padding: 3px 9px;
       border-radius: 999px;
       background: rgba(236, 214, 183, 0.42);
       border: 1px solid rgba(182, 145, 101, 0.18);
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       letter-spacing: 0.05em;
       color: #8b5f4f;
     }
@@ -603,13 +603,13 @@
 
     @media (max-width: 900px) {
       .page {
-        width: min(100%, calc(100% - 34px));
-        padding: 68px 0 92px;
+        width: min(100%, calc(100% - 22px));
+        padding: 62px 0 84px;
       }
 
       .section-head {
-        padding: 42px 20px 16px;
-        border-radius: 22px;
+        padding: 32px 14px 10px;
+        border-radius: 18px;
       }
 
       .section-head::after {
@@ -618,17 +618,17 @@
       }
 
       .section-title {
-        margin-top: 4px;
-        font-size: clamp(1.16rem, 4.8vw, 1.46rem);
-        line-height: 1.26;
+        margin-top: 2px;
+        font-size: clamp(1rem, 4.2vw, 1.22rem);
+        line-height: 1.18;
       }
 
       .section-topline {
-        top: 14px;
+        top: 8px;
         width: min(74%, 250px);
-        font-size: 0.62rem;
-        letter-spacing: 0.28em;
-        word-spacing: 0.34em;
+        font-size: 0.54rem;
+        letter-spacing: 0.2em;
+        word-spacing: 0.22em;
       }
 
       .section-copy {
@@ -649,7 +649,7 @@
       }
 
       .flow-grid-flat {
-        margin-top: 22px;
+        margin-top: 14px;
       }
 
       .flow-stage {
@@ -685,25 +685,26 @@
       }
 
       .flow-card-head {
-        grid-template-columns: 40px minmax(0, 1fr);
-        gap: 12px;
-        padding: 16px 18px;
+        grid-template-columns: 32px minmax(0, 1fr);
+        gap: 9px;
+        padding: 11px 12px;
       }
 
       .flow-no {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+        font-size: 0.84rem;
       }
 
       .flow-title {
-        font-size: 1rem;
-        line-height: 1.55;
+        font-size: 0.84rem;
+        line-height: 1.28;
       }
 
       .flow-meta {
-        margin-top: 5px;
-        gap: 6px 8px;
+        margin-top: 2px;
+        gap: 4px 6px;
       }
 
       .flow-time {
@@ -712,9 +713,9 @@
       }
 
       .flow-tag {
-        min-height: 24px;
-        padding: 4px 9px;
-        font-size: 0.7rem;
+        min-height: 20px;
+        padding: 2px 7px;
+        font-size: 0.6rem;
       }
 
       .home-btn {
