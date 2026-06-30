@@ -205,46 +205,77 @@
         letter-spacing: 0.02em;
       }
 
+      .leader-note {
+        margin: 12px 0 0;
+        color: rgba(141, 90, 76, 0.74);
+        font-size: 0.88rem;
+        line-height: 1.74;
+        letter-spacing: 0.02em;
+      }
+
       .leader-socials {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 7px;
       }
 
       .social-link {
-        width: 40px;
-        height: 40px;
+        width: 34px;
+        height: 34px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         border-radius: 999px;
         text-decoration: none;
-        border: 1px solid rgba(145, 111, 87, 0.14);
-        background: linear-gradient(180deg, rgba(255, 252, 248, 0.94), rgba(244, 235, 226, 0.82));
-        color: rgba(132, 98, 80, 0.9);
+        border: 1px solid rgba(145, 111, 87, 0.12);
+        background: linear-gradient(180deg, rgba(255, 253, 250, 0.92), rgba(246, 238, 230, 0.8));
+        color: rgba(132, 98, 80, 0.82);
         box-shadow:
-          0 10px 20px rgba(109, 76, 54, 0.07),
-          inset 0 1px 0 rgba(255, 255, 255, 0.62);
+          0 7px 14px rgba(109, 76, 54, 0.055),
+          0 2px 5px rgba(109, 76, 54, 0.028),
+          inset 0 1px 0 rgba(255, 255, 255, 0.66);
         transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
       }
 
       .social-link:hover {
         transform: translateY(-1px);
-        border-color: rgba(145, 111, 87, 0.22);
+        border-color: rgba(145, 111, 87, 0.18);
         box-shadow:
-          0 12px 24px rgba(109, 76, 54, 0.1),
-          inset 0 1px 0 rgba(255, 255, 255, 0.68);
+          0 9px 18px rgba(109, 76, 54, 0.07),
+          0 3px 7px rgba(109, 76, 54, 0.035),
+          inset 0 1px 0 rgba(255, 255, 255, 0.72);
       }
 
       .social-link svg {
-        width: 17px;
-        height: 17px;
+        width: 14px;
+        height: 14px;
         display: block;
         stroke: currentColor;
       }
 
       .social-link.line {
         color: var(--olive);
+      }
+
+      .page-outro {
+        margin: 18px auto 0;
+        width: min(720px, calc(100% - 12px));
+        padding: 18px 22px;
+        border-radius: 22px;
+        border: 1px solid rgba(152, 120, 97, 0.12);
+        background: linear-gradient(180deg, rgba(255, 250, 245, 0.72), rgba(248, 240, 233, 0.62));
+        box-shadow:
+          0 14px 30px rgba(89, 57, 36, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.48);
+        text-align: center;
+      }
+
+      .page-outro p {
+        margin: 0;
+        color: rgba(141, 90, 76, 0.76);
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        line-height: 1.7;
       }
 
       @media (max-width: 900px) {
@@ -320,14 +351,32 @@
           line-height: 1.78;
         }
 
+        .leader-note {
+          margin-top: 10px;
+          font-size: 0.78rem;
+          line-height: 1.68;
+        }
+
         .social-link {
-          width: 36px;
-          height: 36px;
+          width: 31px;
+          height: 31px;
         }
 
         .social-link svg {
-          width: 15px;
-          height: 15px;
+          width: 13px;
+          height: 13px;
+        }
+
+        .page-outro {
+          width: min(100%, calc(100% - 6px));
+          margin-top: 14px;
+          padding: 14px 16px;
+          border-radius: 18px;
+        }
+
+        .page-outro p {
+          font-size: 0.78rem;
+          line-height: 1.62;
         }
       }
     </style>
@@ -375,6 +424,7 @@
             <p class="leader-desc">
               服務八字命理個案數年資歷，用白話方式帶你看懂八字，解析你的戀愛能量與行動方向。
             </p>
+            <p class="leader-note">若你想更進一步理解自己的戀愛能量，也可以活動後與我討論。</p>
           </div>
         </article>
 
@@ -414,8 +464,13 @@
             <p class="leader-desc">
               現場帶領交流、陪伴與引導，讓大家在輕鬆安全的氛圍自在分享。
             </p>
+            <p class="leader-note">想接收之後的活動消息與交流內容，可以從 IG / LINE 找我。</p>
           </div>
         </article>
+      </section>
+
+      <section class="page-outro" aria-label="延伸了解">
+        <p>活動後想延伸了解，這裡可以找到我們。</p>
       </section>
     </main>
   </body>
