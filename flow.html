@@ -158,6 +158,18 @@
         animation-delay: calc(var(--delay) * 0.08s);
       }
 
+      .flow-panel-static .flow-summary {
+        cursor: default;
+      }
+
+      .flow-panel-static .flow-toggle {
+        opacity: 0;
+      }
+
+      .flow-panel-static .flow-body {
+        display: none;
+      }
+
       .flow-panel::before {
         content: "";
         position: absolute;
@@ -169,6 +181,20 @@
 
       .flow-panel[open] {
         box-shadow: var(--shadow), 0 0 0 1px rgba(157, 122, 95, 0.06);
+      }
+
+      .flow-panel.is-feature {
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(246, 237, 227, 0.95));
+        border-color: rgba(156, 116, 88, 0.18);
+        box-shadow: 0 24px 46px rgba(74, 47, 28, 0.1);
+      }
+
+      .flow-panel.is-feature::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 4px;
+        background: linear-gradient(180deg, rgba(155, 103, 77, 0.68), rgba(216, 190, 161, 0.14));
       }
 
       .flow-summary {
@@ -290,6 +316,83 @@
         line-height: 1.78;
       }
 
+      .content-block strong {
+        color: var(--wine);
+        font-weight: 600;
+      }
+
+      .lead-copy {
+        font-size: 0.98rem;
+        line-height: 1.84;
+      }
+
+      .two-up,
+      .mini-guide {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mini-guide .mini-pill {
+        justify-self: start;
+      }
+
+      .mini-guide-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .mini-guide-button {
+        appearance: none;
+        border: 1px solid rgba(166, 120, 91, 0.26);
+        cursor: pointer;
+        transition: transform .24s ease, box-shadow .24s ease, background .24s ease, color .24s ease;
+      }
+
+      .mini-guide-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .mini-guide-button.is-active {
+        border-color: rgba(155, 103, 77, 0.42);
+        background: linear-gradient(180deg, rgba(213, 176, 145, 0.98), rgba(199, 158, 126, 0.92));
+        color: #fff8f2;
+        box-shadow:
+          0 10px 20px rgba(156, 107, 79, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.26);
+      }
+
+      .mini-guide-content {
+        border-radius: 20px;
+        border: 1px solid rgba(171, 136, 108, 0.14);
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.84), rgba(248, 241, 234, 0.76));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+        padding: 18px 18px 16px;
+      }
+
+      .mini-guide-panel {
+        display: none;
+      }
+
+      .mini-guide-panel.is-active {
+        display: block;
+        animation: fadeUp .28s ease both;
+      }
+
+      .mini-guide-panel h4 {
+        margin: 0 0 8px;
+        color: var(--wine);
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+
+      .mini-guide-panel p {
+        margin: 0;
+        color: var(--text-soft);
+        font-size: 0.92rem;
+        line-height: 1.86;
+      }
+
       .keyword-list {
         display: flex;
         flex-wrap: wrap;
@@ -310,9 +413,48 @@
         color: rgba(120, 84, 66, 0.9);
       }
 
+      .keyword-list span {
+        min-height: 38px;
+        padding: 0 16px;
+        border: 1px solid rgba(163, 119, 91, 0.34);
+        background: linear-gradient(180deg, rgba(245, 220, 193, 0.98), rgba(236, 206, 177, 0.92));
+        color: #8f5844;
+        font-weight: 600;
+        box-shadow:
+          0 10px 18px rgba(170, 120, 88, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.42);
+      }
+
       .energy-grid {
         display: grid;
         gap: 12px;
+      }
+
+      .energy-overview {
+        display: grid;
+        gap: 12px;
+      }
+
+      .energy-overview-card {
+        padding: 16px 18px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(248, 237, 225, 0.92), rgba(255, 250, 244, 0.92));
+        border: 1px solid rgba(177, 139, 110, 0.18);
+        box-shadow: 0 10px 22px rgba(98, 64, 42, 0.06);
+      }
+
+      .energy-overview-card h3 {
+        margin: 0 0 8px;
+        color: var(--wine);
+        font-size: 1rem;
+        letter-spacing: 0.05em;
+      }
+
+      .energy-overview-card p {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.9rem;
+        line-height: 1.76;
       }
 
       .energy-card {
@@ -321,6 +463,48 @@
         background: linear-gradient(180deg, rgba(255, 253, 250, 0.88), rgba(245, 236, 227, 0.78));
         border: 1px solid rgba(171, 137, 111, 0.14);
         box-shadow: 0 10px 20px rgba(93, 60, 38, 0.05);
+      }
+
+      .energy-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+
+      .energy-avatar-wrap {
+        position: relative;
+        flex: 0 0 78px;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        padding: 4px;
+        background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
+        box-shadow: 0 0 0 1px rgba(226, 199, 171, 0.5), 0 0 26px rgba(241, 214, 179, 0.72), 0 14px 28px rgba(109, 76, 56, 0.12);
+      }
+
+      .energy-avatar-wrap::after {
+        content: "";
+        position: absolute;
+        inset: -7px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 240, 214, 0.42), rgba(255, 240, 214, 0));
+        z-index: -1;
+      }
+
+      .energy-avatar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.68);
+      }
+
+      .energy-heading {
+        min-width: 0;
+        flex: 1;
       }
 
       .energy-title {
@@ -370,9 +554,66 @@
         box-shadow: 0 8px 16px rgba(103, 66, 39, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.46);
       }
 
-      .flow-table-card {
+      .visual-gallery {
         display: grid;
         gap: 14px;
+      }
+
+      .visual-card {
+        padding: 12px;
+        border-radius: 20px;
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.82), rgba(244, 236, 227, 0.72));
+        border: 1px solid rgba(172, 137, 109, 0.14);
+      }
+
+      .visual-title {
+        margin: 0 0 10px;
+        color: var(--wine);
+        font-size: 0.96rem;
+        letter-spacing: 0.05em;
+      }
+
+      .stuck-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .stuck-card {
+        padding: 14px 14px 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(172, 137, 109, 0.14);
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.92), rgba(245, 236, 227, 0.82));
+        box-shadow: 0 8px 18px rgba(93, 60, 38, 0.05);
+      }
+
+      .stuck-no {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        min-height: 32px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(241, 223, 205, 0.92);
+        color: #ad7860;
+        font-size: 0.88rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .stuck-name {
+        margin: 12px 0 6px;
+        color: var(--wine);
+        font-size: 0.98rem;
+        line-height: 1.45;
+        letter-spacing: 0.03em;
+      }
+
+      .stuck-copy {
+        margin: 0;
+        color: var(--text-soft);
+        font-size: 0.88rem;
+        line-height: 1.75;
       }
 
       .flow-zoom-trigger {
@@ -450,61 +691,6 @@
         color: var(--wine);
         font-size: 1.1rem;
         cursor: pointer;
-      }
-
-      .table-panel {
-        padding: 14px;
-        border-radius: 18px;
-        background: linear-gradient(180deg, rgba(255, 252, 248, 0.88), rgba(244, 235, 225, 0.76));
-        border: 1px solid rgba(173, 140, 114, 0.14);
-        box-shadow: 0 10px 22px rgba(100, 68, 44, 0.06);
-      }
-
-      .table-panel h4 {
-        margin: 0 0 10px;
-        color: var(--wine);
-        font-size: 0.95rem;
-        letter-spacing: 0.04em;
-      }
-
-      .table-grid {
-        display: grid;
-        gap: 8px;
-      }
-
-      .table-head,
-      .table-row {
-        display: grid;
-        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.58fr);
-        gap: 10px;
-        padding: 10px 12px;
-        border-radius: 14px;
-      }
-
-      .table-head {
-        background: rgba(247, 236, 224, 0.92);
-        border: 1px solid rgba(187, 152, 124, 0.16);
-        color: rgba(132, 96, 77, 0.88);
-        font-size: 0.8rem;
-        line-height: 1.6;
-      }
-
-      .table-row {
-        background: rgba(255, 253, 250, 0.84);
-        border: 1px solid rgba(235, 224, 213, 0.92);
-      }
-
-      .table-row strong {
-        color: var(--wine);
-        font-size: 0.86rem;
-        line-height: 1.65;
-        font-weight: 600;
-      }
-
-      .table-row span {
-        color: var(--ink);
-        font-size: 0.84rem;
-        line-height: 1.72;
       }
 
       .future-actions {
@@ -635,6 +821,18 @@
           border-radius: 17px;
         }
 
+        .energy-head {
+          gap: 11px;
+          margin-bottom: 12px;
+        }
+
+        .energy-avatar-wrap {
+          flex-basis: 62px;
+          width: 62px;
+          height: 62px;
+          padding: 3px;
+        }
+
         .energy-title {
           font-size: 0.95rem;
         }
@@ -643,12 +841,51 @@
           font-size: 0.78rem;
         }
 
-        .future-actions {
+        .future-actions,
+        .two-up,
+        .mini-guide,
+        .energy-overview,
+        .visual-gallery {
           gap: 8px;
         }
 
-        .flow-table-card {
-          gap: 12px;
+        .mini-guide-tabs {
+          gap: 8px;
+        }
+
+        .mini-guide-content {
+          padding: 15px 14px 14px;
+        }
+
+        .mini-guide-panel h4 {
+          font-size: 0.9rem;
+        }
+
+        .mini-guide-panel p {
+          font-size: 0.86rem;
+          line-height: 1.74;
+        }
+
+        .stuck-card {
+          padding: 12px 12px 11px;
+          border-radius: 16px;
+        }
+
+        .stuck-no {
+          min-width: 38px;
+          min-height: 30px;
+          padding: 0 11px;
+          font-size: 0.82rem;
+        }
+
+        .stuck-name {
+          margin-top: 10px;
+          font-size: 0.92rem;
+        }
+
+        .stuck-copy {
+          font-size: 0.84rem;
+          line-height: 1.68;
         }
 
         .flow-visual,
@@ -677,30 +914,10 @@
           border-radius: 14px;
         }
 
-        .table-panel {
-          padding: 12px;
+        .visual-card,
+        .energy-overview-card {
+          padding: 11px;
           border-radius: 16px;
-        }
-
-        .table-panel h4 {
-          font-size: 0.88rem;
-          margin-bottom: 8px;
-        }
-
-        .table-head,
-        .table-row {
-          grid-template-columns: 1fr;
-          gap: 6px;
-          padding: 10px;
-        }
-
-        .table-head {
-          font-size: 0.76rem;
-        }
-
-        .table-row strong,
-        .table-row span {
-          font-size: 0.82rem;
         }
       }
     </style>
@@ -716,66 +933,34 @@
         <h1 class="section-title"><span class="title-line">今天的探索旅程</span></h1>
 
         <section class="flow-stack" aria-label="活動流程">
-          <details class="flow-panel" style="--delay: 1" open>
+          <details class="flow-panel flow-panel-static" style="--delay: 1">
             <summary class="flow-summary">
               <div class="flow-index">1</div>
               <div class="flow-heading">
                 <h2 class="flow-title">輕鬆進場</h2>
-                <div class="flow-subtitle">先慢慢走進今天的現場</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">活動內容</h3>
-                  <p>先讓自己慢慢進場、安頓下來，跟著現場節奏開始今天的探索。</p>
-                </div>
-              </div>
-            </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 2">
+          <details class="flow-panel flow-panel-static" style="--delay: 2">
             <summary class="flow-summary">
               <div class="flow-index">2</div>
               <div class="flow-heading">
                 <h2 class="flow-title">入場報到</h2>
-                <div class="flow-subtitle">完成報到，準備開始</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">這一段</h3>
-                  <p>完成報到與入座，讓自己準備好進入今天的交流節奏。</p>
-                </div>
-              </div>
-            </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 3">
+          <details class="flow-panel flow-panel-static" style="--delay: 3">
             <summary class="flow-summary">
               <div class="flow-index">3</div>
               <div class="flow-heading">
                 <h2 class="flow-title">開場定調</h2>
-                <div class="flow-subtitle">先知道今天不是什麼、又是為了什麼</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">開場定調</h3>
-                  <ul class="content-list">
-                    <li>不是聯誼</li>
-                    <li>不是課程</li>
-                    <li>不是完整論命</li>
-                    <li>今天的重點，是鍛鍊自己的伴侶適配雷達</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </details>
 
           <details class="flow-panel" style="--delay: 4">
@@ -783,14 +968,14 @@
               <div class="flow-index">4</div>
               <div class="flow-heading">
                 <h2 class="flow-title">戀愛習慣找找看</h2>
-                <div class="flow-subtitle">先從小線索開始暖身</div>
+                <div class="flow-subtitle">一起暖身</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
               <div class="flow-copy">
                 <div class="content-block">
-                  <h3 class="content-label">活動內容</h3>
+                  <h3 class="content-label">這一段做什麼</h3>
                   <p>找出表格中每一句話的主人，誰找到最多人，就有機會得到小獎品。</p>
                 </div>
               </div>
@@ -802,14 +987,14 @@
               <div class="flow-index">5</div>
               <div class="flow-heading">
                 <h2 class="flow-title">簡短自介</h2>
-                <div class="flow-subtitle">從一個小習慣認識彼此</div>
+                <div class="flow-subtitle">認識彼此</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy">
+              <div class="flow-copy two-up">
                 <div class="content-block">
-                  <h3 class="content-label">分享引導</h3>
+                  <h3 class="content-label">你可以怎麼說</h3>
                   <ul class="content-list">
                     <li>怎麼稱呼我？</li>
                     <li>我個人的戀愛小習慣是什麼？</li>
@@ -828,12 +1013,12 @@
             </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 6">
+          <details class="flow-panel is-feature" style="--delay: 6">
             <summary class="flow-summary">
               <div class="flow-index">6</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量簡介 part.1</h2>
-                <div class="flow-subtitle">先看懂五種靠近方式</div>
+                <div class="flow-subtitle">先有概念</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -841,7 +1026,14 @@
               <div class="flow-copy">
                 <div class="energy-grid">
                   <article class="energy-card">
-                    <h3 class="energy-title">園丁擔當（比劫）</h3>
+                    <div class="energy-head">
+                      <div class="energy-avatar-wrap">
+                        <img class="energy-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="energy-heading">
+                        <h3 class="energy-title">園丁擔當（比劫）</h3>
+                      </div>
+                    </div>
                     <dl>
                       <div><dt>性格特色</dt><dd>主動、坦率、直接、豪氣，喜歡事情快節奏推進，也喜歡掌握感。</dd></div>
                       <div><dt>如何靠近一個人</dt><dd>主動邀約、有話直說、熱情滿滿，也會豪爽照顧對方。</dd></div>
@@ -849,7 +1041,14 @@
                     </dl>
                   </article>
                   <article class="energy-card">
-                    <h3 class="energy-title">花語蝴蝶（食傷）</h3>
+                    <div class="energy-head">
+                      <div class="energy-avatar-wrap">
+                        <img class="energy-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="energy-heading">
+                        <h3 class="energy-title">花語蝴蝶（食傷）</h3>
+                      </div>
+                    </div>
                     <dl>
                       <div><dt>性格特色</dt><dd>熱愛生活體驗、交流分享，需要新鮮感，也重視感受是否充分流動。</dd></div>
                       <div><dt>如何靠近一個人</dt><dd>從聊天開始，透過好奇、提問與各種生活分享展開互動。</dd></div>
@@ -857,7 +1056,14 @@
                     </dl>
                   </article>
                   <article class="energy-card">
-                    <h3 class="energy-title">土壤管家（財狩）</h3>
+                    <div class="energy-head">
+                      <div class="energy-avatar-wrap">
+                        <img class="energy-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="energy-heading">
+                        <h3 class="energy-title">土壤管家（財狩）</h3>
+                      </div>
+                    </div>
                     <dl>
                       <div><dt>性格特色</dt><dd>務實，重視資源與收入，也會自然思考關係能不能落地過生活。</dd></div>
                       <div><dt>如何靠近一個人</dt><dd>透過安排、付出與物質照顧，滿足對方需求來拉近距離。</dd></div>
@@ -865,7 +1071,14 @@
                     </dl>
                   </article>
                   <article class="energy-card">
-                    <h3 class="energy-title">花園守護者（官殺）</h3>
+                    <div class="energy-head">
+                      <div class="energy-avatar-wrap">
+                        <img class="energy-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="energy-heading">
+                        <h3 class="energy-title">花園守護者（官殺）</h3>
+                      </div>
+                    </div>
                     <dl>
                       <div><dt>性格特色</dt><dd>重視穩定與秩序，有原則、有界線，擅長規劃安排，也重視責任感。</dd></div>
                       <div><dt>如何靠近一個人</dt><dd>會先觀察，再從價值觀與生活習慣慢慢確認彼此是否合拍。</dd></div>
@@ -873,7 +1086,14 @@
                     </dl>
                   </article>
                   <article class="energy-card">
-                    <h3 class="energy-title">微光精靈（印隱）</h3>
+                    <div class="energy-head">
+                      <div class="energy-avatar-wrap">
+                        <img class="energy-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" />
+                      </div>
+                      <div class="energy-heading">
+                        <h3 class="energy-title">微光精靈（印隱）</h3>
+                      </div>
+                    </div>
                     <dl>
                       <div><dt>性格特色</dt><dd>細膩內斂、感受敏銳，重視深度思考與精神交流，也很會親身照顧人。</dd></div>
                       <div><dt>如何靠近一個人</dt><dd>需要慢慢熟悉，透過深聊、陪伴與理解，一步步建立內在信任。</dd></div>
@@ -890,14 +1110,14 @@
               <div class="flow-index">7</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第一輪「猜猜看」交流</h2>
-                <div class="flow-subtitle">先說出自己的直覺與經驗</div>
+                <div class="flow-subtitle">先猜猜看</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
               <div class="flow-copy">
                 <div class="content-block">
-                  <h3 class="content-label">交流題目</h3>
+                  <h3 class="content-label">你可以從這裡開始</h3>
                   <ul class="content-list">
                     <li>剛剛自介選的感情關鍵字是什麼？</li>
                     <li>它最接近哪一種五星戀愛能量？</li>
@@ -909,31 +1129,75 @@
             </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 8">
+          <details class="flow-panel is-feature" style="--delay: 8">
             <summary class="flow-summary">
               <div class="flow-index">8</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量大公開！</h2>
-                <div class="flow-subtitle">揭曉結果，也補上 part.2 的理解</div>
+                <div class="flow-subtitle">揭曉結果</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
               <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">五種能量</h3>
-                  <p>園丁擔當、花語蝴蝶、土壤管家、花園守護者、微光精靈。</p>
+                <div class="energy-overview">
+                  <div class="energy-overview-card">
+                    <h3>揭曉之後先看什麼</h3>
+                    <p>這一段不是要你一次記很多，而是抓住三件事：<strong>你最容易被什麼吸引、你最常卡在哪、哪些反差會讓你後來反而被吸引。</strong></p>
+                  </div>
+                  <div class="energy-overview-card">
+                    <h3>吸引力怎麼看</h3>
+                    <p>不健康的反應是「因為我沒有，所以我好想要擁有」；比較健康的反應是「這個我也有，所以我不需要執著，我是純粹欣賞他」。</p>
+                  </div>
                 </div>
                 <div class="content-block">
-                  <h3 class="content-label">part.2 會看見</h3>
-                  <p>這一段直接用表格一起看，會更快抓到吸引、卡點，還有相處久了反而被吸引的反差。</p>
-                </div>
-                <div class="content-block">
-                  <h3 class="content-label">五星能量對照表</h3>
-                                      <a class="flow-zoom-trigger" href="#flow-table-modal" aria-label="點開放大查看五星能量對照表">
-                      <img class="flow-visual" src="flow8-table.png" alt="五星戀愛能量對照表" loading="lazy" />
-                      <span class="flow-zoom-hint">點一下放大閱讀</span>
-                    </a>
+                  <h3 class="content-label">三張重點圖卡</h3>
+                  <div class="visual-gallery">
+                    <article class="visual-card">
+                      <h4 class="visual-title">1. 你最容易被什麼吸引</h4>
+                      <a class="flow-zoom-trigger" href="#flow-table-modal" data-full="flow8-attraction.png" aria-label="點開放大查看你最容易被什麼吸引">
+                        <img class="flow-visual" src="flow8-attraction.png" alt="你最容易被什麼吸引" loading="lazy" />
+                        <span class="flow-zoom-hint">點一下放大閱讀</span>
+                      </a>
+                    </article>
+                    <article class="visual-card">
+                      <h4 class="visual-title">2. 每種能量常見卡點</h4>
+                      <div class="stuck-grid">
+                        <article class="stuck-card">
+                          <div class="stuck-no">01</div>
+                          <h5 class="stuck-name">園丁擔當（比劫）</h5>
+                          <p class="stuck-copy">強勢、控制欲強、過於直接、急躁、花錢太憑感覺</p>
+                        </article>
+                        <article class="stuck-card">
+                          <div class="stuck-no">02</div>
+                          <h5 class="stuck-name">花語蝴蝶（食傷）</h5>
+                          <p class="stuck-copy">太追求感官體驗、忽略現實面、感受與決定容易突然改變</p>
+                        </article>
+                        <article class="stuck-card">
+                          <div class="stuck-no">03</div>
+                          <h5 class="stuck-name">土壤管家（財狩）</h5>
+                          <p class="stuck-copy">易聚焦現實而忽略情感交流、偏功利</p>
+                        </article>
+                        <article class="stuck-card">
+                          <div class="stuck-no">04</div>
+                          <h5 class="stuck-name">花園守護者（官殺）</h5>
+                          <p class="stuck-copy">保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手</p>
+                        </article>
+                        <article class="stuck-card">
+                          <div class="stuck-no">05</div>
+                          <h5 class="stuck-name">微光精靈（印隱）</h5>
+                          <p class="stuck-copy">偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義</p>
+                        </article>
+                      </div>
+                    </article>
+                    <article class="visual-card">
+                      <h4 class="visual-title">3. 一開始不舒服，後來反而被吸引</h4>
+                      <a class="flow-zoom-trigger" href="#flow-table-modal" data-full="flow8-contrast.png" aria-label="點開放大查看一開始不舒服後來反而被吸引">
+                        <img class="flow-visual" src="flow8-contrast.png" alt="一開始不舒服後來反而被吸引" loading="lazy" />
+                        <span class="flow-zoom-hint">點一下放大閱讀</span>
+                      </a>
+                    </article>
+                  </div>
                 </div>
               </div>
             </div>
@@ -944,17 +1208,17 @@
               <div class="flow-index">9</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第二輪「同能量」交流</h2>
-                <div class="flow-subtitle">先跟相似的人一起對照</div>
+                <div class="flow-subtitle">同類對照</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy">
+              <div class="flow-copy two-up">
                 <div class="content-block">
                   <h3 class="content-label">個人分享</h3>
                   <ul class="content-list">
                     <li>你的五星能量，跟原本猜的一樣嗎？</li>
-                    <li>哪些地方讓你覺得很準？</li>
+                    <li>這個能量有哪些地方讓你覺得準？</li>
                     <li>分享一個能對應這個能量的親身經驗。</li>
                   </ul>
                 </div>
@@ -969,20 +1233,37 @@
             </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 10">
+          <details class="flow-panel is-feature" style="--delay: 10">
             <summary class="flow-summary">
               <div class="flow-index">10</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量簡介 part.3</h2>
-                <div class="flow-subtitle">把第二輪之後看到的差異再整理一次</div>
+                <div class="flow-subtitle">繼續整理</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
               <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">這一段</h3>
-                  <p>延續前面的分享與對照，繼續整理五星戀愛能量在關係裡更細的樣子，幫助後面進入不同能量交流。</p>
+                <div class="mini-guide">
+                  <div class="mini-guide-tabs" role="tablist" aria-label="五星戀愛能量整理方向">
+                    <button class="mini-pill mini-guide-button is-active" type="button" role="tab" aria-selected="true" data-mini-target="mini-diff">看差異</button>
+                    <button class="mini-pill mini-guide-button" type="button" role="tab" aria-selected="false" data-mini-target="mini-stuck">看卡點</button>
+                    <button class="mini-pill mini-guide-button" type="button" role="tab" aria-selected="false" data-mini-target="mini-fit">看互補</button>
+                  </div>
+                  <div class="mini-guide-content">
+                    <section class="mini-guide-panel is-active" id="mini-diff" role="tabpanel">
+                      <h4>差異先看節奏，不要急著看對錯</h4>
+                      <p>有人先感受、有人先觀察、有人先確認穩定。先看懂彼此靠近關係的節奏差異，後面才不會把不一樣誤會成不適合。</p>
+                    </section>
+                    <section class="mini-guide-panel" id="mini-stuck" role="tabpanel">
+                      <h4>卡點常常來自慣性，不一定來自不夠愛</h4>
+                      <p>這一段要看的是每種能量最容易在哪裡卡住。當你知道自己會在哪裡退縮、過度投入或誤判，才比較能調整互動方式。</p>
+                    </section>
+                    <section class="mini-guide-panel" id="mini-fit" role="tabpanel">
+                      <h4>互補是彼此剛好補到看不到的地方</h4>
+                      <p>好的互補不是誰拯救誰，而是你沒有的部分對方剛好能補上，同時你擅長的也能支持對方，這樣的關係才比較走得長。</p>
+                    </section>
+                  </div>
                 </div>
               </div>
             </div>
@@ -993,7 +1274,7 @@
               <div class="flow-index">11</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第三輪「不同能量」交流</h2>
-                <div class="flow-subtitle">從差異裡學習理解彼此</div>
+                <div class="flow-subtitle">看看差異</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1003,61 +1284,31 @@
                   <h3 class="content-label">分享者</h3>
                   <ul class="content-list">
                     <li>分享一個能對應自己卡點的親身經驗。</li>
-                    <li>在那個行為模式背後，你當時在想什麼？</li>
-                  </ul>
-                </div>
-                <div class="content-block">
-                  <h3 class="content-label">聆聽者</h3>
-                  <ul class="content-list">
-                    <li>互動原則：不批評、不挑釁、不人身攻擊，一切沒有對錯，只有好奇。</li>
-                    <li>可以用「我好奇……」來提問。</li>
-                    <li>也可以分享自己面對同一情境時的想法，純粹提供對方參考。</li>
+                    <li>這個行為模式背後，你當時在想什麼？</li>
                   </ul>
                 </div>
               </div>
             </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 12">
+          <details class="flow-panel flow-panel-static" style="--delay: 12">
             <summary class="flow-summary">
               <div class="flow-index">12</div>
               <div class="flow-heading">
                 <h2 class="flow-title">智堯收斂結語</h2>
-                <div class="flow-subtitle">把今天看到的差異，收成辨識力</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">收斂結語</h3>
-                  <ul class="content-list">
-                    <li>被吸引，不代表適合。</li>
-                    <li>不理解，也不代表不適合。</li>
-                    <li>今天要帶走的，是提升伴侶適配的辨識力。</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </details>
 
-          <details class="flow-panel" style="--delay: 13">
+          <details class="flow-panel flow-panel-static" style="--delay: 13">
             <summary class="flow-summary">
               <div class="flow-index">13</div>
               <div class="flow-heading">
                 <h2 class="flow-title">填寫學習筆記</h2>
-                <div class="flow-subtitle">把剛剛的理解整理成自己的筆記</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">這一段</h3>
-                  <p>填寫今天的學習筆記，把剛剛的對照、發現與感受留下來。</p>
-                </div>
-              </div>
-            </div>
           </details>
 
           <details class="flow-panel" style="--delay: 14">
@@ -1065,7 +1316,7 @@
               <div class="flow-index">14</div>
               <div class="flow-heading">
                 <h2 class="flow-title">填寫回饋單＋自由回饋</h2>
-                <div class="flow-subtitle">自由回饋，也把感受留給今天</div>
+                <div class="flow-subtitle">留下感受</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1087,16 +1338,12 @@
               <div class="flow-index">15</div>
               <div class="flow-heading">
                 <h2 class="flow-title">期待下次見</h2>
-                <div class="flow-subtitle">把今天的收穫延續到之後</div>
+                <div class="flow-subtitle">慢慢帶走</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">期待下次見</h3>
-                  <p>繼續提升伴侶適配辨識力，讓今天的理解，不只停在今天。</p>
-                </div>
+              <div class="flow-copy two-up">
                 <div class="content-block">
                   <h3 class="content-label">延伸方向</h3>
                   <div class="future-actions">
@@ -1116,24 +1363,47 @@
       <div class="flow-lightbox" id="flow-table-modal" aria-hidden="true">
         <div class="flow-lightbox-inner">
           <button class="flow-lightbox-close" type="button" aria-label="關閉放大圖片">✕</button>
-          <img src="flow8-table.png" alt="五星戀愛能量對照表放大版" loading="lazy" />
+          <img id="flowLightboxImage" src="flow8-attraction.png" alt="五星戀愛能量圖卡放大版" loading="lazy" />
         </div>
       </div>
   
       <script>
         const panels = Array.from(document.querySelectorAll(".flow-panel"));
-        const flowTableTrigger = document.querySelector(".flow-zoom-trigger");
+        const flowTableTriggers = Array.from(document.querySelectorAll(".flow-zoom-trigger"));
+        const miniGuideButtons = Array.from(document.querySelectorAll(".mini-guide-button"));
         const flowLightbox = document.getElementById("flow-table-modal");
         const flowLightboxClose = document.querySelector(".flow-lightbox-close");
+        const flowLightboxImage = document.getElementById("flowLightboxImage");
 
         panels.forEach((panel) => {
           panel.addEventListener("toggle", () => {
+            if (panel.classList.contains("flow-panel-static")) {
+              panel.open = false;
+              return;
+            }
             if (!panel.open) return;
             panels.forEach((other) => {
               if (other !== panel) other.open = false;
             });
           });
         });
+
+        if (miniGuideButtons.length) {
+          miniGuideButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const targetId = button.dataset.miniTarget;
+              if (!targetId) return;
+              miniGuideButtons.forEach((otherButton) => {
+                const isActive = otherButton === button;
+                otherButton.classList.toggle("is-active", isActive);
+                otherButton.setAttribute("aria-selected", isActive ? "true" : "false");
+              });
+              document.querySelectorAll(".mini-guide-panel").forEach((panel) => {
+                panel.classList.toggle("is-active", panel.id === targetId);
+              });
+            });
+          });
+        }
 
         const closeFlowLightbox = () => {
           if (!flowLightbox) return;
@@ -1142,12 +1412,18 @@
           document.body.style.overflow = "";
         };
 
-        if (flowTableTrigger && flowLightbox) {
-          flowTableTrigger.addEventListener("click", (event) => {
-            event.preventDefault();
-            flowLightbox.classList.add("is-open");
-            flowLightbox.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+        if (flowTableTriggers.length && flowLightbox && flowLightboxImage) {
+          flowTableTriggers.forEach((trigger) => {
+            trigger.addEventListener("click", (event) => {
+              event.preventDefault();
+              const fullSrc = trigger.dataset.full || trigger.querySelector("img")?.getAttribute("src");
+              const fullAlt = trigger.querySelector("img")?.getAttribute("alt") || "五星戀愛能量圖卡放大版";
+              if (fullSrc) flowLightboxImage.setAttribute("src", fullSrc);
+              flowLightboxImage.setAttribute("alt", fullAlt);
+              flowLightbox.classList.add("is-open");
+              flowLightbox.setAttribute("aria-hidden", "false");
+              document.body.style.overflow = "hidden";
+            });
           });
         }
 

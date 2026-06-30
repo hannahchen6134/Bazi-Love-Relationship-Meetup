@@ -57,7 +57,7 @@
         linear-gradient(rgba(83, 58, 36, 0.18), rgba(83, 58, 36, 0.18)),
         url("floral-bg.png") center center / cover no-repeat,
         #f5ede2;
-      animation: backgroundDrift 28s ease-in-out infinite alternate;
+      animation: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -85,7 +85,7 @@
       top: -40px;
       left: -140px;
       background: rgba(223, 190, 145, 0.18);
-      animation: ambientFloat 16s ease-in-out infinite;
+      animation: none;
     }
 
     body::after {
@@ -94,7 +94,7 @@
       right: -80px;
       bottom: 20px;
       background: rgba(236, 210, 184, 0.14);
-      animation: ambientFloat 18s ease-in-out infinite reverse;
+      animation: none;
     }
 
     .page {
@@ -133,9 +133,7 @@
         0 64px 128px rgba(58, 34, 19, 0.24),
         0 24px 44px rgba(99, 67, 46, 0.12),
         0 8px 18px rgba(161, 120, 92, 0.06);
-      animation:
-        cardIn 1.2s cubic-bezier(.16,.84,.18,1) both,
-        cardFloat 10.5s ease-in-out 1.2s infinite;
+      animation: cardIn 1.2s cubic-bezier(.16,.84,.18,1) both;
     }
 
     .hero-card::before {
@@ -195,20 +193,14 @@
     .hero-title .line-main {
       font-size: 1.12em;
       letter-spacing: 0.12em;
-      animation:
-        heroTitleReveal 1.46s .12s cubic-bezier(.12,.82,.16,1) forwards,
-        titleBreath 7.8s ease-in-out 1.35s infinite,
-        lineFloat 8.6s ease-in-out 1.35s infinite;
+      animation: heroTitleReveal 1.46s .12s cubic-bezier(.12,.82,.16,1) forwards;
     }
 
     .hero-title .line-sub {
       margin-top: 4px;
       font-size: 0.9em;
       letter-spacing: 0.16em;
-      animation:
-        heroTitleRevealSoft 1.38s .32s cubic-bezier(.12,.82,.16,1) forwards,
-        titleBreath 7.8s ease-in-out 1.5s infinite,
-        lineFloat 8.6s ease-in-out 1.5s infinite;
+      animation: heroTitleRevealSoft 1.38s .32s cubic-bezier(.12,.82,.16,1) forwards;
     }
 
     .hero-script {
