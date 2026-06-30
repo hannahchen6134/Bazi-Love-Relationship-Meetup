@@ -191,9 +191,12 @@
         min-height: 38px;
         padding: 0 18px;
         border-radius: 999px;
-        border: 1px solid rgba(183, 150, 122, 0.28);
-        background: linear-gradient(180deg, rgba(255, 249, 243, 0.86), rgba(243, 233, 220, 0.9));
-        color: rgba(141, 90, 76, 0.92);
+        border: 1px solid rgba(170, 138, 112, 0.24);
+        background: linear-gradient(180deg, rgba(248, 239, 228, 0.92), rgba(235, 223, 209, 0.9));
+        color: rgba(123, 84, 67, 0.96);
+        box-shadow:
+          0 6px 14px rgba(102, 70, 49, 0.045),
+          inset 0 1px 0 rgba(255, 255, 255, 0.42);
         font-size: 0.9rem;
         letter-spacing: 0.06em;
       }
@@ -257,26 +260,6 @@
         color: var(--olive);
       }
 
-      .page-outro {
-        margin: 18px auto 0;
-        width: min(720px, calc(100% - 12px));
-        padding: 18px 22px;
-        border-radius: 22px;
-        border: 1px solid rgba(152, 120, 97, 0.12);
-        background: linear-gradient(180deg, rgba(255, 250, 245, 0.72), rgba(248, 240, 233, 0.62));
-        box-shadow:
-          0 14px 30px rgba(89, 57, 36, 0.06),
-          inset 0 1px 0 rgba(255, 255, 255, 0.48);
-        text-align: center;
-      }
-
-      .page-outro p {
-        margin: 0;
-        color: rgba(141, 90, 76, 0.76);
-        font-size: 0.9rem;
-        letter-spacing: 0.04em;
-        line-height: 1.7;
-      }
 
       @media (max-width: 900px) {
         .page {
@@ -367,17 +350,6 @@
           height: 13px;
         }
 
-        .page-outro {
-          width: min(100%, calc(100% - 6px));
-          margin-top: 14px;
-          padding: 14px 16px;
-          border-radius: 18px;
-        }
-
-        .page-outro p {
-          font-size: 0.78rem;
-          line-height: 1.62;
-        }
       }
     </style>
   </head>
@@ -469,9 +441,6 @@
         </article>
       </section>
 
-      <section class="page-outro" aria-label="延伸了解">
-        <p>活動後想延伸了解，這裡可以找到我們。</p>
-      </section>
     </main>
   </body>
 </html>
