@@ -490,6 +490,32 @@
       color: #8b5f4f;
     }
 
+    .flow-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      margin-top: 8px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 114, 84, 0.16);
+      background: linear-gradient(180deg, rgba(255, 253, 250, 0.88), rgba(244, 235, 225, 0.76));
+      color: var(--wine);
+      text-decoration: none;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      box-shadow:
+        0 8px 16px rgba(103, 66, 39, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    }
+
+    .flow-link:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 10px 18px rgba(103, 66, 39, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
     .top-btn {
       right: 18px;
       bottom: 18px;
@@ -749,6 +775,13 @@
         font-size: 0.6rem;
       }
 
+      .flow-link {
+        min-height: 26px;
+        margin-top: 6px;
+        padding: 0 10px;
+        font-size: 0.66rem;
+      }
+
       .home-btn {
         top: 10px;
         right: 10px;
@@ -917,6 +950,7 @@
               <div>
                 <h3 class="flow-title">分享與回饋</h3>
                 <div class="flow-meta"><div class="flow-time">16:45–16:55</div><div class="flow-tag">分享</div></div>
+                <a class="flow-link" href="https://forms.gle/VPaXhocz3fp4WjJZA" target="_blank" rel="noreferrer">填寫回饋表單</a>
               </div>
             </div>
           </article>

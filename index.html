@@ -175,9 +175,24 @@
       opacity: 0;
       transform: translateY(40px) scale(0.92);
       filter: blur(10px);
-      letter-spacing: 0.18em;
+      animation-fill-mode: forwards;
+    }
+
+    .hero-title .line-main {
+      font-size: 1.12em;
+      letter-spacing: 0.12em;
       animation:
-        heroTitleReveal 1.28s .18s cubic-bezier(.16,.84,.18,1) forwards,
+        heroTitleReveal 1.14s .16s cubic-bezier(.16,.84,.18,1) forwards,
+        titleBreath 7.8s ease-in-out 1.35s infinite,
+        lineFloat 8.6s ease-in-out 1.35s infinite;
+    }
+
+    .hero-title .line-sub {
+      margin-top: 2px;
+      font-size: 0.9em;
+      letter-spacing: 0.16em;
+      animation:
+        heroTitleRevealSoft 1.08s .34s cubic-bezier(.16,.84,.18,1) forwards,
         titleBreath 7.8s ease-in-out 1.5s infinite,
         lineFloat 8.6s ease-in-out 1.5s infinite;
     }
@@ -212,9 +227,9 @@
     .hero-actions {
       margin-top: 24px;
       display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       animation: fadeUp 1.1s .7s ease both;
     }
 
@@ -228,11 +243,12 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 136px;
-      min-height: 56px;
-      padding: 0 20px;
+      width: 188px;
+      min-width: 188px;
+      min-height: 50px;
+      padding: 0 18px;
       border-radius: 999px;
-      border: 1px solid rgba(132, 91, 72, 0.2);
+      border: 1px solid rgba(132, 91, 72, 0.14);
       text-decoration: none;
       font-family: "Noto Serif TC", serif;
       font-size: 0.98rem;
@@ -240,9 +256,12 @@
       letter-spacing: 0.04em;
       color: #fff9f2;
       background:
-        linear-gradient(180deg, rgba(255, 248, 240, 0.18), rgba(255, 248, 240, 0) 36%),
-        linear-gradient(135deg, #c38a6e 0%, #b6785d 52%, #a96750 100%);
-      box-shadow: var(--button-shadow);
+        linear-gradient(180deg, rgba(241, 215, 193, 0.32), rgba(235, 204, 179, 0.12) 28%, rgba(206, 151, 120, 0.04) 100%),
+        linear-gradient(135deg, #b97b5d 0%, #ad6f56 52%, #9e654d 100%);
+      box-shadow:
+        0 10px 18px rgba(109, 71, 53, 0.12),
+        0 4px 8px rgba(151, 107, 82, 0.06),
+        0 0 0 1px rgba(124, 84, 64, 0.04);
       overflow: hidden;
       transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
       isolation: isolate;
@@ -255,11 +274,11 @@
       inset: 1px;
       border-radius: inherit;
       background:
-        linear-gradient(180deg, rgba(255, 247, 239, 0.24), rgba(255, 247, 239, 0.08) 32%, rgba(255, 247, 239, 0) 62%);
+        linear-gradient(180deg, rgba(255, 247, 239, 0.14), rgba(255, 247, 239, 0.04) 30%, rgba(255, 247, 239, 0) 56%);
       box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.28),
-        inset 0 -8px 14px rgba(107, 62, 45, 0.12);
-      opacity: 1;
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -5px 10px rgba(107, 62, 45, 0.05);
+      opacity: .92;
       z-index: 0;
       pointer-events: none;
     }
@@ -267,12 +286,12 @@
     .btn::after {
       content: "";
       position: absolute;
-      inset: auto 16% 6px 16%;
-      height: 14px;
+      inset: auto 20% 6px 20%;
+      height: 10px;
       border-radius: 999px;
-      background: rgba(92, 57, 43, 0.12);
-      filter: blur(10px);
-      opacity: .34;
+      background: rgba(92, 57, 43, 0.08);
+      filter: blur(8px);
+      opacity: .22;
       z-index: 1;
     }
 
@@ -284,7 +303,10 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--button-shadow-hover);
+      box-shadow:
+        0 12px 20px rgba(109, 71, 53, 0.14),
+        0 5px 10px rgba(151, 107, 82, 0.07),
+        0 0 0 1px rgba(124, 84, 64, 0.05);
       filter: brightness(1.01);
     }
 
@@ -298,21 +320,21 @@
 
     .btn.is-pressing {
       box-shadow:
-        0 14px 22px rgba(109, 71, 53, 0.18),
-        0 6px 12px rgba(151, 107, 82, 0.1);
+        0 10px 16px rgba(109, 71, 53, 0.14),
+        0 4px 8px rgba(151, 107, 82, 0.08);
     }
 
     .btn-secondary {
       color: var(--wine);
-      min-width: 126px;
-      min-height: 48px;
-      padding: 0 16px;
+      min-width: 188px;
+      min-height: 50px;
+      padding: 0 18px;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(248, 241, 234, 0.62));
-      border: 1px solid rgba(153, 120, 101, 0.16);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(246, 239, 232, 0.7));
+      border: 1px solid rgba(153, 120, 101, 0.12);
       box-shadow:
-        0 10px 18px rgba(103, 66, 39, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.44);
+        0 8px 16px rgba(103, 66, 39, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
       text-shadow: none;
     }
 
@@ -380,6 +402,12 @@
       0% { opacity: 0; transform: translateY(40px) scale(0.92); filter: blur(10px); letter-spacing: 0.22em; }
       65% { opacity: 1; transform: translateY(-4px) scale(1.02); filter: blur(0); letter-spacing: 0.07em; }
       100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: 0.04em; }
+    }
+
+    @keyframes heroTitleRevealSoft {
+      0% { opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(8px); letter-spacing: 0.24em; }
+      70% { opacity: 1; transform: translateY(-2px) scale(1.01); filter: blur(0); letter-spacing: 0.14em; }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: 0.16em; }
     }
 
     @keyframes wordGlow {
@@ -450,16 +478,24 @@
         max-width: 5.9em;
       }
 
+      .hero-title .line-main {
+        font-size: 1.16em;
+      }
+
+      .hero-title .line-sub {
+        font-size: 0.88em;
+      }
+
       .hero-actions {
         margin-top: 18px;
-        gap: 10px;
+        gap: 8px;
       }
 
       .btn {
-        width: auto;
-        min-width: 0;
-        min-height: 52px;
-        padding: 0 18px;
+        width: 176px;
+        min-width: 176px;
+        min-height: 46px;
+        padding: 0 14px;
         font-size: 0.88rem;
         letter-spacing: 0.1em;
       }
@@ -469,8 +505,9 @@
       }
 
       .btn-secondary {
-        min-height: 44px;
-        width: auto;
+        min-height: 46px;
+        width: 176px;
+        min-width: 176px;
         padding: 0 14px;
         font-size: 0.82rem;
       }
@@ -497,11 +534,13 @@
       <div class="hero-card">
         <div class="hero-script">starry dawn circle</div>
         <h1 class="hero-title">
-          <span class="line">八字戀愛交流聚</span>
+          <span class="line line-main">八字戀愛</span>
+          <span class="line line-sub">交流聚</span>
         </h1>
         <div class="hero-actions">
-          <a class="btn" href="flow.html"><span>開始今日旅程</span></a>
+          <a class="btn btn-primary" href="flow.html"><span>開始今日旅程</span></a>
           <a class="btn btn-secondary" href="leader.html"><span>關於帶領者</span></a>
+          <a class="btn btn-secondary" href="https://app.notion.com/p/2c1e018a12df80bb9ad3e25689338bfc?source=copy_link" target="_blank" rel="noreferrer"><span>關於初星群</span></a>
         </div>
       </div>
     </section>
