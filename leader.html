@@ -41,6 +41,15 @@
           url("floral-bg.png") center / cover fixed no-repeat;
       }
 
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+
       body::before {
         content: "";
         position: fixed;
@@ -254,6 +263,10 @@
 
 
       @media (max-width: 900px) {
+        body {
+          background-attachment: scroll;
+        }
+
         .page {
           width: min(100% - 36px, 760px);
           padding: 22px 0 42px;
