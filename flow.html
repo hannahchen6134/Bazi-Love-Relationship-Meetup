@@ -366,7 +366,9 @@
         border-radius: 20px;
         border: 1px solid rgba(171, 136, 108, 0.14);
         background: linear-gradient(180deg, rgba(255, 252, 248, 0.84), rgba(248, 241, 234, 0.76));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.46),
+          0 18px 34px rgba(104, 70, 48, 0.08);
         padding: 18px 18px 16px;
       }
 
@@ -391,6 +393,208 @@
         color: var(--text-soft);
         font-size: 0.92rem;
         line-height: 1.86;
+      }
+
+      .mini-guide-hero {
+        margin-bottom: 14px;
+        padding: 14px 15px 13px;
+        border-radius: 18px;
+        border: 1px solid rgba(184, 149, 122, 0.16);
+        background: linear-gradient(180deg, rgba(255, 250, 245, 0.9), rgba(247, 237, 227, 0.72));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.52);
+      }
+
+      .mini-guide-kicker {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(245, 225, 204, 0.98), rgba(236, 206, 177, 0.9));
+        color: #9c644d;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        box-shadow: 0 8px 16px rgba(168, 120, 89, 0.12);
+      }
+
+      .mini-guide-headline {
+        margin: 10px 0 0;
+        color: var(--wine);
+        font-size: 1.02rem;
+        line-height: 1.48;
+        letter-spacing: 0.03em;
+      }
+
+      .mini-guide-note {
+        margin: 0 0 12px;
+        color: var(--text-soft);
+        font-size: 0.88rem;
+        line-height: 1.72;
+      }
+
+      .insight-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .mini-guide-content .insight-list {
+        gap: 14px;
+      }
+
+      .insight-row {
+        padding: 14px 14px 13px;
+        border-radius: 18px;
+        border: 1px solid rgba(172, 137, 109, 0.14);
+        background: linear-gradient(180deg, rgba(255, 253, 249, 0.96), rgba(245, 236, 227, 0.82));
+        box-shadow: 0 8px 18px rgba(93, 60, 38, 0.05);
+      }
+
+      .mini-guide-content .insight-row {
+        position: relative;
+        overflow: hidden;
+        padding: 16px 16px 15px;
+        border: 1px solid rgba(178, 141, 112, 0.16);
+        background:
+          linear-gradient(180deg, rgba(255, 253, 249, 0.98), rgba(247, 239, 231, 0.92)),
+          radial-gradient(circle at top right, rgba(239, 214, 186, 0.2), transparent 34%);
+        box-shadow:
+          0 16px 26px rgba(101, 67, 45, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.54);
+      }
+
+      .mini-guide-content .insight-row::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 16px;
+        bottom: 16px;
+        width: 4px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(202, 144, 109, 0.9), rgba(232, 197, 164, 0.75));
+      }
+
+      .mini-guide-content .insight-row::after {
+        content: "";
+        position: absolute;
+        right: -28px;
+        top: -28px;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(245, 224, 201, 0.32), rgba(245, 224, 201, 0));
+        pointer-events: none;
+      }
+
+      .insight-row-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .mini-guide-content .insight-row-head {
+        position: relative;
+        margin-bottom: 12px;
+        padding: 0 0 11px 10px;
+        border-bottom: 1px solid rgba(190, 158, 130, 0.14);
+      }
+
+      .insight-no {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 42px;
+        min-height: 32px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(241, 223, 205, 0.92);
+        color: #ad7860;
+        font-size: 0.84rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .mini-guide-content .insight-no {
+        min-width: 46px;
+        min-height: 34px;
+        background: linear-gradient(180deg, rgba(243, 226, 210, 0.98), rgba(233, 201, 174, 0.92));
+        color: #a36448;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+      }
+
+      .insight-name {
+        margin: 0;
+        color: var(--wine);
+        font-size: 0.96rem;
+        line-height: 1.45;
+        letter-spacing: 0.03em;
+      }
+
+      .mini-guide-content .insight-name {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .insight-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mini-guide-content .insight-grid {
+        gap: 10px;
+        padding-left: 10px;
+      }
+
+      .insight-pair {
+        display: grid;
+        gap: 4px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(188, 154, 127, 0.14);
+      }
+
+      .insight-pair:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .mini-guide-content .insight-pair {
+        padding: 11px 12px;
+        border: 1px solid rgba(193, 161, 133, 0.14);
+        border-radius: 14px;
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(245, 236, 227, 0.66));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+      }
+
+      .mini-guide-content .insight-pair:first-child {
+        padding-top: 11px;
+        border-top: 1px solid rgba(193, 161, 133, 0.14);
+      }
+
+      .insight-label {
+        color: rgba(127, 88, 70, 0.9);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+      }
+
+      .mini-guide-content .insight-label {
+        display: inline-flex;
+        align-items: center;
+        justify-self: start;
+        min-height: 26px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(240, 225, 210, 0.82);
+        color: #9a6750;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .insight-value {
+        color: var(--ink);
+        font-size: 0.9rem;
+        line-height: 1.76;
       }
 
       .keyword-list {
@@ -502,6 +706,14 @@
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.68);
       }
 
+      .energy-avatar-trigger {
+        flex: 0 0 78px;
+        width: 78px;
+        border-radius: 50%;
+        overflow: visible;
+        cursor: zoom-in;
+      }
+
       .energy-heading {
         min-width: 0;
         flex: 1;
@@ -517,17 +729,36 @@
       .energy-card dl {
         margin: 0;
         display: grid;
-        gap: 10px;
+        gap: 12px;
+      }
+
+      .energy-card dl > div {
+        display: grid;
+        gap: 7px;
+        padding: 11px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(192, 159, 132, 0.14);
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(245, 236, 227, 0.68));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
       }
 
       .energy-card dt {
-        color: rgba(127, 88, 70, 0.94);
-        font-size: 0.86rem;
-        letter-spacing: 0.05em;
+        display: inline-flex;
+        align-items: center;
+        justify-self: start;
+        min-height: 28px;
+        padding: 0 11px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(243, 226, 210, 0.98), rgba(233, 201, 174, 0.92));
+        color: #9d654c;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        box-shadow: 0 8px 16px rgba(168, 120, 89, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.44);
       }
 
       .energy-card dd {
-        margin: 4px 0 0;
+        margin: 0;
         color: var(--ink);
         font-size: 0.89rem;
         line-height: 1.74;
@@ -679,6 +910,27 @@
         border-radius: 18px;
       }
 
+      .flow-lightbox.is-avatar-open .flow-lightbox-inner {
+        width: min(100%, 420px);
+        padding: 22px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(252, 248, 242, 0.98), rgba(244, 234, 223, 0.92));
+        box-shadow:
+          0 24px 60px rgba(31, 19, 11, 0.24),
+          0 0 0 1px rgba(226, 199, 171, 0.32);
+      }
+
+      .flow-lightbox.is-avatar-open img {
+        aspect-ratio: 1 / 1;
+        max-height: min(70vh, 420px);
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.64),
+          0 0 0 8px rgba(255, 244, 229, 0.4),
+          0 0 34px rgba(241, 214, 179, 0.78);
+      }
+
       .flow-lightbox-close {
         position: absolute;
         top: 10px;
@@ -821,6 +1073,16 @@
           border-radius: 17px;
         }
 
+        .energy-card dl {
+          gap: 10px;
+        }
+
+        .energy-card dl > div {
+          gap: 6px;
+          padding: 10px 10px;
+          border-radius: 12px;
+        }
+
         .energy-head {
           gap: 11px;
           margin-bottom: 12px;
@@ -833,12 +1095,19 @@
           padding: 3px;
         }
 
+        .energy-avatar-trigger {
+          flex-basis: 62px;
+          width: 62px;
+        }
+
         .energy-title {
           font-size: 0.95rem;
         }
 
         .energy-card dt {
-          font-size: 0.78rem;
+          min-height: 25px;
+          padding: 0 9px;
+          font-size: 0.7rem;
         }
 
         .future-actions,
@@ -864,6 +1133,92 @@
         .mini-guide-panel p {
           font-size: 0.86rem;
           line-height: 1.74;
+        }
+
+        .mini-guide-hero {
+          margin-bottom: 12px;
+          padding: 12px 12px 11px;
+          border-radius: 16px;
+        }
+
+        .mini-guide-kicker {
+          min-height: 26px;
+          padding: 0 10px;
+          font-size: 0.72rem;
+        }
+
+        .mini-guide-headline {
+          margin-top: 9px;
+          font-size: 0.94rem;
+        }
+
+        .mini-guide-note {
+          margin-bottom: 10px;
+          font-size: 0.82rem;
+          line-height: 1.68;
+        }
+
+        .insight-row {
+          padding: 12px 12px 11px;
+          border-radius: 16px;
+        }
+
+        .mini-guide-content .insight-row {
+          padding: 14px 13px 13px;
+        }
+
+        .mini-guide-content .insight-row::before {
+          top: 14px;
+          bottom: 14px;
+        }
+
+        .insight-no {
+          min-width: 38px;
+          min-height: 30px;
+          padding: 0 11px;
+          font-size: 0.8rem;
+        }
+
+        .mini-guide-content .insight-no {
+          min-width: 40px;
+          min-height: 30px;
+        }
+
+        .insight-name {
+          font-size: 0.92rem;
+        }
+
+        .mini-guide-content .insight-name {
+          font-size: 0.94rem;
+        }
+
+        .mini-guide-content .insight-row-head {
+          padding: 0 0 10px 8px;
+        }
+
+        .mini-guide-content .insight-grid {
+          gap: 8px;
+          padding-left: 8px;
+        }
+
+        .mini-guide-content .insight-pair {
+          padding: 10px 10px;
+          border-radius: 12px;
+        }
+
+        .insight-label {
+          font-size: 0.76rem;
+        }
+
+        .mini-guide-content .insight-label {
+          min-height: 24px;
+          padding: 0 9px;
+          font-size: 0.7rem;
+        }
+
+        .insight-value {
+          font-size: 0.84rem;
+          line-height: 1.68;
         }
 
         .stuck-card {
@@ -912,6 +1267,15 @@
         .flow-lightbox img {
           max-height: calc(100vh - 90px);
           border-radius: 14px;
+        }
+
+        .flow-lightbox.is-avatar-open .flow-lightbox-inner {
+          width: min(100%, 320px);
+          padding: 18px;
+        }
+
+        .flow-lightbox.is-avatar-open img {
+          max-height: min(56vh, 320px);
         }
 
         .visual-card,
@@ -1027,9 +1391,11 @@
                 <div class="energy-grid">
                   <article class="energy-card">
                     <div class="energy-head">
-                      <div class="energy-avatar-wrap">
-                        <img class="energy-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" />
-                      </div>
+                      <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫">
+                        <div class="energy-avatar-wrap">
+                          <img class="energy-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" />
+                        </div>
+                      </a>
                       <div class="energy-heading">
                         <h3 class="energy-title">園丁擔當（比劫）</h3>
                       </div>
@@ -1042,9 +1408,11 @@
                   </article>
                   <article class="energy-card">
                     <div class="energy-head">
-                      <div class="energy-avatar-wrap">
-                        <img class="energy-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" />
-                      </div>
+                      <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫">
+                        <div class="energy-avatar-wrap">
+                          <img class="energy-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" />
+                        </div>
+                      </a>
                       <div class="energy-heading">
                         <h3 class="energy-title">花語蝴蝶（食傷）</h3>
                       </div>
@@ -1057,9 +1425,11 @@
                   </article>
                   <article class="energy-card">
                     <div class="energy-head">
-                      <div class="energy-avatar-wrap">
-                        <img class="energy-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" />
-                      </div>
+                      <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫">
+                        <div class="energy-avatar-wrap">
+                          <img class="energy-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" />
+                        </div>
+                      </a>
                       <div class="energy-heading">
                         <h3 class="energy-title">土壤管家（財狩）</h3>
                       </div>
@@ -1072,9 +1442,11 @@
                   </article>
                   <article class="energy-card">
                     <div class="energy-head">
-                      <div class="energy-avatar-wrap">
-                        <img class="energy-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" />
-                      </div>
+                      <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫">
+                        <div class="energy-avatar-wrap">
+                          <img class="energy-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" />
+                        </div>
+                      </a>
                       <div class="energy-heading">
                         <h3 class="energy-title">花園守護者（官殺）</h3>
                       </div>
@@ -1087,9 +1459,11 @@
                   </article>
                   <article class="energy-card">
                     <div class="energy-head">
-                      <div class="energy-avatar-wrap">
-                        <img class="energy-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" />
-                      </div>
+                      <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫">
+                        <div class="energy-avatar-wrap">
+                          <img class="energy-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" />
+                        </div>
+                      </a>
                       <div class="energy-heading">
                         <h3 class="energy-title">微光精靈（印隱）</h3>
                       </div>
@@ -1155,47 +1529,160 @@
                   <div class="visual-gallery">
                     <article class="visual-card">
                       <h4 class="visual-title">1. 你最容易被什麼吸引</h4>
-                      <a class="flow-zoom-trigger" href="#flow-table-modal" data-full="flow8-attraction.png" aria-label="點開放大查看你最容易被什麼吸引">
-                        <img class="flow-visual" src="flow8-attraction.png" alt="你最容易被什麼吸引" loading="lazy" />
-                        <span class="flow-zoom-hint">點一下放大閱讀</span>
-                      </a>
+                      <p class="mini-guide-note">把圖改成直式閱讀後，手機上可以直接往下看，不需要縮放。</p>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">主動、坦率、豪氣、活潑、效率、掌控。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">生活體驗、感受、分享、互動、創意。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">務實、物質照顧、金錢安全感。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">穩定、原則、承諾、規劃、秩序、光明。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">內斂、理解、親身照顧、陪伴、細膩。</div></div>
+                          </div>
+                        </article>
+                      </div>
                     </article>
                     <article class="visual-card">
                       <h4 class="visual-title">2. 每種能量常見卡點</h4>
-                      <div class="stuck-grid">
-                        <article class="stuck-card">
-                          <div class="stuck-no">01</div>
-                          <h5 class="stuck-name">園丁擔當（比劫）</h5>
-                          <p class="stuck-copy">強勢、控制欲強、過於直接、急躁、花錢太憑感覺</p>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">強勢、控制欲強、過於直接、急躁、花錢太憑感覺。</div></div>
+                          </div>
                         </article>
-                        <article class="stuck-card">
-                          <div class="stuck-no">02</div>
-                          <h5 class="stuck-name">花語蝴蝶（食傷）</h5>
-                          <p class="stuck-copy">太追求感官體驗、忽略現實面、感受與決定容易突然改變</p>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">太追求感官體驗、忽略現實面、感受與決定容易突然改變。</div></div>
+                          </div>
                         </article>
-                        <article class="stuck-card">
-                          <div class="stuck-no">03</div>
-                          <h5 class="stuck-name">土壤管家（財狩）</h5>
-                          <p class="stuck-copy">易聚焦現實而忽略情感交流、偏功利</p>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">易聚焦現實而忽略情感交流、偏功利。</div></div>
+                          </div>
                         </article>
-                        <article class="stuck-card">
-                          <div class="stuck-no">04</div>
-                          <h5 class="stuck-name">花園守護者（官殺）</h5>
-                          <p class="stuck-copy">保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手</p>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手。</div></div>
+                          </div>
                         </article>
-                        <article class="stuck-card">
-                          <div class="stuck-no">05</div>
-                          <h5 class="stuck-name">微光精靈（印隱）</h5>
-                          <p class="stuck-copy">偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義</p>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義。</div></div>
+                          </div>
                         </article>
                       </div>
                     </article>
                     <article class="visual-card">
                       <h4 class="visual-title">3. 一開始不舒服，後來反而被吸引</h4>
-                      <a class="flow-zoom-trigger" href="#flow-table-modal" data-full="flow8-contrast.png" aria-label="點開放大查看一開始不舒服後來反而被吸引">
-                        <img class="flow-visual" src="flow8-contrast.png" alt="一開始不舒服後來反而被吸引" loading="lazy" />
-                        <span class="flow-zoom-hint">點一下放大閱讀</span>
-                      </a>
+                      <p class="mini-guide-note">這裡看的是相處久了之後，哪些反差特質反而會慢慢變成吸引力。</p>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">土壤管家（財狩）</div></div>
+                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">務實、物質照顧、金錢安全感。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">花園守護者（官殺）</div></div>
+                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">穩定、原則、承諾、規劃、秩序、光明。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">微光精靈（印隱）</div></div>
+                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">內斂、理解、親身照顧、陪伴、細膩。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">園丁擔當（比劫）</div></div>
+                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">主動、坦率、豪氣、活潑、效率、掌控。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">花語蝴蝶（食傷）</div></div>
+                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">生活體驗、感受、分享、互動、創意。</div></div>
+                          </div>
+                        </article>
+                      </div>
                     </article>
                   </div>
                 </div>
@@ -1252,16 +1739,181 @@
                   </div>
                   <div class="mini-guide-content">
                     <section class="mini-guide-panel is-active" id="mini-diff" role="tabpanel">
-                      <h4>差異先看節奏，不要急著看對錯</h4>
-                      <p>有人先感受、有人先觀察、有人先確認穩定。先看懂彼此靠近關係的節奏差異，後面才不會把不一樣誤會成不適合。</p>
+                      <div class="mini-guide-hero">
+                        <div class="mini-guide-kicker">DIFFERENCE</div>
+                        <h4 class="mini-guide-headline">五種能量怎麼靠近人</h4>
+                        <p class="mini-guide-note">直接看差異：每一種人在感情裡的節奏、靠近方式、長期在意點都不一樣。</p>
+                      </div>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">性格特色</div><div class="insight-value">主動、坦率、直接、豪氣，喜歡事情快節奏推進，也喜歡掌握感。</div></div>
+                            <div class="insight-pair"><div class="insight-label">如何靠近一個人</div><div class="insight-value">主動邀約、有話直說、熱情滿滿，也會豪爽照顧對方。</div></div>
+                            <div class="insight-pair"><div class="insight-label">長期關係最重視</div><div class="insight-value">相處是否舒服自在，對方是否願意信任並依賴自己。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">性格特色</div><div class="insight-value">熱愛生活體驗、交流分享，需要新鮮感，也重視感受是否充分流動。</div></div>
+                            <div class="insight-pair"><div class="insight-label">如何靠近一個人</div><div class="insight-value">從聊天開始，透過好奇、提問與各種生活分享展開互動。</div></div>
+                            <div class="insight-pair"><div class="insight-label">長期關係最重視</div><div class="insight-value">彼此能否回應、共鳴，情緒與感受是否有被好好接住。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">性格特色</div><div class="insight-value">務實，重視資源與收入，也會自然思考關係能不能落地過生活。</div></div>
+                            <div class="insight-pair"><div class="insight-label">如何靠近一個人</div><div class="insight-value">透過安排、付出與物質照顧，滿足對方需求來拉近距離。</div></div>
+                            <div class="insight-pair"><div class="insight-label">長期關係最重視</div><div class="insight-value">收入與生活資源是否穩定，雙方未來目標是否能一起前進。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">性格特色</div><div class="insight-value">重視穩定與秩序，有原則、有界線，擅長規劃安排，也重視責任感。</div></div>
+                            <div class="insight-pair"><div class="insight-label">如何靠近一個人</div><div class="insight-value">會先觀察，再從價值觀與生活習慣慢慢確認彼此是否合拍。</div></div>
+                            <div class="insight-pair"><div class="insight-label">長期關係最重視</div><div class="insight-value">原則是否一致、關係是否明確、承諾是否真的有落實在行動裡。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">性格特色</div><div class="insight-value">細膩內斂、感受敏銳，重視深度思考與精神交流，也很會親身照顧人。</div></div>
+                            <div class="insight-pair"><div class="insight-label">如何靠近一個人</div><div class="insight-value">需要慢慢熟悉，透過深聊、陪伴與理解，一步步建立內在信任。</div></div>
+                            <div class="insight-pair"><div class="insight-label">長期關係最重視</div><div class="insight-value">思想是否能深度共鳴，自己的細膩與敏感是否能被理解與珍惜。</div></div>
+                          </div>
+                        </article>
+                      </div>
                     </section>
                     <section class="mini-guide-panel" id="mini-stuck" role="tabpanel">
-                      <h4>卡點常常來自慣性，不一定來自不夠愛</h4>
-                      <p>這一段要看的是每種能量最容易在哪裡卡住。當你知道自己會在哪裡退縮、過度投入或誤判，才比較能調整互動方式。</p>
+                      <div class="mini-guide-hero">
+                        <div class="mini-guide-kicker">STUCK POINT</div>
+                        <h4 class="mini-guide-headline">每種能量常見卡點</h4>
+                        <p class="mini-guide-note">先看自己最容易卡在哪裡，比較不會把慣性誤認成命中注定。</p>
+                      </div>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">強勢、控制欲強、過於直接、急躁、花錢太憑感覺。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">太追求感官體驗、忽略現實面、感受與決定容易突然改變。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">易聚焦現實而忽略情感交流、偏功利。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義。</div></div>
+                          </div>
+                        </article>
+                      </div>
                     </section>
                     <section class="mini-guide-panel" id="mini-fit" role="tabpanel">
-                      <h4>互補是彼此剛好補到看不到的地方</h4>
-                      <p>好的互補不是誰拯救誰，而是你沒有的部分對方剛好能補上，同時你擅長的也能支持對方，這樣的關係才比較走得長。</p>
+                      <div class="mini-guide-hero">
+                        <div class="mini-guide-kicker">COMPLEMENT</div>
+                        <h4 class="mini-guide-headline">相處久了反而會被誰吸引</h4>
+                        <p class="mini-guide-note">這不是第一眼的心動，而是相處久一點後，可能越看越有感的互補方向。</p>
+                      </div>
+                      <div class="insight-list">
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">01</div>
+                            <h5 class="insight-name">園丁擔當（比劫）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">相處久了可能被吸引</div><div class="insight-value">土壤管家（財狩）</div></div>
+                            <div class="insight-pair"><div class="insight-label">對方吸引點</div><div class="insight-value">務實、物質照顧、金錢安全感，能把生活穩穩接住。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">02</div>
+                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">相處久了可能被吸引</div><div class="insight-value">花園守護者（官殺）</div></div>
+                            <div class="insight-pair"><div class="insight-label">對方吸引點</div><div class="insight-value">穩定、原則、承諾、規劃、秩序，能讓關係更有方向。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">03</div>
+                            <h5 class="insight-name">土壤管家（財狩）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">相處久了可能被吸引</div><div class="insight-value">微光精靈（印隱）</div></div>
+                            <div class="insight-pair"><div class="insight-label">對方吸引點</div><div class="insight-value">內斂、理解、親身照顧、陪伴、細膩，能補足情感深度。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">04</div>
+                            <h5 class="insight-name">花園守護者（官殺）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">相處久了可能被吸引</div><div class="insight-value">園丁擔當（比劫）</div></div>
+                            <div class="insight-pair"><div class="insight-label">對方吸引點</div><div class="insight-value">主動、坦率、豪氣、活潑、效率，能帶出行動力與生命力。</div></div>
+                          </div>
+                        </article>
+                        <article class="insight-row">
+                          <div class="insight-row-head">
+                            <div class="insight-no">05</div>
+                            <h5 class="insight-name">微光精靈（印隱）</h5>
+                          </div>
+                          <div class="insight-grid">
+                            <div class="insight-pair"><div class="insight-label">相處久了可能被吸引</div><div class="insight-value">花語蝴蝶（食傷）</div></div>
+                            <div class="insight-pair"><div class="insight-label">對方吸引點</div><div class="insight-value">生活體驗、感受、分享、互動、創意，能把情緒帶回流動。</div></div>
+                          </div>
+                        </article>
+                      </div>
                     </section>
                   </div>
                 </div>
@@ -1408,6 +2060,7 @@
         const closeFlowLightbox = () => {
           if (!flowLightbox) return;
           flowLightbox.classList.remove("is-open");
+          flowLightbox.classList.remove("is-avatar-open");
           flowLightbox.setAttribute("aria-hidden", "true");
           document.body.style.overflow = "";
         };
@@ -1420,6 +2073,7 @@
               const fullAlt = trigger.querySelector("img")?.getAttribute("alt") || "五星戀愛能量圖卡放大版";
               if (fullSrc) flowLightboxImage.setAttribute("src", fullSrc);
               flowLightboxImage.setAttribute("alt", fullAlt);
+              flowLightbox.classList.toggle("is-avatar-open", trigger.classList.contains("energy-avatar-trigger"));
               flowLightbox.classList.add("is-open");
               flowLightbox.setAttribute("aria-hidden", "false");
               document.body.style.overflow = "hidden";
