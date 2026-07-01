@@ -245,29 +245,41 @@
 
       .flow-toggle {
         position: relative;
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(244, 235, 225, 0.72));
+        border: 1px solid rgba(186, 153, 126, 0.14);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.54),
+          0 8px 16px rgba(108, 74, 54, 0.06);
       }
 
       .flow-toggle::before,
       .flow-toggle::after {
         content: "";
         position: absolute;
-        top: 12px;
-        left: 4px;
-        width: 18px;
-        height: 1.5px;
+        top: 14px;
+        left: 8px;
+        width: 14px;
+        height: 1px;
         border-radius: 999px;
-        background: rgba(136, 98, 79, 0.7);
-        transition: transform 0.3s ease;
+        background: rgba(150, 111, 90, 0.82);
+        transition: transform 0.32s ease, opacity 0.32s ease, background 0.32s ease;
       }
 
       .flow-toggle::after {
         transform: rotate(90deg);
       }
 
+      .flow-summary:hover .flow-toggle::before,
+      .flow-summary:hover .flow-toggle::after {
+        background: rgba(136, 98, 79, 0.94);
+      }
+
       .flow-panel[open] .flow-toggle::after {
         transform: rotate(0deg);
+        opacity: 0.72;
       }
 
       .flow-body {
@@ -300,6 +312,7 @@
         font-size: 0.92rem;
         line-height: 1.82;
         color: var(--ink);
+        letter-spacing: 0.02em;
       }
 
       .content-list {
@@ -314,6 +327,7 @@
       .keyword-list span {
         font-size: 0.92rem;
         line-height: 1.78;
+        letter-spacing: 0.02em;
       }
 
       .content-block strong {
@@ -431,6 +445,7 @@
         color: var(--text-soft);
         font-size: 0.88rem;
         line-height: 1.72;
+        letter-spacing: 0.02em;
       }
 
       .insight-list {
@@ -498,6 +513,44 @@
         margin-bottom: 12px;
         padding: 0 0 11px 10px;
         border-bottom: 1px solid rgba(190, 158, 130, 0.14);
+      }
+
+      .insight-avatar-wrap {
+        position: relative;
+        flex: 0 0 46px;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        padding: 3px;
+        background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
+        box-shadow: 0 0 0 1px rgba(226, 199, 171, 0.42), 0 0 20px rgba(241, 214, 179, 0.62), 0 10px 20px rgba(109, 76, 56, 0.1);
+      }
+
+      .insight-avatar-wrap::after {
+        content: "";
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 240, 214, 0.34), rgba(255, 240, 214, 0));
+        z-index: -1;
+      }
+
+      .insight-avatar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.68);
+      }
+
+      .insight-avatar-trigger {
+        flex: 0 0 46px;
+        width: 46px;
+        border-radius: 50%;
+        overflow: visible;
+        cursor: zoom-in;
       }
 
       .insight-no {
@@ -595,6 +648,7 @@
         color: var(--ink);
         font-size: 0.9rem;
         line-height: 1.76;
+        letter-spacing: 0.02em;
       }
 
       .keyword-list {
@@ -762,6 +816,7 @@
         color: var(--ink);
         font-size: 0.89rem;
         line-height: 1.74;
+        letter-spacing: 0.02em;
       }
 
       .qa-split {
@@ -798,10 +853,13 @@
       }
 
       .visual-title {
-        margin: 0 0 10px;
+        margin: 0 0 12px;
         color: var(--wine);
-        font-size: 0.96rem;
-        letter-spacing: 0.05em;
+        font-size: 1.08rem;
+        font-weight: 700;
+        line-height: 1.42;
+        letter-spacing: 0.03em;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.36);
       }
 
       .stuck-grid {
@@ -845,6 +903,7 @@
         color: var(--text-soft);
         font-size: 0.88rem;
         line-height: 1.75;
+        letter-spacing: 0.02em;
       }
 
       .flow-zoom-trigger {
@@ -1025,6 +1084,18 @@
           padding: 15px 15px;
         }
 
+        .flow-toggle {
+          width: 24px;
+          height: 24px;
+        }
+
+        .flow-toggle::before,
+        .flow-toggle::after {
+          top: 11px;
+          left: 6px;
+          width: 12px;
+        }
+
         .flow-index {
           width: 48px;
           height: 48px;
@@ -1196,6 +1267,18 @@
           padding: 0 0 10px 8px;
         }
 
+        .insight-avatar-wrap {
+          flex-basis: 40px;
+          width: 40px;
+          height: 40px;
+          padding: 2px;
+        }
+
+        .insight-avatar-trigger {
+          flex-basis: 40px;
+          width: 40px;
+        }
+
         .mini-guide-content .insight-grid {
           gap: 8px;
           padding-left: 8px;
@@ -1336,13 +1419,12 @@
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
-            <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">這一段做什麼</h3>
-                  <p>找出表格中每一句話的主人，誰找到最多人，就有機會得到小獎品。</p>
+              <div class="flow-body">
+                <div class="flow-copy">
+                  <div class="content-block">
+                    <p>找出表格中每一句話的主人，誰找到最多人，就有機會得到小獎品。</p>
+                  </div>
                 </div>
-              </div>
             </div>
           </details>
 
@@ -1514,18 +1596,7 @@
             </summary>
             <div class="flow-body">
               <div class="flow-copy">
-                <div class="energy-overview">
-                  <div class="energy-overview-card">
-                    <h3>揭曉之後先看什麼</h3>
-                    <p>這一段不是要你一次記很多，而是抓住三件事：<strong>你最容易被什麼吸引、你最常卡在哪、哪些反差會讓你後來反而被吸引。</strong></p>
-                  </div>
-                  <div class="energy-overview-card">
-                    <h3>吸引力怎麼看</h3>
-                    <p>不健康的反應是「因為我沒有，所以我好想要擁有」；比較健康的反應是「這個我也有，所以我不需要執著，我是純粹欣賞他」。</p>
-                  </div>
-                </div>
                 <div class="content-block">
-                  <h3 class="content-label">三張重點圖卡</h3>
                   <div class="visual-gallery">
                     <article class="visual-card">
                       <h4 class="visual-title">1. 你最容易被什麼吸引</h4>
@@ -1533,7 +1604,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1542,7 +1613,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1551,7 +1622,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1560,7 +1631,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1569,7 +1640,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1583,7 +1654,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1592,7 +1663,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1601,7 +1672,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1610,7 +1681,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1619,7 +1690,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1634,7 +1705,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1644,7 +1715,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1654,7 +1725,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1664,7 +1735,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1674,7 +1745,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1747,7 +1818,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1758,7 +1829,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1769,7 +1840,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1780,7 +1851,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1791,7 +1862,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1811,7 +1882,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1820,7 +1891,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1829,7 +1900,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1838,7 +1909,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1847,7 +1918,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1865,7 +1936,7 @@
                       <div class="insight-list">
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">01</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener.png" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">園丁擔當（比劫）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1875,7 +1946,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">02</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly.png" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花語蝴蝶（食傷）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1885,7 +1956,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">03</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil.png" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">土壤管家（財狩）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1895,7 +1966,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">04</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian.png" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">花園守護者（官殺）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1905,7 +1976,7 @@
                         </article>
                         <article class="insight-row">
                           <div class="insight-row-head">
-                            <div class="insight-no">05</div>
+                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy.png" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
                             <h5 class="insight-name">微光精靈（印隱）</h5>
                           </div>
                           <div class="insight-grid">
@@ -1931,13 +2002,12 @@
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy qa-split">
-                <div class="content-block">
-                  <h3 class="content-label">分享者</h3>
-                  <ul class="content-list">
-                    <li>分享一個能對應自己卡點的親身經驗。</li>
-                    <li>這個行為模式背後，你當時在想什麼？</li>
-                  </ul>
+                <div class="flow-copy qa-split">
+                  <div class="content-block">
+                    <ul class="content-list">
+                      <li>分享一個能對應自己卡點的親身經驗。</li>
+                      <li>這個行為模式背後，你當時在想什麼？</li>
+                    </ul>
                 </div>
               </div>
             </div>
@@ -1967,20 +2037,18 @@
             <summary class="flow-summary">
               <div class="flow-index">14</div>
               <div class="flow-heading">
-                <h2 class="flow-title">填寫回饋單＋自由回饋</h2>
+                <h2 class="flow-title">填寫回饋單＋自由分享</h2>
                 <div class="flow-subtitle">留下感受</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy">
-                <div class="content-block">
-                  <h3 class="content-label">回饋表單</h3>
-                  <p>填寫回饋單，也可以自由留下今天最想分享的一句話。</p>
-                  <div style="margin-top: 12px">
-                    <a class="flow-link" href="https://forms.gle/VPaXhocz3fp4WjJZA" target="_blank" rel="noreferrer">填寫回饋表單</a>
+                <div class="flow-copy">
+                  <div class="content-block">
+                    <div style="margin-top: 12px">
+                      <a class="flow-link" href="https://forms.gle/VPaXhocz3fp4WjJZA" target="_blank" rel="noreferrer">填寫回饋表單</a>
+                    </div>
                   </div>
-                </div>
               </div>
             </div>
           </details>
@@ -2073,7 +2141,7 @@
               const fullAlt = trigger.querySelector("img")?.getAttribute("alt") || "五星戀愛能量圖卡放大版";
               if (fullSrc) flowLightboxImage.setAttribute("src", fullSrc);
               flowLightboxImage.setAttribute("alt", fullAlt);
-              flowLightbox.classList.toggle("is-avatar-open", trigger.classList.contains("energy-avatar-trigger"));
+              flowLightbox.classList.toggle("is-avatar-open", trigger.classList.contains("energy-avatar-trigger") || trigger.classList.contains("insight-avatar-trigger"));
               flowLightbox.classList.add("is-open");
               flowLightbox.setAttribute("aria-hidden", "false");
               document.body.style.overflow = "hidden";

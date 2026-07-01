@@ -55,7 +55,10 @@
       color: var(--text);
       background:
         linear-gradient(rgba(83, 58, 36, 0.18), rgba(83, 58, 36, 0.18)),
-        url("floral-bg.png") center center / cover no-repeat,
+        image-set(
+          url("floral-bg-home.webp") type("image/webp"),
+          url("floral-bg.png") type("image/png")
+        ) center center / cover no-repeat,
         #f5ede2;
       animation: none;
     }
@@ -460,10 +463,10 @@
         padding: 58px 24px 30px;
         border-radius: 24px;
         box-shadow:
-          0 44px 80px rgba(72, 44, 27, 0.22),
-          0 16px 28px rgba(115, 77, 53, 0.12),
-          0 4px 10px rgba(164, 122, 92, 0.05);
-        animation: cardIn 0.82s cubic-bezier(.16,.84,.18,1) both;
+          0 26px 44px rgba(72, 44, 27, 0.16),
+          0 10px 18px rgba(115, 77, 53, 0.09),
+          0 2px 8px rgba(164, 122, 92, 0.04);
+        animation: none;
       }
 
       .hero-card::before {
@@ -476,8 +479,8 @@
         right: 10%;
         bottom: -16px;
         height: 30px;
-        filter: blur(18px);
-        opacity: 0.72;
+        filter: blur(12px);
+        opacity: 0.5;
       }
 
       .hero-title {
@@ -493,25 +496,32 @@
         font-size: 0.62rem;
         letter-spacing: 0.28em;
         word-spacing: 0.34em;
+        animation: none;
+        opacity: 1;
+        transform: none;
       }
 
       .hero-title .line {
         max-width: 5.9em;
+        opacity: 1;
+        transform: none;
+        filter: none;
       }
 
       .hero-title .line-main {
         font-size: 1.16em;
-        animation: heroTitleReveal 1.02s cubic-bezier(.12,.82,.16,1) forwards;
+        animation: none;
       }
 
       .hero-title .line-sub {
         font-size: 0.88em;
-        animation: heroTitleRevealSoft 0.96s 0.18s cubic-bezier(.12,.82,.16,1) forwards;
+        animation: none;
       }
 
       .hero-actions {
         margin-top: 22px;
         gap: 9px;
+        animation: none;
       }
 
       .btn {
