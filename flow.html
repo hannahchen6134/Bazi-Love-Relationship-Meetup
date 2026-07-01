@@ -186,17 +186,15 @@
       }
 
       .flow-panel-endcap .flow-summary {
-        grid-template-columns: minmax(0, 1fr);
-        cursor: default;
+        grid-template-columns: minmax(0, 1fr) 30px;
+        cursor: pointer;
       }
 
-      .flow-panel-endcap .flow-index,
-      .flow-panel-endcap .flow-toggle {
+      .flow-panel-endcap .flow-index {
         display: none;
       }
 
       .flow-panel-endcap .flow-body {
-        display: block;
         padding: 0 22px 22px 22px;
       }
 
@@ -2578,12 +2576,13 @@
             </div>
           </details>
 
-          <section class="flow-panel flow-panel-endcap" style="--delay: 16" aria-label="最後，關於我們">
-            <div class="flow-summary">
+          <details class="flow-panel flow-panel-endcap" style="--delay: 16" aria-label="最後，關於我們">
+            <summary class="flow-summary">
               <div class="flow-heading">
                 <h2 class="flow-title">最後，關於我們：</h2>
               </div>
-            </div>
+              <div class="flow-toggle" aria-hidden="true"></div>
+            </summary>
             <div class="flow-body">
               <div class="flow-copy">
                 <div class="content-block final-about-shell">
@@ -2599,7 +2598,7 @@
                 </div>
               </div>
             </div>
-          </section>
+          </details>
         </section>
       </section>
       </main>
