@@ -436,8 +436,21 @@
         transition: transform .24s ease, box-shadow .24s ease, background .24s ease, color .24s ease;
       }
 
+      .mini-guide-button,
+      .flow-link,
+      .final-cta-button,
+      .final-cta-link {
+        position: relative;
+        z-index: 1;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        will-change: transform;
+      }
+
       .mini-guide-button:hover {
-        transform: translateY(-1px);
+        transform: translate3d(0, -1px, 0);
       }
 
       .mini-guide-button.is-active {
@@ -1297,7 +1310,7 @@
       }
 
       .final-cta-button:hover {
-        transform: translateY(-1px);
+        transform: translate3d(0, -1px, 0);
         box-shadow:
           0 8px 14px rgba(96, 60, 41, 0.08),
           0 0 0 1px rgba(248, 236, 223, 0.2),
@@ -1326,7 +1339,7 @@
       }
 
       .final-cta-link:hover {
-        transform: translateY(-1px);
+        transform: translate3d(0, -1px, 0);
         box-shadow:
           0 10px 18px rgba(96, 60, 41, 0.08),
           0 0 0 1px rgba(244, 223, 201, 0.2),
@@ -1338,6 +1351,20 @@
           0 12px 20px rgba(96, 60, 41, 0.1),
           0 0 0 1px rgba(236, 211, 187, 0.24),
           inset 0 1px 0 rgba(255, 250, 244, 0.88);
+      }
+
+      @media (hover: none) {
+        .mini-guide-button:hover,
+        .final-cta-button:hover,
+        .final-cta-link:hover {
+          transform: translate3d(0, 0, 0);
+        }
+
+        .final-cta-button:hover,
+        .final-cta-link:hover,
+        .final-cta-links.is-endcap .final-cta-link:hover {
+          box-shadow: inherit;
+        }
       }
 
       @keyframes caretBlink {
