@@ -20,6 +20,9 @@
         --wine-soft: #ad8573;
         --line: rgba(154, 122, 98, 0.16);
         --line-strong: rgba(145, 109, 82, 0.24);
+        --gold-line: rgba(203, 165, 112, 0.26);
+        --gold-line-soft: rgba(229, 198, 150, 0.18);
+        --gold-glow: rgba(246, 226, 193, 0.16);
         --shadow: 0 22px 44px rgba(71, 46, 28, 0.12);
         --shadow-soft: 0 10px 22px rgba(114, 79, 56, 0.08);
       }
@@ -86,7 +89,8 @@
         color: var(--wine);
         text-decoration: none;
         font-size: 0.82rem;
-        letter-spacing: 0.05em;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
         box-shadow:
           0 8px 16px rgba(89, 57, 36, 0.08),
           inset 0 1px 0 rgba(255, 255, 255, 0.72);
@@ -97,8 +101,10 @@
         padding: 34px 34px 28px;
         border-radius: 34px;
         background: linear-gradient(180deg, rgba(252, 247, 241, 0.95), rgba(248, 240, 232, 0.91));
-        border: 1px solid rgba(155, 121, 94, 0.16);
-        box-shadow: 0 30px 64px rgba(66, 40, 22, 0.16);
+        border: 1px solid rgba(155, 121, 94, 0.15);
+        box-shadow:
+          0 30px 64px rgba(66, 40, 22, 0.16),
+          0 0 0 1px rgba(238, 223, 199, 0.16);
         overflow: hidden;
       }
 
@@ -108,7 +114,10 @@
         inset: 11px;
         border-radius: 26px;
         border: 1px solid rgba(255, 255, 255, 0.34);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.56);
+        box-shadow:
+          0 0 0 1px var(--gold-line),
+          0 0 0 3px rgba(255, 247, 236, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.56);
         pointer-events: none;
       }
 
@@ -116,19 +125,19 @@
         font-family: "Cormorant Garamond", serif;
         font-style: italic;
         font-size: 0.72rem;
-        letter-spacing: 0.34em;
+        letter-spacing: 0.4em;
         color: rgba(231, 218, 202, 0.84);
         text-align: center;
         text-transform: lowercase;
       }
 
       .section-title {
-        margin: 10px 0 0;
+        margin: 14px 0 0;
         text-align: center;
         color: var(--wine);
         font-size: clamp(2rem, 4vw, 3.05rem);
-        line-height: 1.08;
-        letter-spacing: 0.06em;
+        line-height: 1.16;
+        letter-spacing: 0.075em;
       }
 
       .section-title .title-line {
@@ -148,9 +157,14 @@
       .flow-panel {
         position: relative;
         border-radius: 26px;
-        border: 1px solid rgba(158, 124, 99, 0.14);
-        background: linear-gradient(180deg, rgba(251, 246, 240, 0.96), rgba(247, 239, 231, 0.92));
-        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(158, 124, 99, 0.13);
+        background:
+          linear-gradient(180deg, rgba(251, 246, 240, 0.968), rgba(247, 239, 231, 0.928)),
+          radial-gradient(circle at 18% 16%, rgba(245, 225, 194, 0.14), transparent 24%),
+          radial-gradient(circle at 84% 82%, rgba(230, 206, 170, 0.08), transparent 28%);
+        box-shadow:
+          var(--shadow-soft),
+          0 0 0 1px rgba(239, 226, 208, 0.14);
         overflow: hidden;
         opacity: 0;
         transform: translateY(18px);
@@ -175,18 +189,30 @@
         position: absolute;
         inset: 8px;
         border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.26);
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        box-shadow:
+          0 0 0 1px rgba(247, 239, 230, 0.16),
+          0 0 0 3px rgba(255, 250, 244, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.38),
+          inset 0 0 0 1px rgba(255, 250, 244, 0.06);
         pointer-events: none;
       }
 
       .flow-panel[open] {
-        box-shadow: var(--shadow), 0 0 0 1px rgba(157, 122, 95, 0.06);
+        box-shadow:
+          var(--shadow),
+          0 0 0 1px rgba(157, 122, 95, 0.06),
+          0 0 0 1px rgba(238, 222, 195, 0.14);
       }
 
       .flow-panel.is-feature {
-        background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(246, 237, 227, 0.95));
-        border-color: rgba(156, 116, 88, 0.18);
-        box-shadow: 0 24px 46px rgba(74, 47, 28, 0.1);
+        background:
+          linear-gradient(180deg, rgba(255, 251, 246, 0.985), rgba(246, 237, 227, 0.952)),
+          radial-gradient(circle at 18% 16%, var(--gold-glow), transparent 24%);
+        border-color: rgba(156, 116, 88, 0.16);
+        box-shadow:
+          0 24px 46px rgba(74, 47, 28, 0.1),
+          0 0 0 1px rgba(239, 224, 200, 0.16);
       }
 
       .flow-panel.is-feature::after {
@@ -200,7 +226,7 @@
       .flow-summary {
         list-style: none;
         display: grid;
-        grid-template-columns: 58px minmax(0, 1fr) 26px;
+        grid-template-columns: 50px minmax(0, 1fr) 26px;
         align-items: center;
         gap: 16px;
         padding: 18px 22px;
@@ -212,16 +238,37 @@
       }
 
       .flow-index {
-        width: 58px;
-        height: 58px;
-        border-radius: 18px;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border-radius: 16px;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, rgba(249, 240, 229, 0.94), rgba(241, 228, 214, 0.82));
-        border: 1px solid rgba(181, 147, 119, 0.18);
+        background:
+          linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(240, 226, 208, 0.95));
+        border: 1px solid rgba(189, 151, 111, 0.28);
         color: var(--wine);
-        font-size: 1.18rem;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.54);
+        font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+        font-size: 0.98rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        box-shadow:
+          0 5px 12px rgba(120, 84, 57, 0.07),
+          0 0 0 1px rgba(246, 232, 210, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.62),
+          inset 0 0 0 1px rgba(255, 245, 229, 0.16);
+      }
+
+      .flow-index::before {
+        content: "";
+        position: absolute;
+        inset: 4px;
+        border-radius: 12px;
+        border: 1px solid rgba(204, 170, 120, 0.34);
+        box-shadow:
+          0 0 0 1px rgba(255, 248, 237, 0.22),
+          inset 0 1px 0 rgba(255, 255, 255, 0.36);
+        pointer-events: none;
       }
 
       .flow-heading {
@@ -248,11 +295,11 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        background: linear-gradient(180deg, rgba(255, 251, 246, 0.9), rgba(244, 235, 225, 0.72));
-        border: 1px solid rgba(186, 153, 126, 0.14);
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.94), rgba(246, 240, 233, 0.82));
+        border: 1px solid rgba(255, 255, 255, 0.42);
         box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.54),
-          0 8px 16px rgba(108, 74, 54, 0.06);
+          inset 0 1px 0 rgba(255, 255, 255, 0.62),
+          0 6px 12px rgba(108, 74, 54, 0.045);
       }
 
       .flow-toggle::before,
@@ -264,7 +311,7 @@
         width: 14px;
         height: 1px;
         border-radius: 999px;
-        background: rgba(150, 111, 90, 0.82);
+        background: rgba(146, 118, 102, 0.74);
         transition: transform 0.32s ease, opacity 0.32s ease, background 0.32s ease;
       }
 
@@ -274,7 +321,7 @@
 
       .flow-summary:hover .flow-toggle::before,
       .flow-summary:hover .flow-toggle::after {
-        background: rgba(136, 98, 79, 0.94);
+        background: rgba(132, 106, 92, 0.84);
       }
 
       .flow-panel[open] .flow-toggle::after {
@@ -296,15 +343,19 @@
       .content-block {
         padding: 16px 18px;
         border-radius: 18px;
-        background: linear-gradient(180deg, rgba(255, 252, 248, 0.76), rgba(245, 236, 227, 0.68));
-        border: 1px solid rgba(174, 142, 116, 0.12);
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.84), rgba(246, 239, 231, 0.76));
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.72),
+          0 8px 18px rgba(111, 79, 57, 0.045);
       }
 
       .content-label {
-        margin: 0 0 8px;
+        margin: 0 0 12px;
         color: var(--wine);
         font-size: 1rem;
-        letter-spacing: 0.06em;
+        line-height: 1.5;
+        letter-spacing: 0.09em;
       }
 
       .content-block p {
@@ -421,31 +472,31 @@
       .mini-guide-kicker {
         display: inline-flex;
         align-items: center;
-        min-height: 28px;
-        padding: 0 12px;
+        min-height: 30px;
+        padding: 0 14px;
         border-radius: 999px;
         background: linear-gradient(180deg, rgba(245, 225, 204, 0.98), rgba(236, 206, 177, 0.9));
         color: #9c644d;
         font-size: 0.76rem;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.16em;
         box-shadow: 0 8px 16px rgba(168, 120, 89, 0.12);
       }
 
       .mini-guide-headline {
-        margin: 10px 0 0;
+        margin: 14px 0 0;
         color: var(--wine);
         font-size: 1.02rem;
-        line-height: 1.48;
-        letter-spacing: 0.03em;
+        line-height: 1.62;
+        letter-spacing: 0.05em;
       }
 
       .mini-guide-note {
-        margin: 0 0 12px;
+        margin: 6px 0 14px;
         color: var(--text-soft);
         font-size: 0.88rem;
         line-height: 1.72;
-        letter-spacing: 0.02em;
+        letter-spacing: 0.03em;
       }
 
       .insight-list {
@@ -828,16 +879,20 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 34px;
-        padding: 0 14px;
+        min-height: 40px;
+        padding: 0 18px;
         border-radius: 999px;
-        border: 1px solid rgba(156, 114, 84, 0.16);
-        background: linear-gradient(180deg, rgba(255, 253, 250, 0.92), rgba(244, 235, 225, 0.8));
+        border: 1px solid rgba(172, 126, 89, 0.3);
+        background: linear-gradient(180deg, rgba(252, 242, 229, 0.98), rgba(236, 218, 199, 0.94));
         color: var(--wine);
         text-decoration: none;
         font-size: 0.82rem;
-        letter-spacing: 0.05em;
-        box-shadow: 0 8px 16px rgba(103, 66, 39, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.46);
+        line-height: 1.4;
+        letter-spacing: 0.07em;
+        box-shadow:
+          0 9px 18px rgba(103, 66, 39, 0.09),
+          0 0 0 1px rgba(248, 231, 208, 0.24),
+          inset 0 1px 0 rgba(255, 255, 255, 0.56);
       }
 
       .visual-gallery {
@@ -887,7 +942,8 @@
         color: #ad7860;
         font-size: 0.88rem;
         font-weight: 600;
-        letter-spacing: 0.04em;
+        line-height: 1.4;
+        letter-spacing: 0.075em;
       }
 
       .stuck-name {
@@ -1010,6 +1066,88 @@
         gap: 10px;
       }
 
+      .final-cta-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .final-cta-card {
+        padding: 18px 18px 20px;
+        border-radius: 18px;
+        border: 1px solid rgba(177, 138, 102, 0.34);
+        background:
+          linear-gradient(180deg, rgba(255, 248, 239, 0.98), rgba(240, 227, 209, 0.96));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.64),
+          0 12px 22px rgba(101, 69, 46, 0.08),
+          0 0 0 1px rgba(249, 236, 216, 0.22);
+      }
+
+      .final-cta-kicker {
+        margin: 0 0 12px;
+        color: rgba(130, 94, 73, 0.76);
+        font-size: 0.74rem;
+        line-height: 1.35;
+        letter-spacing: 0.2em;
+      }
+
+      .final-cta-title {
+        margin: 0;
+        color: var(--wine);
+        font-size: 1.04rem;
+        line-height: 1.5;
+        letter-spacing: 0.045em;
+      }
+
+      .final-cta-note {
+        margin: 8px 0 0;
+        color: rgba(103, 77, 61, 0.82);
+        font-size: 0.88rem;
+        line-height: 1.72;
+        letter-spacing: 0.025em;
+      }
+
+      .final-cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 14px;
+        min-height: 50px;
+        padding: 0 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(164, 128, 103, 0.28);
+        background:
+          linear-gradient(180deg, rgba(255, 248, 241, 0.98), rgba(242, 230, 218, 0.94));
+        color: rgba(122, 82, 63, 0.96);
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: 0.06em;
+        text-align: center;
+        box-shadow:
+          0 6px 12px rgba(96, 60, 41, 0.07),
+          0 0 0 1px rgba(248, 236, 223, 0.18),
+          inset 0 1px 0 rgba(255, 255, 255, 0.74);
+      }
+
+      .final-cta-button.is-alt {
+        border-color: rgba(183, 150, 116, 0.3);
+        background:
+          linear-gradient(180deg, rgba(250, 242, 231, 0.98), rgba(239, 225, 207, 0.94));
+        color: rgba(130, 93, 61, 0.96);
+        box-shadow:
+          0 6px 12px rgba(121, 87, 53, 0.065),
+          0 0 0 1px rgba(250, 238, 217, 0.18),
+          inset 0 1px 0 rgba(255, 248, 236, 0.82);
+      }
+
+      .final-cta-button:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          0 8px 14px rgba(96, 60, 41, 0.08),
+          0 0 0 1px rgba(248, 236, 223, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      }
+
       @keyframes panelIn {
         from {
           opacity: 0;
@@ -1038,7 +1176,7 @@
           opacity: 1;
           transform: translateY(0) scale(1);
           filter: blur(0);
-          letter-spacing: 0.06em;
+        letter-spacing: 0.08em;
         }
       }
 
@@ -1064,13 +1202,13 @@
 
         .section-topline {
           font-size: 0.6rem;
-          letter-spacing: 0.28em;
+          letter-spacing: 0.34em;
         }
 
         .section-title {
-          margin-top: 8px;
+          margin-top: 12px;
           font-size: clamp(1.54rem, 7vw, 2.16rem);
-          line-height: 1.16;
+          line-height: 1.22;
         }
 
         .flow-stack {
@@ -1079,7 +1217,7 @@
         }
 
         .flow-summary {
-          grid-template-columns: 48px minmax(0, 1fr) 22px;
+          grid-template-columns: 42px minmax(0, 1fr) 22px;
           gap: 12px;
           padding: 15px 15px;
         }
@@ -1097,10 +1235,15 @@
         }
 
         .flow-index {
-          width: 48px;
-          height: 48px;
-          border-radius: 16px;
-          font-size: 1rem;
+          width: 42px;
+          height: 42px;
+          border-radius: 14px;
+          font-size: 0.86rem;
+        }
+
+        .flow-index::before {
+          inset: 3px;
+          border-radius: 10px;
         }
 
         .flow-title {
@@ -1127,7 +1270,7 @@
         }
 
         .content-label {
-          margin-bottom: 7px;
+          margin-bottom: 10px;
           font-size: 0.92rem;
         }
 
@@ -1189,6 +1332,40 @@
           gap: 8px;
         }
 
+        .final-cta-list {
+          gap: 10px;
+        }
+
+        .final-cta-card {
+          padding: 14px 12px 16px;
+          border-radius: 16px;
+        }
+
+        .final-cta-kicker {
+          margin-bottom: 10px;
+          font-size: 0.68rem;
+        }
+
+        .final-cta-button {
+          width: 100%;
+          min-height: 46px;
+          padding: 0 16px;
+          font-size: 0.84rem;
+          line-height: 1.45;
+          letter-spacing: 0.07em;
+        }
+
+        .final-cta-title {
+          font-size: 0.96rem;
+          line-height: 1.46;
+        }
+
+        .final-cta-note {
+          margin-top: 7px;
+          font-size: 0.82rem;
+          line-height: 1.62;
+        }
+
         .mini-guide-tabs {
           gap: 8px;
         }
@@ -1216,11 +1393,13 @@
           min-height: 26px;
           padding: 0 10px;
           font-size: 0.72rem;
+          letter-spacing: 0.14em;
         }
 
         .mini-guide-headline {
-          margin-top: 9px;
+          margin-top: 12px;
           font-size: 0.94rem;
+          line-height: 1.54;
         }
 
         .mini-guide-note {
@@ -1404,7 +1583,7 @@
             <summary class="flow-summary">
               <div class="flow-index">3</div>
               <div class="flow-heading">
-                <h2 class="flow-title">開場定調</h2>
+                <h2 class="flow-title">溫暖的開場</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1415,7 +1594,6 @@
               <div class="flow-index">4</div>
               <div class="flow-heading">
                 <h2 class="flow-title">戀愛習慣找找看</h2>
-                <div class="flow-subtitle">一起暖身</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1433,7 +1611,6 @@
               <div class="flow-index">5</div>
               <div class="flow-heading">
                 <h2 class="flow-title">簡短自介</h2>
-                <div class="flow-subtitle">認識彼此</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1464,7 +1641,6 @@
               <div class="flow-index">6</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量簡介 part.1</h2>
-                <div class="flow-subtitle">先有概念</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1566,7 +1742,6 @@
               <div class="flow-index">7</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第一輪「猜猜看」交流</h2>
-                <div class="flow-subtitle">先猜猜看</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1590,7 +1765,6 @@
               <div class="flow-index">8</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量大公開！</h2>
-                <div class="flow-subtitle">揭曉結果</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1766,7 +1940,6 @@
               <div class="flow-index">9</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第二輪「同能量」交流</h2>
-                <div class="flow-subtitle">同類對照</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1796,7 +1969,6 @@
               <div class="flow-index">10</div>
               <div class="flow-heading">
                 <h2 class="flow-title">五星戀愛能量簡介 part.3</h2>
-                <div class="flow-subtitle">繼續整理</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -1997,7 +2169,6 @@
               <div class="flow-index">11</div>
               <div class="flow-heading">
                 <h2 class="flow-title">第三輪「不同能量」交流</h2>
-                <div class="flow-subtitle">看看差異</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2028,6 +2199,7 @@
               <div class="flow-index">13</div>
               <div class="flow-heading">
                 <h2 class="flow-title">填寫學習筆記</h2>
+                <div class="flow-subtitle">讓收穫可以帶回家</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2038,7 +2210,6 @@
               <div class="flow-index">14</div>
               <div class="flow-heading">
                 <h2 class="flow-title">填寫回饋單＋自由分享</h2>
-                <div class="flow-subtitle">留下感受</div>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2057,20 +2228,26 @@
             <summary class="flow-summary">
               <div class="flow-index">15</div>
               <div class="flow-heading">
-                <h2 class="flow-title">期待下次見</h2>
-                <div class="flow-subtitle">慢慢帶走</div>
+                <h2 class="flow-title">來到顯化理想伴侶的下一站</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
             <div class="flow-body">
-              <div class="flow-copy two-up">
+              <div class="flow-copy">
                 <div class="content-block">
-                  <h3 class="content-label">延伸方向</h3>
-                  <div class="future-actions">
-                    <span class="future-pill">9/22 感情工作坊</span>
-                    <span class="future-pill">直接解答感情疑問</span>
-                    <span class="future-pill">獲得專屬戀愛策略</span>
-                    <span class="future-pill">一對一八字諮詢</span>
+                  <div class="final-cta-list">
+                    <div class="final-cta-card">
+                      <p class="final-cta-kicker">WORKSHOP</p>
+                      <h3 class="final-cta-title">報名 9/26(六) 下午【顯化理想關係】工作坊</h3>
+                      <p class="final-cta-note">如果你想更完整梳理關係模式、吸引力來源與理想伴侶輪廓，這一場會帶你往下走得更深。</p>
+                      <a class="final-cta-button is-alt" href="#" rel="noreferrer">前往報名工作坊</a>
+                    </div>
+                    <div class="final-cta-card">
+                      <p class="final-cta-kicker">CONSULTATION</p>
+                      <h3 class="final-cta-title">預約【一對一八字諮詢】獲得專屬戀愛策略</h3>
+                      <p class="final-cta-note">如果你想直接聚焦自己的感情困惑，可以用一對一方式更精準地整理節奏、盲點與適合你的靠近策略。</p>
+                      <a class="final-cta-button" href="#" rel="noreferrer">前往預約一對一諮詢</a>
+                    </div>
                   </div>
                 </div>
               </div>
