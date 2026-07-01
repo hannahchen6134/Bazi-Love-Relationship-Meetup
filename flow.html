@@ -195,7 +195,12 @@
       }
 
       .flow-panel-endcap .flow-body {
+        display: none;
         padding: 0 22px 22px 22px;
+      }
+
+      .flow-panel-endcap[open] .flow-body {
+        display: block;
       }
 
       .flow-panel::before {
