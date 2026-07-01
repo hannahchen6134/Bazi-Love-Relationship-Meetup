@@ -604,9 +604,9 @@
 
       .insight-avatar-wrap {
         position: relative;
-        flex: 0 0 46px;
-        width: 46px;
-        height: 46px;
+        flex: 0 0 52px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         padding: 3px;
         background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
@@ -633,8 +633,8 @@
       }
 
       .insight-avatar-trigger {
-        flex: 0 0 46px;
-        width: 46px;
+        flex: 0 0 52px;
+        width: 52px;
         border-radius: 50%;
         overflow: visible;
         cursor: zoom-in;
@@ -666,13 +666,13 @@
       .insight-name {
         margin: 0;
         color: var(--wine);
-        font-size: 0.96rem;
-        line-height: 1.45;
+        font-size: 1.04rem;
+        line-height: 1.42;
         letter-spacing: 0.03em;
       }
 
       .mini-guide-content .insight-name {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         line-height: 1.28;
         letter-spacing: 0.05em;
         font-weight: 700;
@@ -703,12 +703,14 @@
       .mini-guide-content .insight-pair {
         grid-template-columns: max-content minmax(0, 1fr);
         align-items: start;
-        gap: 12px;
-        padding: 13px 14px;
-        border: 1px solid rgba(193, 161, 133, 0.14);
+        gap: 14px;
+        padding: 14px 14px;
+        border: 1px solid rgba(193, 161, 133, 0.16);
         border-radius: 16px;
-        background: linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(245, 236, 227, 0.74));
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(244, 234, 223, 0.8));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.48),
+          0 8px 16px rgba(118, 79, 54, 0.035);
       }
 
       .mini-guide-content .insight-pair:first-child {
@@ -726,17 +728,17 @@
         display: inline-flex;
         align-items: center;
         justify-self: start;
-        min-height: 28px;
-        padding: 0 11px;
+        min-height: 30px;
+        padding: 0 12px;
         border-radius: 999px;
-        background: linear-gradient(180deg, rgba(241, 224, 207, 0.94), rgba(233, 212, 193, 0.9));
-        color: #9a6750;
+        background: linear-gradient(180deg, rgba(242, 198, 162, 0.98), rgba(228, 170, 130, 0.92));
+        color: #fff8f2;
         font-size: 0.76rem;
         font-weight: 700;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.11em;
         box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.46),
-          0 3px 8px rgba(125, 89, 61, 0.04);
+          inset 0 1px 0 rgba(255, 240, 227, 0.38),
+          0 8px 16px rgba(176, 112, 73, 0.16);
       }
 
       .insight-value {
@@ -827,9 +829,9 @@
 
       .energy-avatar-wrap {
         position: relative;
-        flex: 0 0 78px;
-        width: 78px;
-        height: 78px;
+        flex: 0 0 88px;
+        width: 88px;
+        height: 88px;
         border-radius: 50%;
         padding: 4px;
         background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
@@ -856,8 +858,8 @@
       }
 
       .energy-avatar-trigger {
-        flex: 0 0 78px;
-        width: 78px;
+        flex: 0 0 88px;
+        width: 88px;
         border-radius: 50%;
         overflow: visible;
         cursor: zoom-in;
@@ -871,7 +873,7 @@
       .energy-title {
         margin: 0 0 10px;
         color: var(--wine);
-        font-size: 1.04rem;
+        font-size: 1.14rem;
         letter-spacing: 0.05em;
       }
 
@@ -1240,6 +1242,23 @@
         letter-spacing: 0.025em;
       }
 
+      .final-about-list {
+        margin: 14px 0 0;
+        padding-left: 1.2rem;
+        color: rgba(108, 80, 63, 0.88);
+      }
+
+      .final-about-list li {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.82;
+        letter-spacing: 0.025em;
+      }
+
+      .final-about-list li + li {
+        margin-top: 8px;
+      }
+
       .final-cta-card {
         padding: 18px 18px 20px;
         border-radius: 18px;
@@ -1531,19 +1550,19 @@
         }
 
         .energy-avatar-wrap {
-          flex-basis: 62px;
-          width: 62px;
-          height: 62px;
+          flex-basis: 70px;
+          width: 70px;
+          height: 70px;
           padding: 3px;
         }
 
         .energy-avatar-trigger {
-          flex-basis: 62px;
-          width: 62px;
+          flex-basis: 70px;
+          width: 70px;
         }
 
         .energy-title {
-          font-size: 0.95rem;
+          font-size: 1.02rem;
         }
 
         .energy-card dt {
@@ -1583,6 +1602,16 @@
 
         .final-cta-links.is-endcap {
           margin-top: 12px;
+        }
+
+        .final-about-list {
+          margin-top: 12px;
+          padding-left: 1.05rem;
+        }
+
+        .final-about-list li {
+          font-size: 0.84rem;
+          line-height: 1.74;
         }
 
         .final-journey-shell,
@@ -1710,11 +1739,11 @@
         }
 
         .insight-name {
-          font-size: 0.92rem;
+          font-size: 0.98rem;
         }
 
         .mini-guide-content .insight-name {
-          font-size: 1.02rem;
+          font-size: 1.1rem;
           line-height: 1.3;
         }
 
@@ -1724,15 +1753,15 @@
         }
 
         .insight-avatar-wrap {
-          flex-basis: 40px;
-          width: 40px;
-          height: 40px;
+          flex-basis: 46px;
+          width: 46px;
+          height: 46px;
           padding: 2px;
         }
 
         .insight-avatar-trigger {
-          flex-basis: 40px;
-          width: 40px;
+          flex-basis: 46px;
+          width: 46px;
         }
 
         .mini-guide-content .insight-grid {
@@ -1742,8 +1771,8 @@
 
         .mini-guide-content .insight-pair {
           grid-template-columns: 1fr;
-          gap: 8px;
-          padding: 11px 10px;
+          gap: 9px;
+          padding: 12px 10px;
           border-radius: 12px;
         }
 
@@ -1752,10 +1781,10 @@
         }
 
         .mini-guide-content .insight-label {
-          min-height: 24px;
-          padding: 0 9px;
+          min-height: 26px;
+          padding: 0 10px;
           font-size: 0.68rem;
-          letter-spacing: 0.09em;
+          letter-spacing: 0.1em;
         }
 
         .insight-value {
@@ -1931,7 +1960,7 @@
                     <div class="energy-head">
                       <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫">
                         <div class="energy-avatar-wrap">
-                          <img class="energy-avatar" src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" />
+                          <img class="energy-avatar" src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="eager" decoding="sync" />
                         </div>
                       </a>
                       <div class="energy-heading">
@@ -1948,7 +1977,7 @@
                     <div class="energy-head">
                       <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫">
                         <div class="energy-avatar-wrap">
-                          <img class="energy-avatar" src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" />
+                          <img class="energy-avatar" src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="eager" decoding="sync" />
                         </div>
                       </a>
                       <div class="energy-heading">
@@ -1965,7 +1994,7 @@
                     <div class="energy-head">
                       <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫">
                         <div class="energy-avatar-wrap">
-                          <img class="energy-avatar" src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" />
+                          <img class="energy-avatar" src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="eager" decoding="sync" />
                         </div>
                       </a>
                       <div class="energy-heading">
@@ -1982,7 +2011,7 @@
                     <div class="energy-head">
                       <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫">
                         <div class="energy-avatar-wrap">
-                          <img class="energy-avatar" src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" />
+                          <img class="energy-avatar" src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="eager" decoding="sync" />
                         </div>
                       </a>
                       <div class="energy-heading">
@@ -1999,7 +2028,7 @@
                     <div class="energy-head">
                       <a class="flow-zoom-trigger energy-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫">
                         <div class="energy-avatar-wrap">
-                          <img class="energy-avatar" src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" />
+                          <img class="energy-avatar" src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="eager" decoding="sync" />
                         </div>
                       </a>
                       <div class="energy-heading">
@@ -2552,7 +2581,10 @@
             <div class="flow-body">
               <div class="flow-copy">
                 <div class="content-block final-about-shell">
-                  <p class="final-about-copy">感謝你今天特別來參加，有什麼想討論的都歡迎讓我們知道。</p>
+                  <ul class="final-about-list">
+                    <li>感謝你的參加，有想討論的都讓我們知道。</li>
+                    <li>為給下次來參加此活動的新朋友完整的驚喜，此網站在活動結束後會隱藏部分欄位，也很期待與你快快再次相遇。</li>
+                  </ul>
                   <div class="final-cta-links is-endcap">
                     <a class="final-cta-link" href="https://line.me/R/ti/p/@455ojikt" target="_blank" rel="noreferrer">初星群官方LINE</a>
                     <a class="final-cta-link" href="https://lin.ee/ZbGVl4Ka" target="_blank" rel="noreferrer">智堯官方LINE</a>
@@ -2643,9 +2675,27 @@
         });
 
         if (flowAvatarImages.length) {
+          const flowAvatarPreloads = new Set();
+
           flowAvatarImages.forEach((image) => {
+            const currentSrc = image.getAttribute("src");
             const fallbackSrc = image.getAttribute("src")?.replace("-thumb.webp", ".png");
-            if (!fallbackSrc || fallbackSrc === image.getAttribute("src")) return;
+
+            if (currentSrc && !flowAvatarPreloads.has(currentSrc)) {
+              const preloadImage = new Image();
+              preloadImage.decoding = "sync";
+              preloadImage.src = currentSrc;
+              flowAvatarPreloads.add(currentSrc);
+            }
+
+            if (fallbackSrc && fallbackSrc !== currentSrc && !flowAvatarPreloads.has(fallbackSrc)) {
+              const fallbackPreloadImage = new Image();
+              fallbackPreloadImage.decoding = "sync";
+              fallbackPreloadImage.src = fallbackSrc;
+              flowAvatarPreloads.add(fallbackSrc);
+            }
+
+            if (!fallbackSrc || fallbackSrc === currentSrc) return;
 
             image.addEventListener("error", () => {
               if (image.dataset.fallbackApplied === "true") return;
