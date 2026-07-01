@@ -1148,6 +1148,17 @@
         margin-top: 14px;
       }
 
+      .final-cta-links.is-endcap .final-cta-link {
+        border-color: rgba(177, 137, 104, 0.46);
+        background:
+          linear-gradient(180deg, rgba(246, 231, 214, 0.99), rgba(232, 211, 190, 0.96));
+        color: rgba(112, 76, 57, 0.98);
+        box-shadow:
+          0 10px 18px rgba(96, 60, 41, 0.085),
+          0 0 0 1px rgba(232, 205, 179, 0.22),
+          inset 0 1px 0 rgba(255, 246, 237, 0.8);
+      }
+
       .final-about-copy {
         margin: 0;
         color: rgba(108, 80, 63, 0.88);
@@ -1260,6 +1271,13 @@
           0 10px 18px rgba(96, 60, 41, 0.08),
           0 0 0 1px rgba(244, 223, 201, 0.2),
           inset 0 1px 0 rgba(255, 252, 247, 0.86);
+      }
+
+      .final-cta-links.is-endcap .final-cta-link:hover {
+        box-shadow:
+          0 12px 20px rgba(96, 60, 41, 0.1),
+          0 0 0 1px rgba(236, 211, 187, 0.24),
+          inset 0 1px 0 rgba(255, 250, 244, 0.88);
       }
 
       @keyframes caretBlink {
@@ -2444,6 +2462,7 @@
         const panels = Array.from(document.querySelectorAll(".flow-panel"));
         const flowTableTriggers = Array.from(document.querySelectorAll(".flow-zoom-trigger"));
         const miniGuideButtons = Array.from(document.querySelectorAll(".mini-guide-button"));
+        const flowAvatarImages = Array.from(document.querySelectorAll(".energy-avatar, .insight-avatar"));
         const flowLightbox = document.getElementById("flow-table-modal");
         const flowLightboxClose = document.querySelector(".flow-lightbox-close");
         const flowLightboxImage = document.getElementById("flowLightboxImage");
@@ -2507,6 +2526,24 @@
             }
           });
         });
+
+        if (flowAvatarImages.length) {
+          flowAvatarImages.forEach((image) => {
+            const fallbackSrc = image.getAttribute("src")?.replace("-thumb.webp", ".png");
+            if (!fallbackSrc || fallbackSrc === image.getAttribute("src")) return;
+
+            image.addEventListener("error", () => {
+              if (image.dataset.fallbackApplied === "true") return;
+              image.dataset.fallbackApplied = "true";
+              image.src = fallbackSrc;
+            });
+
+            if (image.complete && image.naturalWidth === 0) {
+              image.dataset.fallbackApplied = "true";
+              image.src = fallbackSrc;
+            }
+          });
+        }
 
         if (miniGuideButtons.length) {
           miniGuideButtons.forEach((button) => {
