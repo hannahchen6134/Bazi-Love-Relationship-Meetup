@@ -3136,13 +3136,13 @@
       <script>
         const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v1";
         const FLOW_REMOTE_ENDPOINT_STORAGE_KEY = "bazi.flowControl.remoteEndpoint.v1";
-        const FLOW_REMOTE_DEFAULT_ENDPOINT = "";
+        const FLOW_REMOTE_DEFAULT_ENDPOINT = "https://script.google.com/macros/s/AKfycbw-4I2yeVNUs2YCxz0ap6jEsNgoDY8913i4I69iwh-RAqy6SriJeJHmEvIThRKWcryvDw/exec";
         const FLOW_REMOTE_TIMEOUT_MS = 4800;
         const FLOW_REMOTE_POLL_MS = 3000;
         const panels = Array.from(document.querySelectorAll(".flow-panel"));
         const flowTableTriggers = Array.from(document.querySelectorAll(".flow-zoom-trigger"));
         const miniGuideButtons = Array.from(document.querySelectorAll(".mini-guide-button"));
-        const flowAvatarImages = Array.from(document.querySelectorAll(".energy-avatar, .insight-avatar"));
+        const flowAvatarImages = Array.from(document.querySelectorAll('img[src$="-thumb.webp"]'));
         const flowLightbox = document.getElementById("flow-table-modal");
         const flowLightboxClose = document.querySelector(".flow-lightbox-close");
         const flowLightboxImage = document.getElementById("flowLightboxImage");
