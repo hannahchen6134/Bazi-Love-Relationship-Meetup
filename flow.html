@@ -406,6 +406,46 @@
         opacity: 0.72;
       }
 
+      .flow-panel.is-locked {
+        opacity: 0.62;
+      }
+
+      .flow-panel.is-locked .flow-summary {
+        cursor: not-allowed;
+      }
+
+      .flow-panel.is-locked .flow-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-color: rgba(189, 165, 145, 0.88);
+        background: linear-gradient(180deg, rgba(244, 238, 232, 0.98), rgba(232, 223, 214, 0.96));
+        box-shadow:
+          0 0 0 2px rgba(255, 247, 239, 0.7),
+          0 0 0 5px rgba(241, 232, 223, 0.36),
+          inset 0 1px 0 rgba(255, 251, 247, 0.82),
+          inset 0 -1px 0 rgba(216, 201, 188, 0.64),
+          0 4px 10px rgba(127, 88, 63, 0.04);
+      }
+
+      .flow-panel.is-locked .flow-toggle::before {
+        content: "鎖";
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        color: rgba(141, 104, 80, 0.92);
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        transform: none;
+        opacity: 1;
+      }
+
+      .flow-panel.is-locked .flow-toggle::after {
+        display: none;
+      }
+
       .flow-body {
         padding: 0 22px 22px 96px;
       }
@@ -657,8 +697,8 @@
       .insight-row-head {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
+        gap: 18px;
+        margin-bottom: 14px;
       }
 
       .mini-guide-content .insight-row-head {
@@ -671,11 +711,11 @@
 
       .insight-avatar-wrap {
         position: relative;
-        flex: 0 0 52px;
-        width: 52px;
-        height: 52px;
+        flex: 0 0 128px;
+        width: 128px;
+        height: 128px;
         border-radius: 50%;
-        padding: 3px;
+        padding: 4px;
         background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
         box-shadow: 0 0 0 1px rgba(226, 199, 171, 0.42), 0 0 20px rgba(241, 214, 179, 0.62), 0 10px 20px rgba(109, 76, 56, 0.1);
       }
@@ -700,8 +740,8 @@
       }
 
       .insight-avatar-trigger {
-        flex: 0 0 52px;
-        width: 52px;
+        flex: 0 0 128px;
+        width: 128px;
         border-radius: 50%;
         overflow: visible;
         cursor: zoom-in;
@@ -1015,6 +1055,110 @@
         gap: 14px;
       }
 
+      .energy-color-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+
+      .energy-color-pill {
+        --pill-ink: rgba(120, 82, 62, 0.92);
+        --pill-bg-top: rgba(244, 226, 207, 0.98);
+        --pill-bg-bottom: rgba(234, 207, 181, 0.92);
+        --pill-border: rgba(208, 170, 136, 0.42);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 35px;
+        padding: 0 14px 0 11px;
+        border-radius: 999px;
+        border: 1px solid var(--pill-border);
+        background: linear-gradient(180deg, var(--pill-bg-top), var(--pill-bg-bottom));
+        color: var(--pill-ink);
+        font-size: 0.8rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.05em;
+        box-shadow:
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.82);
+        opacity: 0;
+        transform: translateY(8px) scale(0.98);
+        transition: opacity 0.42s ease, transform 0.42s ease;
+        transition-delay: var(--legend-delay, 0s);
+      }
+
+      .energy-color-pill.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .energy-color-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        flex: 0 0 10px;
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.72),
+          0 2px 6px rgba(67, 45, 28, 0.16);
+      }
+
+      .energy-color-pill.is-green {
+        --pill-ink: #5d6b3f;
+        --pill-bg-top: rgba(231, 241, 223, 0.98);
+        --pill-bg-bottom: rgba(212, 228, 196, 0.94);
+        --pill-border: rgba(163, 186, 138, 0.5);
+      }
+
+      .energy-color-pill.is-green .energy-color-dot {
+        background: #7fa66b;
+      }
+
+      .energy-color-pill.is-red {
+        --pill-ink: #9f5e5b;
+        --pill-bg-top: rgba(247, 228, 225, 0.98);
+        --pill-bg-bottom: rgba(237, 205, 200, 0.94);
+        --pill-border: rgba(211, 165, 159, 0.5);
+      }
+
+      .energy-color-pill.is-red .energy-color-dot {
+        background: #c97974;
+      }
+
+      .energy-color-pill.is-blue {
+        --pill-ink: #5f7491;
+        --pill-bg-top: rgba(229, 236, 246, 0.98);
+        --pill-bg-bottom: rgba(209, 221, 238, 0.94);
+        --pill-border: rgba(164, 185, 214, 0.5);
+      }
+
+      .energy-color-pill.is-blue .energy-color-dot {
+        background: #7f9cc5;
+      }
+
+      .energy-color-pill.is-yellow {
+        --pill-ink: #8e7a43;
+        --pill-bg-top: rgba(247, 240, 215, 0.98);
+        --pill-bg-bottom: rgba(239, 226, 183, 0.94);
+        --pill-border: rgba(210, 191, 128, 0.52);
+      }
+
+      .energy-color-pill.is-yellow .energy-color-dot {
+        background: #d1b75b;
+      }
+
+      .energy-color-pill.is-black {
+        --pill-ink: #5d5550;
+        --pill-bg-top: rgba(236, 232, 228, 0.98);
+        --pill-bg-bottom: rgba(218, 210, 203, 0.94);
+        --pill-border: rgba(166, 156, 149, 0.54);
+      }
+
+      .energy-color-pill.is-black .energy-color-dot {
+        background: #605955;
+      }
+
       .visual-card {
         padding: 12px;
         border-radius: 20px;
@@ -1030,6 +1174,149 @@
         line-height: 1.42;
         letter-spacing: 0.03em;
         text-shadow: 0 1px 0 rgba(255, 255, 255, 0.36);
+      }
+
+      .energy-compare-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        border-radius: 18px;
+        border: 1px solid rgba(179, 144, 116, 0.22);
+        background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(246, 238, 230, 0.84));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.54),
+          0 10px 22px rgba(93, 60, 38, 0.045);
+      }
+
+      .energy-compare-table th,
+      .energy-compare-table td {
+        padding: 16px 16px;
+        border-right: 1px solid rgba(190, 157, 129, 0.18);
+        border-bottom: 1px solid rgba(190, 157, 129, 0.18);
+        vertical-align: top;
+        text-align: left;
+      }
+
+      .energy-compare-table th:last-child,
+      .energy-compare-table td:last-child {
+        border-right: 0;
+      }
+
+      .energy-compare-table tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .energy-compare-table thead th {
+        background: linear-gradient(180deg, rgba(248, 235, 220, 0.98), rgba(240, 222, 204, 0.92));
+        color: rgba(120, 82, 62, 0.96);
+        font-size: 0.92rem;
+        font-weight: 700;
+        line-height: 1.55;
+        letter-spacing: 0.04em;
+      }
+
+      .energy-compare-table tbody td {
+        color: var(--ink);
+        font-size: 0.92rem;
+        line-height: 1.78;
+        letter-spacing: 0.02em;
+      }
+
+      .energy-compare-table .identity-cell {
+        width: 34%;
+        min-width: 230px;
+      }
+
+      .energy-compare-table .compare-cell {
+        width: 66%;
+      }
+
+      .energy-table-persona {
+        display: grid;
+        justify-items: start;
+        gap: 10px;
+      }
+
+      .energy-table-avatar {
+        flex: 0 0 98px;
+        width: 98px;
+        height: 98px;
+        aspect-ratio: 1 / 1;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 1px solid rgba(220, 193, 168, 0.56);
+        box-shadow:
+          0 0 0 4px rgba(255, 245, 233, 0.68),
+          0 10px 18px rgba(109, 76, 56, 0.08);
+        clip-path: circle(50% at 50% 50%);
+      }
+
+      .energy-table-avatar img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 999px;
+      }
+
+      .energy-table-name {
+        margin: 0;
+        color: var(--wine);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: 0.03em;
+        max-width: 10ch;
+      }
+
+      .energy-table-mobile-label {
+        display: none;
+      }
+
+      .response-note-card {
+        padding: 18px 18px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(184, 150, 123, 0.18);
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.94), rgba(244, 236, 228, 0.84));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.54),
+          0 10px 20px rgba(93, 60, 38, 0.045);
+      }
+
+      .response-note-card + .response-note-card {
+        margin-top: 10px;
+      }
+
+      .response-note-title {
+        margin: 0 0 8px;
+        color: rgba(106, 74, 57, 0.96);
+        font-size: 0.98rem;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: 0.025em;
+      }
+
+      .response-note-title em {
+        font-style: normal;
+        font-weight: 800;
+      }
+
+      .response-note-title.is-unhealthy em {
+        color: #b45b4f;
+      }
+
+      .response-note-title.is-healthy em {
+        color: #8d7a54;
+      }
+
+      .response-note-answer {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.96rem;
+        line-height: 1.84;
+        letter-spacing: 0.025em;
       }
 
       .stuck-grid {
@@ -1722,6 +2009,17 @@
           gap: 8px;
         }
 
+        .energy-color-legend {
+          gap: 8px;
+          margin-bottom: 12px;
+        }
+
+        .energy-color-pill {
+          min-height: 32px;
+          padding: 0 12px 0 10px;
+          font-size: 0.72rem;
+        }
+
         .final-cta-list {
           gap: 10px;
         }
@@ -1901,15 +2199,15 @@
         }
 
         .insight-avatar-wrap {
-          flex-basis: 46px;
-          width: 46px;
-          height: 46px;
-          padding: 2px;
+          flex-basis: 96px;
+          width: 96px;
+          height: 96px;
+          padding: 3px;
         }
 
         .insight-avatar-trigger {
-          flex-basis: 46px;
-          width: 46px;
+          flex-basis: 96px;
+          width: 96px;
         }
 
         .mini-guide-content .insight-grid {
@@ -1997,6 +2295,105 @@
         .energy-overview-card {
           padding: 11px;
           border-radius: 16px;
+        }
+
+        .energy-compare-table {
+          border-radius: 16px;
+        }
+
+        .energy-compare-table,
+        .energy-compare-table thead,
+        .energy-compare-table tbody,
+        .energy-compare-table tr,
+        .energy-compare-table th,
+        .energy-compare-table td {
+          display: block;
+        }
+
+        .energy-compare-table thead {
+          display: none;
+        }
+
+        .energy-compare-table tbody {
+          display: grid;
+          gap: 12px;
+        }
+
+        .energy-compare-table tr {
+          border: 1px solid rgba(190, 157, 129, 0.18);
+          border-radius: 16px;
+          overflow: hidden;
+          background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(244, 235, 226, 0.9));
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            0 8px 16px rgba(93, 60, 38, 0.04);
+        }
+
+        .energy-compare-table th,
+        .energy-compare-table td {
+          padding: 0;
+          border-right: 0;
+          border-bottom: 0;
+        }
+
+        .energy-compare-table .identity-cell {
+          width: auto;
+          min-width: 0;
+          padding: 14px 14px 10px;
+          border-bottom: 1px solid rgba(190, 157, 129, 0.16);
+        }
+
+        .energy-compare-table .compare-cell {
+          width: auto;
+          padding: 12px 14px 14px;
+        }
+
+        .energy-table-persona {
+          gap: 9px;
+        }
+
+        .energy-table-avatar {
+          flex-basis: 106px;
+          width: 106px;
+          height: 106px;
+        }
+
+        .energy-table-name {
+          font-size: 0.94rem;
+          line-height: 1.4;
+          max-width: none;
+        }
+
+        .energy-table-mobile-label {
+          display: inline-flex;
+          align-items: center;
+          width: fit-content;
+          min-height: 28px;
+          margin: 0 0 10px;
+          padding: 0 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(208, 170, 136, 0.36);
+          background: linear-gradient(180deg, rgba(244, 226, 207, 0.96), rgba(234, 207, 181, 0.9));
+          color: rgba(141, 97, 74, 0.96);
+          font-size: 0.68rem;
+          font-weight: 700;
+          line-height: 1;
+          letter-spacing: 0.08em;
+        }
+
+        .response-note-card {
+          padding: 15px 14px 14px;
+          border-radius: 16px;
+        }
+
+        .response-note-title {
+          font-size: 0.88rem;
+          line-height: 1.68;
+        }
+
+        .response-note-answer {
+          font-size: 0.9rem;
+          line-height: 1.8;
         }
       }
     </style>
@@ -2225,163 +2622,145 @@
             <div class="flow-body">
               <div class="flow-copy">
                 <div class="content-block">
+                  <div class="energy-color-legend" aria-label="五星戀愛能量顏色對照">
+                    <span class="energy-color-pill is-green" style="--legend-delay: 0s;"><span class="energy-color-dot" aria-hidden="true"></span>園丁擔當（比劫）</span>
+                    <span class="energy-color-pill is-red" style="--legend-delay: 0.08s;"><span class="energy-color-dot" aria-hidden="true"></span>花語蝴蝶（食傷）</span>
+                    <span class="energy-color-pill is-blue" style="--legend-delay: 0.16s;"><span class="energy-color-dot" aria-hidden="true"></span>土壤管家（財狩）</span>
+                    <span class="energy-color-pill is-yellow" style="--legend-delay: 0.24s;"><span class="energy-color-dot" aria-hidden="true"></span>花園守護者（官殺）</span>
+                    <span class="energy-color-pill is-black" style="--legend-delay: 0.32s;"><span class="energy-color-dot" aria-hidden="true"></span>微光精靈（印隱）</span>
+                  </div>
                   <div class="visual-gallery">
                     <article class="visual-card">
                       <h4 class="visual-title">1. 你最容易被什麼吸引</h4>
-                      <p class="mini-guide-note">把圖改成直式閱讀後，手機上可以直接往下看，不需要縮放。</p>
-                      <div class="insight-list">
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">園丁擔當（比劫）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">主動、坦率、豪氣、活潑、效率、掌控。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">生活體驗、感受、分享、互動、創意。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">土壤管家（財狩）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">務實、物質照顧、金錢安全感。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花園守護者（官殺）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">穩定、原則、承諾、規劃、秩序、光明。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">微光精靈（印隱）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">第一眼容易被吸引的特質</div><div class="insight-value">內斂、理解、親身照顧、陪伴、細膩。</div></div>
-                          </div>
-                        </article>
+                      <table class="energy-compare-table">
+                        <thead>
+                          <tr>
+                            <th>如果我擁有這種五星能量...</th>
+                            <th>初次相處，我會被擁有什麼能量的人吸引？</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="identity-cell">
+                              <div class="energy-table-persona">
+                                <a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><img src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></a>
+                                <h5 class="energy-table-name">園丁擔當（比劫）</h5>
+                              </div>
+                            </td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">初次相處的吸引點</div>園丁擔當（比劫）：主動、坦率、豪氣、活潑、效率、掌控</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell">
+                              <div class="energy-table-persona">
+                                <a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><img src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></a>
+                                <h5 class="energy-table-name">花語蝴蝶（食傷）</h5>
+                              </div>
+                            </td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">初次相處的吸引點</div>花語蝴蝶（食傷）：生活體驗、感受、分享、互動、創意</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell">
+                              <div class="energy-table-persona">
+                                <a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><img src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></a>
+                                <h5 class="energy-table-name">土壤管家（財狩）</h5>
+                              </div>
+                            </td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">初次相處的吸引點</div>土壤管家（財狩）：務實、物質照顧、金錢安全感</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell">
+                              <div class="energy-table-persona">
+                                <a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><img src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></a>
+                                <h5 class="energy-table-name">花園守護者（官殺）</h5>
+                              </div>
+                            </td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">初次相處的吸引點</div>花園守護者（官殺）：穩定、原則、承諾、規劃、秩序、光明</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell">
+                              <div class="energy-table-persona">
+                                <a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><img src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></a>
+                                <h5 class="energy-table-name">微光精靈（印隱）</h5>
+                              </div>
+                            </td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">初次相處的吸引點</div>微光精靈（印隱）：內斂、理解、親身照顧、陪伴、細膩</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="response-note-card">
+                        <p class="response-note-title is-unhealthy">這個吸引力的<em>不健康反應</em>是什麼？</p>
+                        <p class="response-note-answer">A：「因為我沒有，所以我好想要擁有」</p>
+                      </div>
+                      <div class="response-note-card">
+                        <p class="response-note-title is-healthy">這個吸引力的健康反應是什麼？</p>
+                        <p class="response-note-answer">A：「這個我也有，所以我不需要執著，我純粹欣賞他」</p>
                       </div>
                     </article>
                     <article class="visual-card">
                       <h4 class="visual-title">2. 每種能量常見卡點</h4>
-                      <div class="insight-list">
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">園丁擔當（比劫）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">強勢、控制欲強、過於直接、急躁、花錢太憑感覺。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">太追求感官體驗、忽略現實面、感受與決定容易突然改變。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">土壤管家（財狩）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">易聚焦現實而忽略情感交流、偏功利。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花園守護者（官殺）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">微光精靈（印隱）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">常見卡點</div><div class="insight-value">偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義。</div></div>
-                          </div>
-                        </article>
-                      </div>
+                      <table class="energy-compare-table">
+                        <thead>
+                          <tr>
+                            <th>我擁有的五星能量</th>
+                            <th>我可能的卡點是</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><img src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">園丁擔當（比劫）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">可能的卡點</div>強勢、控制欲強、過於直接、急躁、花錢太憑感覺</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><img src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">花語蝴蝶（食傷）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">可能的卡點</div>太追求感官體驗、忽略現實面、感受與決定容易突然改變</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><img src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">土壤管家（財狩）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">可能的卡點</div>易聚焦現實而忽略情感交流、偏功利</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><img src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">花園守護者（官殺）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">可能的卡點</div>保守、易擔心未知、太多規則而僵化、事情都攬在自己身上不願放手</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><img src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">微光精靈（印隱）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">可能的卡點</div>偏害怕溝通、偏被動、偏敏感、易想太多、易完美主義</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </article>
                     <article class="visual-card">
                       <h4 class="visual-title">3. 一開始不舒服，後來反而被吸引</h4>
-                      <p class="mini-guide-note">這裡看的是相處久了之後，哪些反差特質反而會慢慢變成吸引力。</p>
-                      <div class="insight-list">
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">園丁擔當（比劫）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">土壤管家（財狩）</div></div>
-                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">務實、物質照顧、金錢安全感。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花語蝴蝶（食傷）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">花園守護者（官殺）</div></div>
-                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">穩定、原則、承諾、規劃、秩序、光明。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">土壤管家（財狩）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">微光精靈（印隱）</div></div>
-                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">內斂、理解、親身照顧、陪伴、細膩。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">花園守護者（官殺）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">園丁擔當（比劫）</div></div>
-                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">主動、坦率、豪氣、活潑、效率、掌控。</div></div>
-                          </div>
-                        </article>
-                        <article class="insight-row">
-                          <div class="insight-row-head">
-                            <a class="flow-zoom-trigger insight-avatar-trigger" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><div class="insight-avatar-wrap"><img class="insight-avatar" src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></div></a>
-                            <h5 class="insight-name">微光精靈（印隱）</h5>
-                          </div>
-                          <div class="insight-grid">
-                            <div class="insight-pair"><div class="insight-label">後來反而可能被吸引的類型</div><div class="insight-value">花語蝴蝶（食傷）</div></div>
-                            <div class="insight-pair"><div class="insight-label">吸引原因</div><div class="insight-value">生活體驗、感受、分享、互動、創意。</div></div>
-                          </div>
-                        </article>
-                      </div>
+                      <table class="energy-compare-table">
+                        <thead>
+                          <tr>
+                            <th>如果我擁有這種五星能量...</th>
+                            <th>一開始不舒服，相處久一點，我卻可能被吸引？</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-gardener.png" aria-label="點開放大查看園丁擔當插畫"><img src="energy-gardener-thumb.webp" alt="園丁擔當插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">園丁擔當（比劫）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">後來反而被吸引</div>土壤管家（財狩）：務實、物質照顧、金錢安全感</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-butterfly.png" aria-label="點開放大查看花語蝴蝶插畫"><img src="energy-butterfly-thumb.webp" alt="花語蝴蝶插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">花語蝴蝶（食傷）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">後來反而被吸引</div>花園守護者（官殺）：穩定、原則、承諾、規劃、秩序、光明</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-soil.png" aria-label="點開放大查看土壤管家插畫"><img src="energy-soil-thumb.webp" alt="土壤管家插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">土壤管家（財狩）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">後來反而被吸引</div>微光精靈（印隱）：內斂、理解、親身照顧、陪伴、細膩</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-guardian.png" aria-label="點開放大查看花園守護者插畫"><img src="energy-guardian-thumb.webp" alt="花園守護者插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">花園守護者（官殺）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">後來反而被吸引</div>園丁擔當（比劫）：主動、坦率、豪氣、活潑、效率、掌控</td>
+                          </tr>
+                          <tr>
+                            <td class="identity-cell"><div class="energy-table-persona"><a class="flow-zoom-trigger energy-table-avatar" href="#flow-table-modal" data-full="energy-fairy.png" aria-label="點開放大查看微光精靈插畫"><img src="energy-fairy-thumb.webp" alt="微光精靈插畫" loading="lazy" decoding="async" /></a><h5 class="energy-table-name">微光精靈（印隱）</h5></div></td>
+                            <td class="compare-cell"><div class="energy-table-mobile-label">後來反而被吸引</div>花語蝴蝶（食傷）：生活體驗、感受、分享、互動、創意</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </article>
                   </div>
                 </div>
@@ -2755,6 +3134,11 @@
       </div>
   
       <script>
+        const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v1";
+        const FLOW_REMOTE_ENDPOINT_STORAGE_KEY = "bazi.flowControl.remoteEndpoint.v1";
+        const FLOW_REMOTE_DEFAULT_ENDPOINT = "";
+        const FLOW_REMOTE_TIMEOUT_MS = 4800;
+        const FLOW_REMOTE_POLL_MS = 3000;
         const panels = Array.from(document.querySelectorAll(".flow-panel"));
         const flowTableTriggers = Array.from(document.querySelectorAll(".flow-zoom-trigger"));
         const miniGuideButtons = Array.from(document.querySelectorAll(".mini-guide-button"));
@@ -2763,6 +3147,8 @@
         const flowLightboxClose = document.querySelector(".flow-lightbox-close");
         const flowLightboxImage = document.getElementById("flowLightboxImage");
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const flow8Panel = panels.find((panel) => panel.style.getPropertyValue("--delay") === "8");
+        const flow8LegendPills = flow8Panel ? Array.from(flow8Panel.querySelectorAll(".energy-color-pill")) : [];
         const finalJourneyPanel = panels.find((panel) => panel.style.getPropertyValue("--delay") === "15");
         const finalJourneyTypeTarget = finalJourneyPanel?.querySelector(".typewriter-text");
         const finalJourneyCaret = finalJourneyPanel?.querySelector(".typewriter-caret");
@@ -2773,6 +3159,48 @@
         const finalAboutActions = finalAboutPanel?.querySelector(".final-about-actions");
         let finalJourneyTypingTimer = null;
         let finalAboutTypingTimer = null;
+        let flowRemotePollingTimer = null;
+
+        const getPanelStepNumber = (panel) => Number(panel.style.getPropertyValue("--delay") || 0);
+        const clampFlowStep = (value) => Math.min(16, Math.max(1, value));
+        const isLikelyRemoteUrl = (value) => /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/i.test(value || "");
+        const getRemoteEndpoint = () => {
+          const stored = (window.localStorage.getItem(FLOW_REMOTE_ENDPOINT_STORAGE_KEY) || "").trim();
+          if (stored) return stored;
+          return FLOW_REMOTE_DEFAULT_ENDPOINT.trim();
+        };
+        const hasRemoteEndpoint = () => isLikelyRemoteUrl(getRemoteEndpoint());
+        const writeLocalUnlockedStep = (step) => {
+          const safeStep = clampFlowStep(step);
+          window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(safeStep));
+          return safeStep;
+        };
+        const fetchWithTimeout = async (url, options = {}) => {
+          const controller = new AbortController();
+          const timer = window.setTimeout(() => controller.abort(), FLOW_REMOTE_TIMEOUT_MS);
+          try {
+            return await fetch(url, { ...options, cache: "no-store", signal: controller.signal });
+          } finally {
+            window.clearTimeout(timer);
+          }
+        };
+
+        const readMaxUnlockedStep = () => {
+          const storedValue = window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY);
+          const parsedValue = Number(storedValue);
+          if (!Number.isFinite(parsedValue) || parsedValue < 1) return 16;
+          return clampFlowStep(parsedValue);
+        };
+
+        const applyFlowLocks = () => {
+          const maxUnlockedStep = readMaxUnlockedStep();
+          panels.forEach((panel) => {
+            const stepNumber = getPanelStepNumber(panel);
+            const isLocked = stepNumber > maxUnlockedStep;
+            panel.classList.toggle("is-locked", isLocked);
+            if (isLocked) panel.open = false;
+          });
+        };
 
         const finishFinalJourneyMessage = () => {
           if (!finalJourneyTypeTarget) return;
@@ -2868,8 +3296,64 @@
           finalAboutTypingTimer = window.setInterval(typeCurrentLine, 54);
         };
 
+        const startFlow8LegendAnimation = () => {
+          if (!flow8LegendPills.length) return;
+          if (prefersReducedMotion) {
+            flow8LegendPills.forEach((pill) => pill.classList.add("is-visible"));
+            return;
+          }
+          flow8LegendPills.forEach((pill) => pill.classList.remove("is-visible"));
+          window.setTimeout(() => {
+            flow8LegendPills.forEach((pill) => pill.classList.add("is-visible"));
+          }, 30);
+        };
+
+        const syncFlowRemoteState = async () => {
+          if (!hasRemoteEndpoint()) return false;
+          const endpoint = getRemoteEndpoint();
+          const response = await fetchWithTimeout(`${endpoint}${endpoint.includes("?") ? "&" : "?"}mode=get`);
+          if (!response.ok) throw new Error(`遠端狀態讀取失敗 (${response.status})`);
+          const data = await response.json();
+          if (!data || !data.ok) throw new Error(data?.message || "遠端狀態格式不正確");
+          const remoteStep = clampFlowStep(Number(data.maxUnlockedStep || 16));
+          const localStep = readMaxUnlockedStep();
+          if (remoteStep !== localStep) {
+            writeLocalUnlockedStep(remoteStep);
+            applyFlowLocks();
+          }
+          return true;
+        };
+
+        const startFlowRemotePolling = () => {
+          if (flowRemotePollingTimer) {
+            window.clearInterval(flowRemotePollingTimer);
+            flowRemotePollingTimer = null;
+          }
+          if (!hasRemoteEndpoint()) return;
+          flowRemotePollingTimer = window.setInterval(() => {
+            syncFlowRemoteState().catch(() => {});
+          }, FLOW_REMOTE_POLL_MS);
+        };
+
+        applyFlowLocks();
+        syncFlowRemoteState().catch(() => {});
+        startFlowRemotePolling();
+
         panels.forEach((panel) => {
+          const summary = panel.querySelector(".flow-summary");
+          if (summary) {
+            summary.addEventListener("click", (event) => {
+              if (!panel.classList.contains("is-locked")) return;
+              event.preventDefault();
+              event.stopPropagation();
+            });
+          }
+
           panel.addEventListener("toggle", () => {
+            if (panel.classList.contains("is-locked")) {
+              panel.open = false;
+              return;
+            }
             if (panel.classList.contains("flow-panel-static")) {
               panel.open = false;
               return;
@@ -2880,6 +3364,9 @@
             });
             if (panel === finalJourneyPanel) {
               startFinalJourneyTyping();
+            }
+            if (panel === flow8Panel) {
+              startFlow8LegendAnimation();
             }
             if (panel === finalAboutPanel) {
               startFinalAboutTyping();
@@ -2976,6 +3463,26 @@
 
         document.addEventListener("keydown", (event) => {
           if (event.key === "Escape") closeFlowLightbox();
+        });
+
+        window.addEventListener("storage", (event) => {
+          if (event.key === FLOW_REMOTE_ENDPOINT_STORAGE_KEY) {
+            startFlowRemotePolling();
+            syncFlowRemoteState().catch(() => {});
+            return;
+          }
+          if (event.key !== FLOW_CONTROL_STORAGE_KEY) return;
+          applyFlowLocks();
+        });
+
+        window.addEventListener("focus", () => {
+          syncFlowRemoteState().catch(() => {});
+        });
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "visible") {
+            syncFlowRemoteState().catch(() => {});
+          }
         });
       </script>
     </body>

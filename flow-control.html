@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流程控制後台</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6efe7;
+        --panel: rgba(255, 252, 248, 0.92);
+        --panel-strong: rgba(255, 248, 241, 0.98);
+        --line: rgba(190, 157, 129, 0.22);
+        --wine: #8c6454;
+        --ink: #6f564a;
+        --soft: #9b7e70;
+        --accent: #dcb993;
+        --accent-strong: #cda47a;
+        --ok: #7a9461;
+        --locked: #b48c76;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+        background:
+          radial-gradient(circle at top, rgba(255, 249, 242, 0.88), transparent 42%),
+          linear-gradient(180deg, #f7f1ea 0%, #efe3d6 100%);
+        color: var(--ink);
+      }
+
+      .shell {
+        width: min(980px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 28px 0 48px;
+      }
+
+      .hero,
+      .board,
+      .step-card {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.72),
+          0 14px 30px rgba(110, 78, 57, 0.06);
+      }
+
+      .hero {
+        padding: 24px 22px;
+        border-radius: 28px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        min-height: 31px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        color: var(--wine);
+        font-size: clamp(1.55rem, 4vw, 2.4rem);
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--soft);
+        font-size: 0.96rem;
+        line-height: 1.78;
+      }
+
+      .board {
+        margin-top: 18px;
+        padding: 20px;
+        border-radius: 26px;
+      }
+
+      .status-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .sync-stack {
+        margin-top: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .endpoint-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .endpoint-input {
+        width: 100%;
+        min-height: 46px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(190, 157, 129, 0.3);
+        background: rgba(255, 251, 246, 0.96);
+        color: var(--wine);
+        font: inherit;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.74);
+      }
+
+      .endpoint-input::placeholder {
+        color: rgba(140, 100, 84, 0.52);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, rgba(255, 247, 239, 0.98), rgba(243, 229, 212, 0.92));
+        border: 1px solid rgba(206, 172, 141, 0.4);
+        color: var(--wine);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .status-pill.is-remote {
+        background: linear-gradient(180deg, rgba(248, 238, 225, 0.98), rgba(237, 220, 202, 0.94));
+        border-color: rgba(194, 151, 114, 0.42);
+      }
+
+      .status-pill.is-local {
+        background: linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(245, 236, 226, 0.94));
+      }
+
+      .quick-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      button,
+      a.quick-link {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font: inherit;
+      }
+
+      .quick-btn,
+      .step-action,
+      .quick-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(186, 149, 118, 0.34);
+        background: linear-gradient(180deg, rgba(247, 232, 216, 0.98), rgba(233, 212, 192, 0.94));
+        color: var(--wine);
+        box-shadow:
+          0 8px 16px rgba(96, 60, 41, 0.08),
+          inset 0 1px 0 rgba(255, 246, 237, 0.76);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .quick-btn:hover,
+      .step-action:hover,
+      .quick-link:hover {
+        transform: translateY(-1px);
+        box-shadow:
+          0 10px 18px rgba(96, 60, 41, 0.1),
+          inset 0 1px 0 rgba(255, 246, 237, 0.82);
+      }
+
+      .steps {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .step-card {
+        padding: 14px;
+        border-radius: 22px;
+      }
+
+      .step-card.is-current {
+        border-color: rgba(190, 145, 105, 0.42);
+        background: linear-gradient(180deg, rgba(255, 251, 246, 0.98), rgba(243, 231, 219, 0.92));
+      }
+
+      .step-card.is-locked {
+        opacity: 0.7;
+      }
+
+      .step-row {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) auto;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .step-no {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        border: 1px solid rgba(206, 172, 141, 0.38);
+        background: linear-gradient(180deg, rgba(255, 249, 242, 0.98), rgba(244, 233, 221, 0.94));
+        color: var(--wine);
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .step-title {
+        margin: 0;
+        color: var(--wine);
+        font-size: 1.02rem;
+        line-height: 1.5;
+        letter-spacing: 0.025em;
+      }
+
+      .step-meta {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 11px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .meta-pill.is-open {
+        background: rgba(230, 242, 220, 0.92);
+        color: var(--ok);
+      }
+
+      .meta-pill.is-lock {
+        background: rgba(241, 228, 219, 0.92);
+        color: var(--locked);
+      }
+
+      .step-action.is-active {
+        background: linear-gradient(180deg, rgba(210, 171, 136, 0.98), rgba(190, 144, 105, 0.96));
+        color: #fff8f2;
+        border-color: rgba(179, 130, 94, 0.4);
+      }
+
+      .footer-note {
+        margin-top: 16px;
+        color: var(--soft);
+        font-size: 0.86rem;
+        line-height: 1.7;
+      }
+
+      .sync-note {
+        margin: 0;
+        color: var(--soft);
+        font-size: 0.84rem;
+        line-height: 1.72;
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          width: min(100% - 20px, 100%);
+          padding: 18px 0 32px;
+        }
+
+        .hero,
+        .board {
+          border-radius: 22px;
+        }
+
+        .board {
+          padding: 16px;
+        }
+
+        .step-row {
+          grid-template-columns: 48px minmax(0, 1fr);
+        }
+
+        .step-no {
+          width: 48px;
+          height: 48px;
+          border-radius: 15px;
+          font-size: 0.92rem;
+        }
+
+        .step-action {
+          grid-column: 1 / -1;
+          width: 100%;
+          margin-top: 4px;
+        }
+
+        .endpoint-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">FLOW CONTROL</div>
+        <h1>流程控制後台</h1>
+        <p>點到哪一個流程，學員頁面就會自動開放到那裡；後面的流程會先鎖住。現場控制最快，也最不容易誤觸。</p>
+      </section>
+
+      <section class="board">
+        <div class="status-row">
+          <div class="status-pill" id="currentStatus">目前開放到：第 16 流程</div>
+          <div class="quick-actions">
+            <button class="quick-btn" id="prevStepBtn" type="button">上一個流程</button>
+            <button class="quick-btn" id="nextStepBtn" type="button">下一個流程</button>
+            <button class="quick-btn" id="openAllBtn" type="button">全部開放</button>
+            <button class="quick-btn" id="lockAllBtn" type="button">只留第一步</button>
+            <a class="quick-link" href="./flow.html" target="_blank" rel="noreferrer">打開學員頁</a>
+          </div>
+        </div>
+
+        <div class="sync-stack">
+          <div class="status-pill is-local" id="syncModeStatus">目前模式：同裝置同步</div>
+          <div class="endpoint-row">
+            <input class="endpoint-input" id="remoteEndpointInput" type="url" inputmode="url" placeholder="貼上 Apps Script Web App 網址後，就能用手機遠端控制現場頁面" />
+            <button class="quick-btn" id="saveEndpointBtn" type="button">儲存網址</button>
+            <button class="quick-btn" id="testEndpointBtn" type="button">測試連線</button>
+          </div>
+          <p class="sync-note" id="syncNote">還沒設定遠端網址前，這個後台會先使用目前裝置同步。設定完成後，手機與電腦就能一起連到同一個流程狀態。</p>
+        </div>
+
+        <div class="steps" id="stepsBoard"></div>
+
+        <p class="footer-note">後台會優先寫入遠端控制狀態；如果遠端網址還沒設定，則先退回同裝置同步，不會讓現場完全不能用。</p>
+      </section>
+    </main>
+
+    <script>
+      const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v1";
+      const FLOW_REMOTE_ENDPOINT_STORAGE_KEY = "bazi.flowControl.remoteEndpoint.v1";
+      const FLOW_REMOTE_DEFAULT_ENDPOINT = "";
+      const FLOW_REMOTE_TIMEOUT_MS = 4800;
+      const flowSteps = [
+        { step: 1, title: "輕鬆進場" },
+        { step: 2, title: "入場報到" },
+        { step: 3, title: "溫暖的開場" },
+        { step: 4, title: "戀愛習慣找找看" },
+        { step: 5, title: "簡單自介" },
+        { step: 6, title: "五星戀愛能量簡介" },
+        { step: 7, title: "第一輪「猜猜看」交流" },
+        { step: 8, title: "五星戀愛能量大公開！" },
+        { step: 9, title: "第二輪「同能量者」交流" },
+        { step: 10, title: "更仔細瞭解五星戀愛能量" },
+        { step: 11, title: "第三輪「不同能量者」交流" },
+        { step: 12, title: "智堯收斂結語" },
+        { step: 13, title: "填寫學習筆記" },
+        { step: 14, title: "填寫回饋單＋自由分享" },
+        { step: 15, title: "顯化理想伴侶的下一站" },
+        { step: 16, title: "最後，我們想跟你說" }
+      ];
+
+      const stepsBoard = document.getElementById("stepsBoard");
+      const currentStatus = document.getElementById("currentStatus");
+      const syncModeStatus = document.getElementById("syncModeStatus");
+      const syncNote = document.getElementById("syncNote");
+      const prevStepBtn = document.getElementById("prevStepBtn");
+      const nextStepBtn = document.getElementById("nextStepBtn");
+      const openAllBtn = document.getElementById("openAllBtn");
+      const lockAllBtn = document.getElementById("lockAllBtn");
+      const remoteEndpointInput = document.getElementById("remoteEndpointInput");
+      const saveEndpointBtn = document.getElementById("saveEndpointBtn");
+      const testEndpointBtn = document.getElementById("testEndpointBtn");
+      let lastRemoteMeta = null;
+
+      const clampStep = (value) => Math.min(16, Math.max(1, value));
+      const isLikelyUrl = (value) => /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/i.test(value || "");
+      const getStoredRemoteEndpoint = () => (window.localStorage.getItem(FLOW_REMOTE_ENDPOINT_STORAGE_KEY) || "").trim();
+      const getRemoteEndpoint = () => {
+        const stored = getStoredRemoteEndpoint();
+        if (stored) return stored;
+        return FLOW_REMOTE_DEFAULT_ENDPOINT.trim();
+      };
+      const hasRemoteEndpoint = () => isLikelyUrl(getRemoteEndpoint());
+      const setSyncNote = (message) => {
+        if (message) syncNote.textContent = message;
+      };
+      const updateSyncModeUi = () => {
+        const endpoint = getRemoteEndpoint();
+        const remoteReady = hasRemoteEndpoint();
+        remoteEndpointInput.value = endpoint;
+        syncModeStatus.classList.toggle("is-remote", remoteReady);
+        syncModeStatus.classList.toggle("is-local", !remoteReady);
+        syncModeStatus.textContent = remoteReady ? "目前模式：手機與電腦遠端同步" : "目前模式：同裝置同步";
+        if (!remoteReady) {
+          setSyncNote("還沒設定遠端網址前，這個後台會先使用目前裝置同步。設定完成後，手機與電腦就能一起連到同一個流程狀態。");
+          return;
+        }
+        if (lastRemoteMeta?.updatedAt) {
+          const extra = lastRemoteMeta.updatedBy ? `・${lastRemoteMeta.updatedBy}` : "";
+          setSyncNote(`遠端控制已啟用，最後同步時間：${lastRemoteMeta.updatedAt}${extra}`);
+        } else {
+          setSyncNote("遠端控制已啟用。你現在用手機調整流程，現場學員頁會跟著同步。");
+        }
+      };
+
+      const fetchWithTimeout = async (url, options = {}) => {
+        const controller = new AbortController();
+        const timer = window.setTimeout(() => controller.abort(), FLOW_REMOTE_TIMEOUT_MS);
+        try {
+          return await fetch(url, { ...options, cache: "no-store", signal: controller.signal });
+        } finally {
+          window.clearTimeout(timer);
+        }
+      };
+
+      const readCurrentStep = () => {
+        const stored = Number(window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY));
+        if (!Number.isFinite(stored)) return 16;
+        return clampStep(stored);
+      };
+
+      const saveLocalCurrentStep = (step) => {
+        const safeStep = clampStep(step);
+        window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(safeStep));
+        return safeStep;
+      };
+
+      const pullRemoteState = async () => {
+        if (!hasRemoteEndpoint()) return null;
+        const endpoint = getRemoteEndpoint();
+        const response = await fetchWithTimeout(`${endpoint}${endpoint.includes("?") ? "&" : "?"}mode=get`);
+        if (!response.ok) throw new Error(`遠端讀取失敗 (${response.status})`);
+        const data = await response.json();
+        if (!data || !data.ok) throw new Error(data?.message || "遠端資料格式不正確");
+        const step = clampStep(Number(data.maxUnlockedStep || 16));
+        saveLocalCurrentStep(step);
+        lastRemoteMeta = {
+          updatedAt: data.updatedAt || "",
+          updatedBy: data.updatedBy || "",
+          updatedFrom: data.updatedFrom || ""
+        };
+        return step;
+      };
+
+      const pushRemoteState = async (step) => {
+        if (!hasRemoteEndpoint()) return { mode: "local" };
+        const endpoint = getRemoteEndpoint();
+        const safeStep = clampStep(step);
+        const response = await fetchWithTimeout(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=UTF-8" },
+          body: JSON.stringify({
+            maxUnlockedStep: safeStep,
+            updatedBy: "流程控制後台",
+            updatedFrom: `${window.location.pathname.split("/").pop() || "flow-control.html"}@${navigator.userAgent.includes("Mobile") ? "mobile" : "desktop"}`
+          })
+        });
+        if (!response.ok) throw new Error(`遠端寫入失敗 (${response.status})`);
+        const data = await response.json();
+        if (!data || !data.ok) throw new Error(data?.message || "遠端回傳格式不正確");
+        lastRemoteMeta = {
+          updatedAt: data.updatedAt || "",
+          updatedBy: data.updatedBy || "",
+          updatedFrom: data.updatedFrom || ""
+        };
+        return { mode: "remote", step: clampStep(Number(data.maxUnlockedStep || safeStep)) };
+      };
+
+      const saveCurrentStep = async (step) => {
+        const safeStep = saveLocalCurrentStep(step);
+        render();
+        try {
+          const result = await pushRemoteState(safeStep);
+          if (result?.step) saveLocalCurrentStep(result.step);
+          updateSyncModeUi();
+          render();
+        } catch (error) {
+          setSyncNote(`已先在本機切換到第 ${safeStep} 流程；遠端同步暫時失敗：${error.message}`);
+          updateSyncModeUi();
+        }
+      };
+
+      const render = () => {
+        const currentStep = readCurrentStep();
+        const activeFlow = flowSteps.find((item) => item.step === currentStep);
+        currentStatus.textContent = `目前開放到：第 ${currentStep} 流程${activeFlow ? `・${activeFlow.title}` : ""}`;
+
+        prevStepBtn.disabled = currentStep <= 1;
+        nextStepBtn.disabled = currentStep >= 16;
+
+        stepsBoard.innerHTML = flowSteps.map((item) => {
+          const isOpen = item.step <= currentStep;
+          const isCurrent = item.step === currentStep;
+          return `
+            <article class="step-card${isCurrent ? " is-current" : ""}${!isOpen ? " is-locked" : ""}">
+              <div class="step-row">
+                <div class="step-no">${item.step}</div>
+                <div>
+                  <h2 class="step-title">${item.title}</h2>
+                  <div class="step-meta">
+                    <span class="meta-pill ${isOpen ? "is-open" : "is-lock"}">${isOpen ? "已開放" : "未開放"}</span>
+                    ${isCurrent ? '<span class="meta-pill is-open">目前進行中</span>' : ""}
+                  </div>
+                </div>
+                <button class="step-action${isCurrent ? " is-active" : ""}" type="button" data-step="${item.step}">
+                  ${isCurrent ? "現在開到這裡" : "開到這裡"}
+                </button>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        stepsBoard.querySelectorAll(".step-action").forEach((button) => {
+          button.addEventListener("click", () => {
+            saveCurrentStep(Number(button.dataset.step));
+          });
+        });
+
+        updateSyncModeUi();
+      };
+
+      prevStepBtn.addEventListener("click", () => {
+        saveCurrentStep(readCurrentStep() - 1);
+      });
+
+      nextStepBtn.addEventListener("click", () => {
+        saveCurrentStep(readCurrentStep() + 1);
+      });
+
+      openAllBtn.addEventListener("click", () => {
+        saveCurrentStep(16);
+      });
+
+      lockAllBtn.addEventListener("click", () => {
+        saveCurrentStep(1);
+      });
+
+      saveEndpointBtn.addEventListener("click", async () => {
+        const value = remoteEndpointInput.value.trim();
+        if (!value) {
+          window.localStorage.removeItem(FLOW_REMOTE_ENDPOINT_STORAGE_KEY);
+          lastRemoteMeta = null;
+          updateSyncModeUi();
+          render();
+          return;
+        }
+        if (!isLikelyUrl(value)) {
+          setSyncNote("這個網址看起來不是 Apps Script Web App 的 `.../exec` 網址，先幫你保留原本設定。");
+          remoteEndpointInput.value = getRemoteEndpoint();
+          return;
+        }
+        window.localStorage.setItem(FLOW_REMOTE_ENDPOINT_STORAGE_KEY, value);
+        try {
+          await pullRemoteState();
+          updateSyncModeUi();
+          render();
+        } catch (error) {
+          setSyncNote(`網址已存好，但現在還連不上遠端：${error.message}`);
+          updateSyncModeUi();
+        }
+      });
+
+      testEndpointBtn.addEventListener("click", async () => {
+        if (!hasRemoteEndpoint()) {
+          setSyncNote("先貼上 Apps Script Web App 網址，再測試遠端控制。");
+          updateSyncModeUi();
+          return;
+        }
+        try {
+          const step = await pullRemoteState();
+          setSyncNote(`遠端連線正常，目前共享狀態是第 ${step} 流程。`);
+          updateSyncModeUi();
+          render();
+        } catch (error) {
+          setSyncNote(`遠端連線失敗：${error.message}`);
+          updateSyncModeUi();
+        }
+      });
+
+      window.addEventListener("storage", (event) => {
+        if (event.key !== FLOW_CONTROL_STORAGE_KEY && event.key !== FLOW_REMOTE_ENDPOINT_STORAGE_KEY) return;
+        render();
+      });
+
+      if (hasRemoteEndpoint()) {
+        pullRemoteState().catch((error) => {
+          setSyncNote(`遠端網址已載入，但目前抓不到共享狀態：${error.message}`);
+          updateSyncModeUi();
+        });
+      } else {
+        updateSyncModeUi();
+      }
+
+      render();
+    </script>
+  </body>
+</html>
