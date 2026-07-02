@@ -193,6 +193,15 @@
           inset 0 1px 0 rgba(255, 246, 237, 0.82);
       }
 
+      .quick-btn:disabled {
+        cursor: default;
+        opacity: 0.45;
+        transform: none;
+        box-shadow:
+          0 4px 10px rgba(96, 60, 41, 0.04),
+          inset 0 1px 0 rgba(255, 246, 237, 0.62);
+      }
+
       .steps {
         margin-top: 18px;
         display: grid;
@@ -333,15 +342,13 @@
       <section class="hero">
         <div class="eyebrow">FLOW CONTROL</div>
         <h1>流程控制後台</h1>
-        <p>點到哪一個流程，學員頁面就會自動開放到那裡；後面的流程會先鎖住。現場控制最快，也最不容易誤觸。</p>
+        <p>每一個流程都可以個別開啟或關閉。你現場只要勾選已開放的流程，學員頁就會同步顯示，不用被順序綁住。</p>
       </section>
 
       <section class="board">
         <div class="status-row">
-          <div class="status-pill" id="currentStatus">目前開放到：第 16 流程</div>
+          <div class="status-pill" id="currentStatus">目前已開放：16 個流程</div>
           <div class="quick-actions">
-            <button class="quick-btn" id="prevStepBtn" type="button">上一個流程</button>
-            <button class="quick-btn" id="nextStepBtn" type="button">下一個流程</button>
             <button class="quick-btn" id="openAllBtn" type="button">全部開放</button>
             <button class="quick-btn" id="lockAllBtn" type="button">只留第一步</button>
             <a class="quick-link" href="./flow.html" target="_blank" rel="noreferrer">打開學員頁</a>
@@ -365,7 +372,8 @@
     </main>
 
     <script>
-      const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v1";
+      const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v2";
+      const FLOW_OPEN_STEPS_STORAGE_KEY = "bazi.flowControl.openSteps.v2";
       const FLOW_REMOTE_ENDPOINT_STORAGE_KEY = "bazi.flowControl.remoteEndpoint.v1";
       const FLOW_REMOTE_DEFAULT_ENDPOINT = "https://script.google.com/macros/s/AKfycbw-4I2yeVNUs2YCxz0ap6jEsNgoDY8913i4I69iwh-RAqy6SriJeJHmEvIThRKWcryvDw/exec";
       const FLOW_REMOTE_TIMEOUT_MS = 4800;
@@ -392,8 +400,6 @@
       const currentStatus = document.getElementById("currentStatus");
       const syncModeStatus = document.getElementById("syncModeStatus");
       const syncNote = document.getElementById("syncNote");
-      const prevStepBtn = document.getElementById("prevStepBtn");
-      const nextStepBtn = document.getElementById("nextStepBtn");
       const openAllBtn = document.getElementById("openAllBtn");
       const lockAllBtn = document.getElementById("lockAllBtn");
       const remoteEndpointInput = document.getElementById("remoteEndpointInput");
@@ -402,6 +408,13 @@
       let lastRemoteMeta = null;
 
       const clampStep = (value) => Math.min(16, Math.max(1, value));
+      const normalizeOpenSteps = (steps) => {
+        const values = Array.isArray(steps) && steps.length ? steps : flowSteps.map((item) => item.step);
+        return values
+          .map((value) => clampStep(Number(value)))
+          .filter((value, index, array) => Number.isFinite(value) && array.indexOf(value) === index)
+          .sort((a, b) => a - b);
+      };
       const isLikelyUrl = (value) => /^https:\/\/script\.google\.com\/macros\/s\/.+\/exec(?:\?.*)?$/i.test(value || "");
       const getStoredRemoteEndpoint = () => (window.localStorage.getItem(FLOW_REMOTE_ENDPOINT_STORAGE_KEY) || "").trim();
       const getRemoteEndpoint = () => {
@@ -442,16 +455,26 @@
         }
       };
 
-      const readCurrentStep = () => {
-        const stored = Number(window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY));
-        if (!Number.isFinite(stored)) return 16;
-        return clampStep(stored);
+      const readOpenSteps = () => {
+        const stored = window.localStorage.getItem(FLOW_OPEN_STEPS_STORAGE_KEY);
+        if (stored) {
+          try {
+            return normalizeOpenSteps(JSON.parse(stored));
+          } catch (error) {}
+        }
+        const storedMax = Number(window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY));
+        if (Number.isFinite(storedMax) && storedMax >= 1) {
+          return normalizeOpenSteps(flowSteps.filter((item) => item.step <= clampStep(storedMax)).map((item) => item.step));
+        }
+        return normalizeOpenSteps(flowSteps.map((item) => item.step));
       };
 
-      const saveLocalCurrentStep = (step) => {
-        const safeStep = clampStep(step);
-        window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(safeStep));
-        return safeStep;
+      const saveLocalOpenSteps = (steps) => {
+        const safeSteps = normalizeOpenSteps(steps);
+        const maxStep = safeSteps.length ? safeSteps[safeSteps.length - 1] : 1;
+        window.localStorage.setItem(FLOW_OPEN_STEPS_STORAGE_KEY, JSON.stringify(safeSteps));
+        window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(maxStep));
+        return safeSteps;
       };
 
       const pullRemoteState = async () => {
@@ -461,25 +484,26 @@
         if (!response.ok) throw new Error(`遠端讀取失敗 (${response.status})`);
         const data = await response.json();
         if (!data || !data.ok) throw new Error(data?.message || "遠端資料格式不正確");
-        const step = clampStep(Number(data.maxUnlockedStep || 16));
-        saveLocalCurrentStep(step);
+        const openSteps = normalizeOpenSteps(Array.isArray(data.openSteps) ? data.openSteps : flowSteps.filter((item) => item.step <= clampStep(Number(data.maxUnlockedStep || 16))).map((item) => item.step));
+        saveLocalOpenSteps(openSteps);
         lastRemoteMeta = {
           updatedAt: data.updatedAt || "",
           updatedBy: data.updatedBy || "",
           updatedFrom: data.updatedFrom || ""
         };
-        return step;
+        return openSteps;
       };
 
-      const pushRemoteState = async (step) => {
+      const pushRemoteState = async (steps) => {
         if (!hasRemoteEndpoint()) return { mode: "local" };
         const endpoint = getRemoteEndpoint();
-        const safeStep = clampStep(step);
+        const safeSteps = saveLocalOpenSteps(steps);
         const response = await fetchWithTimeout(endpoint, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=UTF-8" },
           body: JSON.stringify({
-            maxUnlockedStep: safeStep,
+            maxUnlockedStep: safeSteps.length ? safeSteps[safeSteps.length - 1] : 1,
+            openSteps: safeSteps,
             updatedBy: "流程控制後台",
             updatedFrom: `${window.location.pathname.split("/").pop() || "flow-control.html"}@${navigator.userAgent.includes("Mobile") ? "mobile" : "desktop"}`
           })
@@ -492,47 +516,47 @@
           updatedBy: data.updatedBy || "",
           updatedFrom: data.updatedFrom || ""
         };
-        return { mode: "remote", step: clampStep(Number(data.maxUnlockedStep || safeStep)) };
+        return { mode: "remote", openSteps: normalizeOpenSteps(Array.isArray(data.openSteps) ? data.openSteps : safeSteps) };
       };
 
-      const saveCurrentStep = async (step) => {
-        const safeStep = saveLocalCurrentStep(step);
+      const saveOpenSteps = async (steps) => {
+        const safeSteps = saveLocalOpenSteps(steps);
         render();
         try {
-          const result = await pushRemoteState(safeStep);
-          if (result?.step) saveLocalCurrentStep(result.step);
+          const result = await pushRemoteState(safeSteps);
+          if (result?.openSteps) saveLocalOpenSteps(result.openSteps);
           updateSyncModeUi();
           render();
         } catch (error) {
-          setSyncNote(`已先在本機切換到第 ${safeStep} 流程；遠端同步暫時失敗：${error.message}`);
+          setSyncNote(`已先在本機更新流程開放狀態；遠端同步暫時失敗：${error.message}`);
           updateSyncModeUi();
         }
       };
 
       const render = () => {
-        const currentStep = readCurrentStep();
-        const activeFlow = flowSteps.find((item) => item.step === currentStep);
-        currentStatus.textContent = `目前開放到：第 ${currentStep} 流程${activeFlow ? `・${activeFlow.title}` : ""}`;
-
-        prevStepBtn.disabled = currentStep <= 1;
-        nextStepBtn.disabled = currentStep >= 16;
+        const openSteps = readOpenSteps();
+        const openStepSet = new Set(openSteps);
+        const lastOpenStep = openSteps.length ? openSteps[openSteps.length - 1] : 0;
+        const lastOpenFlow = flowSteps.find((item) => item.step === lastOpenStep);
+        currentStatus.textContent = `目前已開放：${openSteps.length} 個流程${lastOpenFlow ? `・最後一個是第 ${lastOpenStep} 流程` : ""}`;
+        openAllBtn.disabled = openSteps.length === flowSteps.length;
+        lockAllBtn.disabled = openSteps.length === 1 && openStepSet.has(1);
 
         stepsBoard.innerHTML = flowSteps.map((item) => {
-          const isOpen = item.step <= currentStep;
-          const isCurrent = item.step === currentStep;
+          const isOpen = openStepSet.has(item.step);
           return `
-            <article class="step-card${isCurrent ? " is-current" : ""}${!isOpen ? " is-locked" : ""}">
+            <article class="step-card${isOpen ? " is-current" : ""}${!isOpen ? " is-locked" : ""}">
               <div class="step-row">
                 <div class="step-no">${item.step}</div>
                 <div>
                   <h2 class="step-title">${item.title}</h2>
                   <div class="step-meta">
                     <span class="meta-pill ${isOpen ? "is-open" : "is-lock"}">${isOpen ? "已開放" : "未開放"}</span>
-                    ${isCurrent ? '<span class="meta-pill is-open">目前進行中</span>' : ""}
+                    ${lastOpenStep === item.step ? '<span class="meta-pill is-open">目前最後開到這裡</span>' : ""}
                   </div>
                 </div>
-                <button class="step-action${isCurrent ? " is-active" : ""}" type="button" data-step="${item.step}">
-                  ${isCurrent ? "現在開到這裡" : "開到這裡"}
+                <button class="step-action${isOpen ? " is-active" : ""}" type="button" data-step="${item.step}" data-open="${isOpen ? "true" : "false"}">
+                  ${isOpen ? "關閉這一步" : "開啟這一步"}
                 </button>
               </div>
             </article>
@@ -541,27 +565,24 @@
 
         stepsBoard.querySelectorAll(".step-action").forEach((button) => {
           button.addEventListener("click", () => {
-            saveCurrentStep(Number(button.dataset.step));
+            const step = Number(button.dataset.step);
+            const isOpen = button.dataset.open === "true";
+            const nextOpenSteps = isOpen
+              ? readOpenSteps().filter((value) => value !== step)
+              : [...readOpenSteps(), step];
+            saveOpenSteps(nextOpenSteps);
           });
         });
 
         updateSyncModeUi();
       };
 
-      prevStepBtn.addEventListener("click", () => {
-        saveCurrentStep(readCurrentStep() - 1);
-      });
-
-      nextStepBtn.addEventListener("click", () => {
-        saveCurrentStep(readCurrentStep() + 1);
-      });
-
       openAllBtn.addEventListener("click", () => {
-        saveCurrentStep(16);
+        saveOpenSteps(flowSteps.map((item) => item.step));
       });
 
       lockAllBtn.addEventListener("click", () => {
-        saveCurrentStep(1);
+        saveOpenSteps([1]);
       });
 
       saveEndpointBtn.addEventListener("click", async () => {
@@ -596,8 +617,8 @@
           return;
         }
         try {
-          const step = await pullRemoteState();
-          setSyncNote(`遠端連線正常，目前共享狀態是第 ${step} 流程。`);
+          const openSteps = await pullRemoteState();
+          setSyncNote(`遠端連線正常，目前共享狀態已開放 ${openSteps.length} 個流程。`);
           updateSyncModeUi();
           render();
         } catch (error) {
@@ -607,7 +628,7 @@
       });
 
       window.addEventListener("storage", (event) => {
-        if (event.key !== FLOW_CONTROL_STORAGE_KEY && event.key !== FLOW_REMOTE_ENDPOINT_STORAGE_KEY) return;
+        if (event.key !== FLOW_CONTROL_STORAGE_KEY && event.key !== FLOW_OPEN_STEPS_STORAGE_KEY && event.key !== FLOW_REMOTE_ENDPOINT_STORAGE_KEY) return;
         render();
       });
 

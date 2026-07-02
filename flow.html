@@ -406,18 +406,12 @@
         opacity: 0.72;
       }
 
-      .flow-panel.is-locked {
-        opacity: 0.62;
-      }
-
       .flow-panel.is-locked .flow-summary {
         cursor: not-allowed;
+        opacity: 0.52;
       }
 
       .flow-panel.is-locked .flow-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         border-color: rgba(189, 165, 145, 0.88);
         background: linear-gradient(180deg, rgba(244, 238, 232, 0.98), rgba(232, 223, 214, 0.96));
         box-shadow:
@@ -426,24 +420,25 @@
           inset 0 1px 0 rgba(255, 251, 247, 0.82),
           inset 0 -1px 0 rgba(216, 201, 188, 0.64),
           0 4px 10px rgba(127, 88, 63, 0.04);
+        opacity: 0.28;
       }
 
       .flow-panel.is-locked .flow-toggle::before {
-        content: "鎖";
-        position: static;
-        width: auto;
-        height: auto;
-        background: none;
-        color: rgba(141, 104, 80, 0.92);
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        transform: none;
-        opacity: 1;
+        opacity: 0.18;
       }
 
       .flow-panel.is-locked .flow-toggle::after {
-        display: none;
+        opacity: 0.18;
+      }
+
+      .flow-panel.is-locked .flow-index,
+      .flow-panel.is-locked .flow-title,
+      .flow-panel.is-locked .flow-subtitle {
+        opacity: 0.35;
+      }
+
+      .flow-panel.is-locked .flow-title {
+        color: rgba(140, 115, 100, 0.72);
       }
 
       .flow-body {
@@ -3134,7 +3129,8 @@
       </div>
   
       <script>
-        const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v1";
+        const FLOW_CONTROL_STORAGE_KEY = "bazi.flowControl.maxUnlockedStep.v2";
+        const FLOW_OPEN_STEPS_STORAGE_KEY = "bazi.flowControl.openSteps.v2";
         const FLOW_REMOTE_ENDPOINT_STORAGE_KEY = "bazi.flowControl.remoteEndpoint.v1";
         const FLOW_REMOTE_DEFAULT_ENDPOINT = "https://script.google.com/macros/s/AKfycbw-4I2yeVNUs2YCxz0ap6jEsNgoDY8913i4I69iwh-RAqy6SriJeJHmEvIThRKWcryvDw/exec";
         const FLOW_REMOTE_TIMEOUT_MS = 4800;
@@ -3170,10 +3166,19 @@
           return FLOW_REMOTE_DEFAULT_ENDPOINT.trim();
         };
         const hasRemoteEndpoint = () => isLikelyRemoteUrl(getRemoteEndpoint());
-        const writeLocalUnlockedStep = (step) => {
-          const safeStep = clampFlowStep(step);
-          window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(safeStep));
-          return safeStep;
+        const normalizeOpenSteps = (steps) => {
+          const values = Array.isArray(steps) && steps.length ? steps : panels.map((panel) => getPanelStepNumber(panel)).filter(Boolean);
+          return values
+            .map((value) => clampFlowStep(Number(value)))
+            .filter((value, index, array) => Number.isFinite(value) && array.indexOf(value) === index)
+            .sort((a, b) => a - b);
+        };
+        const writeLocalOpenSteps = (steps) => {
+          const safeSteps = normalizeOpenSteps(steps);
+          const maxStep = safeSteps.length ? safeSteps[safeSteps.length - 1] : 1;
+          window.localStorage.setItem(FLOW_OPEN_STEPS_STORAGE_KEY, JSON.stringify(safeSteps));
+          window.localStorage.setItem(FLOW_CONTROL_STORAGE_KEY, String(maxStep));
+          return safeSteps;
         };
         const fetchWithTimeout = async (url, options = {}) => {
           const controller = new AbortController();
@@ -3185,18 +3190,29 @@
           }
         };
 
-        const readMaxUnlockedStep = () => {
-          const storedValue = window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY);
-          const parsedValue = Number(storedValue);
-          if (!Number.isFinite(parsedValue) || parsedValue < 1) return 16;
-          return clampFlowStep(parsedValue);
+        const readOpenSteps = () => {
+          const storedValue = window.localStorage.getItem(FLOW_OPEN_STEPS_STORAGE_KEY);
+          if (storedValue) {
+            try {
+              return normalizeOpenSteps(JSON.parse(storedValue));
+            } catch (error) {}
+          }
+          const parsedValue = Number(window.localStorage.getItem(FLOW_CONTROL_STORAGE_KEY));
+          if (Number.isFinite(parsedValue) && parsedValue >= 1) {
+            return normalizeOpenSteps(
+              panels
+                .map((panel) => getPanelStepNumber(panel))
+                .filter((step) => step && step <= clampFlowStep(parsedValue))
+            );
+          }
+          return normalizeOpenSteps(null);
         };
 
         const applyFlowLocks = () => {
-          const maxUnlockedStep = readMaxUnlockedStep();
+          const openStepSet = new Set(readOpenSteps());
           panels.forEach((panel) => {
             const stepNumber = getPanelStepNumber(panel);
-            const isLocked = stepNumber > maxUnlockedStep;
+            const isLocked = stepNumber > 0 && !openStepSet.has(stepNumber);
             panel.classList.toggle("is-locked", isLocked);
             if (isLocked) panel.open = false;
           });
@@ -3315,10 +3331,16 @@
           if (!response.ok) throw new Error(`遠端狀態讀取失敗 (${response.status})`);
           const data = await response.json();
           if (!data || !data.ok) throw new Error(data?.message || "遠端狀態格式不正確");
-          const remoteStep = clampFlowStep(Number(data.maxUnlockedStep || 16));
-          const localStep = readMaxUnlockedStep();
-          if (remoteStep !== localStep) {
-            writeLocalUnlockedStep(remoteStep);
+          const remoteOpenSteps = normalizeOpenSteps(
+            Array.isArray(data.openSteps)
+              ? data.openSteps
+              : panels
+                  .map((panel) => getPanelStepNumber(panel))
+                  .filter((step) => step && step <= clampFlowStep(Number(data.maxUnlockedStep || 16)))
+          );
+          const localOpenSteps = readOpenSteps();
+          if (JSON.stringify(remoteOpenSteps) !== JSON.stringify(localOpenSteps)) {
+            writeLocalOpenSteps(remoteOpenSteps);
             applyFlowLocks();
           }
           return true;
@@ -3471,7 +3493,7 @@
             syncFlowRemoteState().catch(() => {});
             return;
           }
-          if (event.key !== FLOW_CONTROL_STORAGE_KEY) return;
+          if (event.key !== FLOW_CONTROL_STORAGE_KEY && event.key !== FLOW_OPEN_STEPS_STORAGE_KEY) return;
           applyFlowLocks();
         });
 
