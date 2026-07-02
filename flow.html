@@ -322,6 +322,32 @@
         min-width: 0;
       }
 
+      .flow-heading.has-kicker {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px 12px;
+      }
+
+      .flow-kicker {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 28px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(208, 170, 136, 0.38);
+        background: linear-gradient(180deg, rgba(247, 233, 218, 0.96), rgba(238, 218, 196, 0.92));
+        color: rgba(146, 102, 78, 0.94);
+        font-size: 0.72rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        box-shadow:
+          0 6px 14px rgba(145, 102, 71, 0.06),
+          inset 0 1px 0 rgba(255, 247, 239, 0.82);
+      }
+
       .flow-title {
         margin: 0;
         color: var(--wine);
@@ -403,10 +429,22 @@
 
       .content-label {
         margin: 0 0 12px;
-        color: var(--wine);
-        font-size: 1rem;
-        line-height: 1.5;
-        letter-spacing: 0.09em;
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 31px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        box-shadow:
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.84);
       }
 
       .content-block p {
@@ -748,26 +786,23 @@
       }
 
       .insight-label {
-        color: rgba(127, 88, 70, 0.9);
-        font-size: 0.8rem;
-        letter-spacing: 0.06em;
-      }
-
-      .mini-guide-content .insight-label {
         display: inline-flex;
         align-items: center;
         justify-self: start;
-        min-height: 30px;
-        padding: 0 12px;
+        width: fit-content;
+        min-height: 31px;
+        padding: 0 14px;
         border-radius: 999px;
-        background: linear-gradient(180deg, rgba(242, 198, 162, 0.98), rgba(228, 170, 130, 0.92));
-        color: #fff8f2;
-        font-size: 0.76rem;
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
+        font-size: 0.78rem;
         font-weight: 700;
-        letter-spacing: 0.11em;
+        line-height: 1;
+        letter-spacing: 0.08em;
         box-shadow:
-          inset 0 1px 0 rgba(255, 240, 227, 0.38),
-          0 8px 16px rgba(176, 112, 73, 0.16);
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.84);
       }
 
       .insight-value {
@@ -852,15 +887,15 @@
       .energy-head {
         display: flex;
         align-items: center;
-        gap: 14px;
-        margin-bottom: 14px;
+        gap: 18px;
+        margin-bottom: 18px;
       }
 
       .energy-avatar-wrap {
         position: relative;
-        flex: 0 0 88px;
-        width: 88px;
-        height: 88px;
+        flex: 0 0 128px;
+        width: 128px;
+        height: 128px;
         border-radius: 50%;
         padding: 4px;
         background: radial-gradient(circle at 32% 30%, rgba(255, 251, 240, 0.95), rgba(255, 242, 222, 0.82) 58%, rgba(221, 188, 152, 0.28) 100%);
@@ -887,8 +922,8 @@
       }
 
       .energy-avatar-trigger {
-        flex: 0 0 88px;
-        width: 88px;
+        flex: 0 0 128px;
+        width: 128px;
         border-radius: 50%;
         overflow: visible;
         cursor: zoom-in;
@@ -926,15 +961,20 @@
         display: inline-flex;
         align-items: center;
         justify-self: start;
-        min-height: 28px;
-        padding: 0 11px;
+        width: fit-content;
+        min-height: 31px;
+        padding: 0 14px;
         border-radius: 999px;
-        background: linear-gradient(180deg, rgba(243, 226, 210, 0.98), rgba(233, 201, 174, 0.92));
-        color: #9d654c;
-        font-size: 0.76rem;
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
+        font-size: 0.78rem;
         font-weight: 700;
         letter-spacing: 0.08em;
-        box-shadow: 0 8px 16px rgba(168, 120, 89, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.44);
+        line-height: 1;
+        box-shadow:
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.84);
       }
 
       .energy-card dd {
@@ -1188,14 +1228,19 @@
       .final-kicker {
         display: inline-flex;
         align-items: center;
-        min-height: 28px;
-        padding: 0 12px;
+        width: fit-content;
+        min-height: 31px;
+        padding: 0 14px;
         border-radius: 999px;
-        background: linear-gradient(180deg, rgba(244, 226, 207, 0.96), rgba(235, 208, 181, 0.88));
-        color: rgba(144, 101, 77, 0.88);
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
         font-size: 0.7rem;
         line-height: 1;
-        letter-spacing: 0.22em;
+        letter-spacing: 0.14em;
+        box-shadow:
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.84);
       }
 
       .final-journey-message {
@@ -1222,6 +1267,17 @@
       }
 
       .final-journey-actions.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .final-about-actions {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.46s ease, transform 0.46s ease;
+      }
+
+      .final-about-actions.is-visible {
         opacity: 1;
         transform: translateY(0);
       }
@@ -1278,8 +1334,8 @@
 
       .final-about-list {
         margin: 14px 0 0;
-        padding-left: 1.2rem;
-        list-style: disc outside;
+        padding-left: 0;
+        list-style: none;
         display: grid;
         gap: 10px;
         position: relative;
@@ -1290,9 +1346,18 @@
 
       .final-about-list li {
         margin: 0;
+        display: grid;
+        grid-template-columns: 0.9rem minmax(0, 1fr);
+        align-items: start;
+        gap: 0.35rem;
         font-size: 0.92rem;
         line-height: 1.82;
         letter-spacing: 0.025em;
+      }
+
+      .final-about-bullet {
+        color: rgba(136, 99, 77, 0.9);
+        line-height: 1.82;
       }
 
       .final-about-list li + li {
@@ -1312,11 +1377,23 @@
       }
 
       .final-cta-kicker {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        min-height: 31px;
         margin: 0 0 12px;
-        color: rgba(130, 94, 73, 0.76);
-        font-size: 0.74rem;
-        line-height: 1.35;
-        letter-spacing: 0.2em;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(208, 170, 136, 0.42);
+        background: linear-gradient(180deg, rgba(244, 226, 207, 0.98), rgba(234, 207, 181, 0.92));
+        color: rgba(141, 97, 74, 0.96);
+        font-size: 0.72rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.14em;
+        box-shadow:
+          0 8px 18px rgba(145, 102, 71, 0.08),
+          inset 0 1px 0 rgba(255, 247, 239, 0.84);
       }
 
       .final-cta-title {
@@ -1534,6 +1611,17 @@
           line-height: 1.34;
         }
 
+        .flow-heading.has-kicker {
+          gap: 8px 10px;
+        }
+
+        .flow-kicker {
+          min-height: 25px;
+          padding: 0 10px;
+          font-size: 0.65rem;
+          letter-spacing: 0.07em;
+        }
+
         .flow-subtitle {
           margin-top: 4px;
           font-size: 0.74rem;
@@ -1570,8 +1658,10 @@
         }
 
         .content-label {
+          min-height: 28px;
           margin-bottom: 10px;
-          font-size: 0.92rem;
+          padding: 0 12px;
+          font-size: 0.74rem;
         }
 
         .content-block p,
@@ -1598,20 +1688,20 @@
         }
 
         .energy-head {
-          gap: 11px;
-          margin-bottom: 12px;
+          gap: 14px;
+          margin-bottom: 15px;
         }
 
         .energy-avatar-wrap {
-          flex-basis: 70px;
-          width: 70px;
-          height: 70px;
+          flex-basis: 96px;
+          width: 96px;
+          height: 96px;
           padding: 3px;
         }
 
         .energy-avatar-trigger {
-          flex-basis: 70px;
-          width: 70px;
+          flex-basis: 96px;
+          width: 96px;
         }
 
         .energy-title {
@@ -1619,9 +1709,9 @@
         }
 
         .energy-card dt {
-          min-height: 25px;
-          padding: 0 9px;
-          font-size: 0.7rem;
+          min-height: 28px;
+          padding: 0 12px;
+          font-size: 0.72rem;
         }
 
         .future-actions,
@@ -1682,10 +1772,10 @@
         }
 
         .final-kicker {
-          min-height: 26px;
-          padding: 0 10px;
+          min-height: 28px;
+          padding: 0 12px;
           font-size: 0.64rem;
-          letter-spacing: 0.18em;
+          letter-spacing: 0.12em;
         }
 
         .final-cta-card {
@@ -1694,8 +1784,11 @@
         }
 
         .final-cta-kicker {
+          min-height: 28px;
           margin-bottom: 10px;
-          font-size: 0.68rem;
+          padding: 0 12px;
+          font-size: 0.66rem;
+          letter-spacing: 0.12em;
         }
 
         .final-cta-button {
@@ -1832,14 +1925,10 @@
         }
 
         .insight-label {
-          font-size: 0.76rem;
-        }
-
-        .mini-guide-content .insight-label {
-          min-height: 26px;
-          padding: 0 10px;
-          font-size: 0.68rem;
-          letter-spacing: 0.1em;
+          min-height: 28px;
+          padding: 0 12px;
+          font-size: 0.7rem;
+          letter-spacing: 0.07em;
         }
 
         .insight-value {
@@ -2004,7 +2093,7 @@
             <summary class="flow-summary">
               <div class="flow-index">6</div>
               <div class="flow-heading">
-                <h2 class="flow-title">五星戀愛能量簡介 part.1</h2>
+                <h2 class="flow-title">五星戀愛能量簡介</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2104,8 +2193,9 @@
           <details class="flow-panel" style="--delay: 7">
             <summary class="flow-summary">
               <div class="flow-index">7</div>
-              <div class="flow-heading">
-                <h2 class="flow-title">第一輪「猜猜看」交流</h2>
+              <div class="flow-heading has-kicker">
+                <span class="flow-kicker">第一輪</span>
+                <h2 class="flow-title">「猜猜看」交流</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2302,8 +2392,9 @@
           <details class="flow-panel" style="--delay: 9">
             <summary class="flow-summary">
               <div class="flow-index">9</div>
-              <div class="flow-heading">
-                <h2 class="flow-title">第二輪「同能量者」交流</h2>
+              <div class="flow-heading has-kicker">
+                <span class="flow-kicker">第二輪</span>
+                <h2 class="flow-title">「同能量者」交流</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2332,7 +2423,7 @@
             <summary class="flow-summary">
               <div class="flow-index">10</div>
               <div class="flow-heading">
-                <h2 class="flow-title">五星戀愛能量簡介 part.3</h2>
+                <h2 class="flow-title">更仔細瞭解五星戀愛能量</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2531,8 +2622,9 @@
           <details class="flow-panel" style="--delay: 11">
             <summary class="flow-summary">
               <div class="flow-index">11</div>
-              <div class="flow-heading">
-                <h2 class="flow-title">第三輪「不同能量者」交流</h2>
+              <div class="flow-heading has-kicker">
+                <span class="flow-kicker">第三輪</span>
+                <h2 class="flow-title">「不同能量者」交流</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2591,7 +2683,7 @@
             <summary class="flow-summary">
               <div class="flow-index">15</div>
               <div class="flow-heading">
-                <h2 class="flow-title">來到顯化理想伴侶的下一站</h2>
+                <h2 class="flow-title">顯化理想伴侶的下一站</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2626,10 +2718,10 @@
             </div>
           </details>
 
-          <details class="flow-panel flow-panel-endcap" style="--delay: 16" aria-label="最後，關於我們">
+          <details class="flow-panel flow-panel-endcap" style="--delay: 16" aria-label="最後，我們想跟你說">
             <summary class="flow-summary">
               <div class="flow-heading">
-                <h2 class="flow-title">最後，關於我們：</h2>
+                <h2 class="flow-title">最後，我們想跟你說</h2>
               </div>
               <div class="flow-toggle" aria-hidden="true"></div>
             </summary>
@@ -2637,13 +2729,15 @@
               <div class="flow-copy">
                 <div class="content-block final-about-shell">
                   <ul class="final-about-list">
-                    <li>感謝你的參加，有想討論的都讓我們知道。</li>
-                    <li>為給下次來參加此活動的新朋友完整的驚喜，此網站在活動結束後會隱藏部分欄位，也很期待與你快快再次相遇。</li>
+                    <li><span class="final-about-bullet">•</span><span><span class="typewriter-text" data-full-text="感謝你的參加，有想討論的都讓我們知道。" data-typed="false"></span><span class="typewriter-caret" aria-hidden="true" style="display:none;"></span></span></li>
+                    <li><span class="final-about-bullet">•</span><span><span class="typewriter-text" data-full-text="為給下次來參加此活動的新朋友完整的驚喜，此網站在活動結束後會隱藏部分欄位，也很期待與你快快再次相遇。" data-typed="false"></span><span class="typewriter-caret" aria-hidden="true" style="display:none;"></span></span></li>
                   </ul>
-                  <div class="final-cta-links is-endcap">
-                    <a class="final-cta-link" href="https://line.me/R/ti/p/@455ojikt" target="_blank" rel="noreferrer">初星群官方LINE</a>
-                    <a class="final-cta-link" href="https://lin.ee/ZbGVl4Ka" target="_blank" rel="noreferrer">智堯官方LINE</a>
-                    <a class="final-cta-link" href="https://line.me/ti/g2/AfHXIFobovOLyxl6krvjy2QxCw-yGNn6GUASlg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noreferrer">智堯書房群</a>
+                  <div class="final-about-actions">
+                    <div class="final-cta-links is-endcap">
+                      <a class="final-cta-link" href="https://line.me/R/ti/p/@455ojikt" target="_blank" rel="noreferrer">初星群官方LINE</a>
+                      <a class="final-cta-link" href="https://lin.ee/ZbGVl4Ka" target="_blank" rel="noreferrer">智堯官方LINE</a>
+                      <a class="final-cta-link" href="https://line.me/ti/g2/AfHXIFobovOLyxl6krvjy2QxCw-yGNn6GUASlg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noreferrer">智堯書房群</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2673,7 +2767,12 @@
         const finalJourneyTypeTarget = finalJourneyPanel?.querySelector(".typewriter-text");
         const finalJourneyCaret = finalJourneyPanel?.querySelector(".typewriter-caret");
         const finalJourneyActions = finalJourneyPanel?.querySelector(".final-journey-actions");
+        const finalAboutPanel = panels.find((panel) => panel.style.getPropertyValue("--delay") === "16");
+        const finalAboutTypeTargets = finalAboutPanel ? Array.from(finalAboutPanel.querySelectorAll(".final-about-list .typewriter-text")) : [];
+        const finalAboutCarets = finalAboutPanel ? Array.from(finalAboutPanel.querySelectorAll(".final-about-list .typewriter-caret")) : [];
+        const finalAboutActions = finalAboutPanel?.querySelector(".final-about-actions");
         let finalJourneyTypingTimer = null;
+        let finalAboutTypingTimer = null;
 
         const finishFinalJourneyMessage = () => {
           if (!finalJourneyTypeTarget) return;
@@ -2713,6 +2812,62 @@
           }, 72);
         };
 
+        const finishFinalAboutMessage = () => {
+          if (!finalAboutTypeTargets.length) return;
+          finalAboutTypeTargets.forEach((target, index) => {
+            target.textContent = target.dataset.fullText || "";
+            target.dataset.typed = "true";
+            if (finalAboutCarets[index]) finalAboutCarets[index].style.display = "none";
+          });
+          if (finalAboutActions) finalAboutActions.classList.add("is-visible");
+        };
+
+        const startFinalAboutTyping = () => {
+          if (!finalAboutTypeTargets.length) return;
+          if (finalAboutTypeTargets.every((target) => target.dataset.typed === "true")) {
+            if (finalAboutActions) finalAboutActions.classList.add("is-visible");
+            finalAboutCarets.forEach((caret) => {
+              caret.style.display = "none";
+            });
+            return;
+          }
+          if (prefersReducedMotion) {
+            finishFinalAboutMessage();
+            return;
+          }
+          if (finalAboutTypingTimer) window.clearInterval(finalAboutTypingTimer);
+          if (finalAboutActions) finalAboutActions.classList.remove("is-visible");
+          finalAboutTypeTargets.forEach((target, index) => {
+            target.textContent = "";
+            target.dataset.typed = "false";
+            if (finalAboutCarets[index]) finalAboutCarets[index].style.display = index === 0 ? "inline-block" : "none";
+          });
+
+          let currentLine = 0;
+          let currentIndex = 0;
+          const typeCurrentLine = () => {
+            const target = finalAboutTypeTargets[currentLine];
+            const fullText = target?.dataset.fullText || "";
+            currentIndex += 1;
+            target.textContent = fullText.slice(0, currentIndex);
+            if (currentIndex >= fullText.length) {
+              target.dataset.typed = "true";
+              if (finalAboutCarets[currentLine]) finalAboutCarets[currentLine].style.display = "none";
+              currentLine += 1;
+              currentIndex = 0;
+              if (currentLine < finalAboutTypeTargets.length) {
+                if (finalAboutCarets[currentLine]) finalAboutCarets[currentLine].style.display = "inline-block";
+              } else {
+                window.clearInterval(finalAboutTypingTimer);
+                finalAboutTypingTimer = null;
+                if (finalAboutActions) finalAboutActions.classList.add("is-visible");
+              }
+            }
+          };
+
+          finalAboutTypingTimer = window.setInterval(typeCurrentLine, 54);
+        };
+
         panels.forEach((panel) => {
           panel.addEventListener("toggle", () => {
             if (panel.classList.contains("flow-panel-static")) {
@@ -2725,6 +2880,9 @@
             });
             if (panel === finalJourneyPanel) {
               startFinalJourneyTyping();
+            }
+            if (panel === finalAboutPanel) {
+              startFinalAboutTyping();
             }
           });
         });
